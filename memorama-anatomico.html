@@ -541,9 +541,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 
 <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 <script>
-// ---- Socket.io cliente ----
-const SOCKET_URL = 'http://localhost:3000';
+// ---- Socket.io cliente mejorado ----
+const SOCKET_URL = (window.location.protocol === 'file:' ? 'http://localhost:3000' : window.location.origin);
 let socket = null;
+let socketConnected = false;
 let mySocketId = null;
 let currentRoomCode = null;
 let currentRoomHostId = null;
@@ -553,82 +554,156 @@ let countdownIntervalLobby = null;
 let countdownSecondsLeft = 0;
 let countdownActive = false;
 let nivelPendiente = 0;
-function connectSocket(){ if(socket) return; socket = io(SOCKET_URL);
-  socket.on('connect', ()=>{ mySocketId = socket.id; console.log('connected', socket.id); });
-  socket.on('roomCreated', data=>{ syncRoomState(data); document.getElementById('input-sala').value = data.code; showToast('Sala creada: '+data.code); mostrarLobby(); });
-  socket.on('joinedRoom', data=>{ syncRoomState(data); document.getElementById('input-sala').value = data.code; showToast('Unido a: '+data.code); mostrarLobby(); });
-  socket.on('playerList', data=>{ syncRoomState(data); if(isLobbyVisible()) mostrarLobby(); });
-  socket.on('countdownStarted', data=>{ syncRoomState(data); mostrarLobby(); iniciarCuentaRegresivaCliente(data.seconds || 5, data.countdownEndsAt); });
-  socket.on('gameStarted', data=>{ // recibir jugadores y empezar nivel (sincronizado)
+let pendingRoomAction = null; // para acciones pendientes mientras se conecta
+
+function connectSocket() {
+  if (socket && socket.connected) return;
+
+  if (socket) {
+    socket.disconnect();
+    socket = null;
+  }
+
+  socket = io(SOCKET_URL, {
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000,
+  });
+
+  socket.on('connect', () => {
+    socketConnected = true;
+    mySocketId = socket.id;
+    console.log('✅ Socket conectado', mySocketId);
+    if (pendingRoomAction) {
+      pendingRoomAction();
+      pendingRoomAction = null;
+    }
+  });
+
+  socket.on('disconnect', () => {
+    socketConnected = false;
+    console.log('⚠️ Socket desconectado');
+    showToast('Se perdió la conexión con el servidor. Reconectando...');
+  });
+
+  socket.on('connect_error', (err) => {
+    console.error('Error de conexión:', err);
+    showToast('Error de conexión. Verifica que el servidor esté corriendo.');
+  });
+
+  // Eventos de sala
+  socket.on('roomCreated', data => {
+    syncRoomState(data);
+    document.getElementById('input-sala').value = data.code;
+    showToast('Sala creada: ' + data.code);
+    mostrarLobby();
+  });
+
+  socket.on('joinedRoom', data => {
+    syncRoomState(data);
+    document.getElementById('input-sala').value = data.code;
+    showToast('Unido a: ' + data.code);
+    mostrarLobby();
+  });
+
+  socket.on('playerList', data => {
+    syncRoomState(data);
+    if (isLobbyVisible()) mostrarLobby();
+  });
+
+  socket.on('countdownStarted', data => {
+    syncRoomState(data);
+    mostrarLobby();
+    iniciarCuentaRegresivaCliente(data.seconds || 5, data.countdownEndsAt);
+  });
+
+  socket.on('gameStarted', data => {
     cancelarCuentaRegresivaCliente();
-    const players = data.players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx, colorIdx:p.colorIdx, puntosTotal:p.puntosTotal, nivelesJugados:p.nivelesJugados, terminado:p.terminado }));
+    const players = data.players.map(p => ({
+      nombre: p.name,
+      avatarIdx: p.avatarIdx,
+      colorIdx: p.colorIdx,
+      puntosTotal: p.puntosTotal,
+      nivelesJugados: p.nivelesJugados,
+      terminado: p.terminado
+    }));
     jugadores = players;
-    // colocar turnoActual según mi socket id
-    const meIndex = data.players.findIndex(p=>p.id===mySocketId);
-    if(meIndex!==-1) turnoActual = meIndex; else turnoActual = 0;
+    const meIndex = data.players.findIndex(p => p.id === mySocketId);
+    if (meIndex !== -1) turnoActual = meIndex;
+    else turnoActual = 0;
     selectedSemester = data.semester || selectedSemester;
     currentRoomCode = data.code || currentRoomCode;
     currentRoomHostId = data.hostId || currentRoomHostId;
-    // iniciar nivel en modo multijugador usando la permutación enviada
     iniciarNivelMultiplayer(data.levelIdx || 0, data.permutation || null);
   });
-  socket.on('updateRanking', data=>{ // actualizar puntajes
-    // map server players to local jugadores by name
-    jugadores = data.players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx, colorIdx:p.colorIdx, puntosTotal:p.puntosTotal, nivelesJugados:p.nivelesJugados, terminado:p.terminado }));
+
+  socket.on('updateRanking', data => {
+    jugadores = data.players.map(p => ({
+      nombre: p.name,
+      avatarIdx: p.avatarIdx,
+      colorIdx: p.colorIdx,
+      puntosTotal: p.puntosTotal,
+      nivelesJugados: p.nivelesJugados,
+      terminado: p.terminado
+    }));
     renderJugadoresList();
     syncRoomState(data);
   });
-  socket.on('errorMsg', msg=> showToast(msg));
+
+  socket.on('errorMsg', msg => showToast(msg));
 }
 
-function syncRoomState(data){
-  if(!data) return;
-  if(data.code) currentRoomCode = data.code;
-  if(data.hostId) currentRoomHostId = data.hostId;
-  if(Array.isArray(data.players)) currentRoomPlayers = data.players;
-  if(typeof data.semester === 'number') selectedSemester = data.semester;
-  if(typeof data.levelIdx === 'number') nivelPendiente = data.levelIdx;
-  if(typeof data.countdownEndsAt === 'number') currentRoomCountdownEndsAt = data.countdownEndsAt;
+function syncRoomState(data) {
+  if (!data) return;
+  if (data.code) currentRoomCode = data.code;
+  if (data.hostId) currentRoomHostId = data.hostId;
+  if (Array.isArray(data.players)) currentRoomPlayers = data.players;
+  if (typeof data.semester === 'number') selectedSemester = data.semester;
+  if (typeof data.levelIdx === 'number') nivelPendiente = data.levelIdx;
+  if (typeof data.countdownEndsAt === 'number') currentRoomCountdownEndsAt = data.countdownEndsAt;
   renderLobbyPlayers(currentRoomPlayers);
   updateLobbyScreen();
 }
 
-function isLobbyVisible(){ const lobby=document.getElementById('screen-lobby'); return !!lobby && lobby.classList.contains('active'); }
+function isLobbyVisible() {
+  const lobby = document.getElementById('screen-lobby');
+  return !!lobby && lobby.classList.contains('active');
+}
 
-function updateLobbyScreen(){
+function updateLobbyScreen() {
   const codeEl = document.getElementById('lobby-code');
   const statusEl = document.getElementById('lobby-status');
   const countEl = document.getElementById('lobby-player-count');
   const btn = document.getElementById('btn-comenzar-lobby');
-  if(codeEl) codeEl.textContent = currentRoomCode || '-----';
-  if(countEl) countEl.textContent = `${currentRoomPlayers.length} jugador${currentRoomPlayers.length===1?'':'es'}`;
-  if(statusEl){
+  if (codeEl) codeEl.textContent = currentRoomCode || '-----';
+  if (countEl) countEl.textContent = `${currentRoomPlayers.length} jugador${currentRoomPlayers.length === 1 ? '' : 'es'}`;
+  if (statusEl) {
     const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId;
-    if(countdownActive){
+    if (countdownActive) {
       statusEl.textContent = 'Cuenta regresiva activa. Todos están por entrar al memorama.';
-    } else if(currentRoomCode){
+    } else if (currentRoomCode) {
       statusEl.textContent = hostReady ? 'Listo para comenzar. Presiona el botón y comparte el código con los demás.' : 'Esperando a que el creador inicie la partida.';
     } else {
       statusEl.textContent = 'Creando sala de espera...';
     }
   }
-  if(btn){
+  if (btn) {
     const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId;
     btn.disabled = !currentRoomCode || !hostReady || countdownActive;
     btn.textContent = countdownActive ? 'Cuenta regresiva...' : 'Comenzar';
   }
 }
 
-function renderLobbyPlayers(players){
+function renderLobbyPlayers(players) {
   const wrap = document.getElementById('lobby-players');
-  if(!wrap) return;
+  if (!wrap) return;
   const list = Array.isArray(players) ? players : [];
   wrap.innerHTML = '';
-  if(list.length === 0){
+  if (list.length === 0) {
     wrap.innerHTML = '<div class="lobby-status">Aún no hay jugadores integrados.</div>';
     return;
   }
-  list.forEach(p=>{
+  list.forEach(p => {
     const avatarIdx = p.avatarIdx || 0;
     const colorIdx = p.colorIdx || 0;
     const div = document.createElement('div');
@@ -643,30 +718,30 @@ function renderLobbyPlayers(players){
   });
 }
 
-function mostrarLobby(){
+function mostrarLobby() {
   updateLobbyScreen();
   mostrarScreen('screen-lobby');
 }
 
-function copiarCodigoSala(){
-  if(!currentRoomCode){ showToast('Aún no hay código'); return; }
-  navigator.clipboard?.writeText(currentRoomCode).then(()=>showToast('Código copiado')).catch(()=>showToast('No se pudo copiar'));
+function copiarCodigoSala() {
+  if (!currentRoomCode) { showToast('Aún no hay código'); return; }
+  navigator.clipboard?.writeText(currentRoomCode).then(() => showToast('Código copiado')).catch(() => showToast('No se pudo copiar'));
 }
 
-function mostrarInvitacionSala(){
-  if(!currentRoomCode){ showToast('Aún no hay código'); return; }
+function mostrarInvitacionSala() {
+  if (!currentRoomCode) { showToast('Aún no hay código'); return; }
   const texto = `Únete a mi sala de Memorama Anatómico con el código ${currentRoomCode}`;
-  if(navigator.share){ navigator.share({ title:'Memorama Anatómico', text:texto }).catch(()=>{}); return; }
+  if (navigator.share) { navigator.share({ title: 'Memorama Anatómico', text: texto }).catch(() => {}); return; }
   copiarCodigoSala();
 }
 
-function iniciarCuentaRegresivaCliente(segundos, endsAt){
+function iniciarCuentaRegresivaCliente(segundos, endsAt) {
   cancelarCuentaRegresivaCliente();
   countdownActive = true;
   const box = document.getElementById('lobby-countdown');
   const value = document.getElementById('lobby-countdown-value');
-  if(!box || !value) return;
-  if(typeof endsAt === 'number'){
+  if (!box || !value) return;
+  if (typeof endsAt === 'number') {
     currentRoomCountdownEndsAt = endsAt;
     countdownSecondsLeft = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000));
   } else {
@@ -675,9 +750,9 @@ function iniciarCuentaRegresivaCliente(segundos, endsAt){
   value.textContent = countdownSecondsLeft;
   box.classList.add('show');
   updateLobbyScreen();
-  countdownIntervalLobby = setInterval(()=>{
+  countdownIntervalLobby = setInterval(() => {
     countdownSecondsLeft--;
-    if(countdownSecondsLeft <= 0){
+    if (countdownSecondsLeft <= 0) {
       value.textContent = '0';
       cancelarCuentaRegresivaCliente();
       return;
@@ -686,47 +761,66 @@ function iniciarCuentaRegresivaCliente(segundos, endsAt){
   }, 1000);
 }
 
-function cancelarCuentaRegresivaCliente(){
-  if(countdownIntervalLobby){ clearInterval(countdownIntervalLobby); countdownIntervalLobby = null; }
+function cancelarCuentaRegresivaCliente() {
+  if (countdownIntervalLobby) { clearInterval(countdownIntervalLobby); countdownIntervalLobby = null; }
   countdownActive = false;
   currentRoomCountdownEndsAt = null;
   const box = document.getElementById('lobby-countdown');
-  if(box) box.classList.remove('show');
+  if (box) box.classList.remove('show');
   updateLobbyScreen();
 }
 
-function crearSala(){
+function crearSala() {
   const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || '';
-  if(!name){ showToast('Usa el + para crear un jugador primero'); return; }
+  if (!name) { showToast('Usa el + para crear un jugador primero'); return; }
   connectSocket();
-  socket.emit('createRoom',{name});
+  socket.emit('createRoom', { name });
 }
-function unirseSala(){
+
+// Modifica unirseSala (con pendingRoomAction)
+function unirseSala() {
   const nameInput = document.getElementById('input-nombre-sala');
   const name = (nameInput && nameInput.value.trim()) || nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || '';
-  const code=document.getElementById('input-sala').value.trim().toUpperCase();
-  if(!name){ showToast('Escribe tu nombre para unirte'); return; }
-  if(!code){ showToast('Escribe el código de sala'); return; }
-  connectSocket();
-  socket.emit('joinRoom',{code,name});
-}
-
-function renderSocketPlayers(players){ jugadores = players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx||0, colorIdx:p.colorIdx||0, puntosTotal:p.puntosTotal||0, nivelesJugados:p.nivelesJugados||[], terminado:p.terminado||false })); renderJugadoresList(); renderLobbyPlayers(players); }
-
-// Cuando el host presiona empezar, emitir al servidor en vez de iniciar localmente
-const originalEmpezarPartida = empezarPartida;
-function empezarPartida(){
   const code = document.getElementById('input-sala').value.trim().toUpperCase();
-  if(socket && code){ // si estamos en sala, enviar evento start
-    // por ahora arrancar con nivel seleccionado 0; enviar también pairsCount para sincronizar
-    const levelIdx = 0;
-    const pairsCount = SEMESTER_DATA[selectedSemester].levels[levelIdx].pares.length;
-    currentRoomCode = code;
-    socket.emit('startRoomGame',{code,semester:selectedSemester,levelIdx, pairsCount});
-  } else { originalEmpezarPartida(); }
+  if (!name) { showToast('Escribe tu nombre para unirte'); return; }
+  if (!code) { showToast('Escribe el código de sala'); return; }
+
+  const action = () => {
+    socket.emit('joinRoom', { code, name });
+  };
+
+  if (!socketConnected) {
+    pendingRoomAction = action;
+    connectSocket();
+  } else {
+    action();
+  }
 }
 
-// ========== DATA ==========
+// Modifica abrirLobbyNivel (crear sala)
+function abrirLobbyNivel(idx) {
+  nivelPendiente = idx;
+  const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || 'Jugador';
+
+  const action = () => {
+    if (!currentRoomCode) {
+      socket.emit('createRoom', { name });
+    } else {
+      updateLobbyScreen();
+      mostrarLobby();
+    }
+    showToast(`Nivel ${idx+1} listo para preparar la sala`);
+  };
+
+  if (!socketConnected) {
+    pendingRoomAction = action;
+    connectSocket();
+  } else {
+    action();
+  }
+}
+
+// ========== DATA Y FUNCIONES DEL JUEGO (SIN CAMBIOS) ==========
 // Estructura por semestres y niveles (Primer y Segundo semestre).
 const SEMESTER_DATA = {
   1: {
@@ -758,7 +852,6 @@ const SEMESTER_DATA = {
           {id:'lig_hiperext',emoji:'🪢',nombre:'Ligamento ant. columna',tipo:'Ligamento'},
       ]},
       { nombre: 'Avanzado', color:'#ff6b6b', icono:'🧠', stars:'★★★★☆', dif:'Avanzado', pares:[
-          // Casos clínicos y preguntas avanzadas (placeholder para 16 pares)
           {id:'caso1',emoji:'🩺',nombre:'Caso Clínico 1',tipo:'Caso'},
           {id:'caso2',emoji:'🩺',nombre:'Caso Clínico 2',tipo:'Caso'},
           {id:'caso3',emoji:'🩺',nombre:'Caso Clínico 3',tipo:'Caso'},
@@ -953,20 +1046,6 @@ function renderNiveles(){
     if(!yaJugado) card.onclick=()=>abrirLobbyNivel(i);
     grid.appendChild(card);
   });
-}
-
-function abrirLobbyNivel(idx){
-  nivelPendiente = idx;
-  connectSocket();
-  updateLobbyScreen();
-  mostrarLobby();
-  if(!currentRoomCode){
-    const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || 'Jugador';
-    socket.emit('createRoom',{name});
-  } else {
-    updateLobbyScreen();
-  }
-  showToast(`Nivel ${idx+1} listo para preparar la sala`);
 }
 
 function comenzarPartidaConCuentaRegresiva(){
