@@ -20,18 +20,38 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: '*' } });
 
 // Almacenar salas en memoria
-const rooms = {}; // { code: { hostId, players: [{id,name,avatarIdx,colorIdx,puntosTotal,nivelesJugados,terminado}], semester, levelIdx, currentPermutation }}
+const rooms = {}; // { code: { hostId, players: [{id,name,avatarIdx,colorIdx,puntosTotal,nivelesJugados,terminado}], semester, levelIdx, currentPermutation, countdownEndsAt, countdownTimer } }
 
 function makeCode() { return Math.random().toString(36).slice(2,8).toUpperCase(); }
+
+function snapshotRoom(code) {
+  const room = rooms[code];
+  if (!room) return null;
+  return {
+    code,
+    hostId: room.hostId,
+    players: room.players,
+    semester: room.semester,
+    levelIdx: room.levelIdx,
+    countdownEndsAt: room.countdownEndsAt || null,
+  };
+}
+
+function emitRoomState(code) {
+  const snapshot = snapshotRoom(code);
+  if (!snapshot) return;
+  io.to(code).emit('playerList', snapshot);
+  return snapshot;
+}
 
 io.on('connection', socket => {
   console.log('socket connected', socket.id);
 
   socket.on('createRoom', ({ name }) => {
     const code = makeCode();
-    rooms[code] = { hostId: socket.id, players: [{ id: socket.id, name, avatarIdx: 0, colorIdx: 0, puntosTotal: 0, nivelesJugados: [], terminado: false }] };
+    rooms[code] = { hostId: socket.id, players: [{ id: socket.id, name, avatarIdx: 0, colorIdx: 0, puntosTotal: 0, nivelesJugados: [], terminado: false }], semester: null, levelIdx: 0, currentPermutation: null, countdownEndsAt: null, countdownTimer: null };
     socket.join(code);
-    socket.emit('roomCreated', { code, players: rooms[code].players });
+    socket.emit('roomCreated', snapshotRoom(code));
     console.log(`Room ${code} created by ${name}`);
   });
 
@@ -41,9 +61,45 @@ io.on('connection', socket => {
     const player = { id: socket.id, name, avatarIdx: room.players.length % 12, colorIdx: room.players.length % 8, puntosTotal: 0, nivelesJugados: [], terminado: false };
     room.players.push(player);
     socket.join(code);
-    io.to(code).emit('playerList', { players: room.players });
-    socket.emit('joinedRoom', { code, players: room.players });
+    const snapshot = emitRoomState(code);
+    socket.emit('joinedRoom', snapshot);
     console.log(`${name} joined room ${code}`);
+  });
+
+  socket.on('startRoomCountdown', ({ code, semester, levelIdx, pairsCount }) => {
+    const room = rooms[code];
+    if (!room) { socket.emit('errorMsg', 'Sala no encontrada'); return; }
+    if (room.hostId !== socket.id) { socket.emit('errorMsg', 'Solo el creador puede comenzar'); return; }
+    if (room.countdownTimer) { socket.emit('errorMsg', 'La partida ya está en cuenta regresiva'); return; }
+
+    room.semester = semester || room.semester || 1;
+    room.levelIdx = Number.isInteger(levelIdx) ? levelIdx : 0;
+    room.countdownEndsAt = Date.now() + 5000;
+
+    io.to(code).emit('countdownStarted', {
+      ...snapshotRoom(code),
+      seconds: 5,
+      countdownEndsAt: room.countdownEndsAt,
+    });
+
+    room.countdownTimer = setTimeout(() => {
+      const activeRoom = rooms[code];
+      if (!activeRoom) return;
+      const permutation = Number.isInteger(pairsCount) && pairsCount > 0
+        ? (() => {
+            const list = Array.from({ length: pairsCount * 2 }, (_, i) => i);
+            for (let i = list.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [list[i], list[j]] = [list[j], list[i]];
+            }
+            return list;
+          })()
+        : null;
+      activeRoom.currentPermutation = permutation;
+      io.to(code).emit('gameStarted', { ...snapshotRoom(code), permutation });
+      activeRoom.countdownTimer = null;
+      activeRoom.countdownEndsAt = null;
+    }, 5000);
   });
 
   socket.on('startRoomGame', ({ code, semester, levelIdx, pairsCount }) => {
@@ -67,7 +123,7 @@ io.on('connection', socket => {
     if (!room) return;
     const p = room.players.find(pp => pp.id === playerId);
     if (p) { p.puntosTotal = (p.puntosTotal || 0) + (result.pts || 0); p.nivelesJugados.push(result); }
-    io.to(code).emit('updateRanking', { players: room.players });
+    io.to(code).emit('updateRanking', snapshotRoom(code));
   });
 
   socket.on('disconnect', () => {
@@ -78,8 +134,12 @@ io.on('connection', socket => {
       if (idx !== -1) {
         const name = r.players[idx].name;
         r.players.splice(idx, 1);
-        io.to(code).emit('playerList', { players: r.players });
-        if (r.players.length === 0) { delete rooms[code]; console.log(`Room ${code} removed`); }
+        emitRoomState(code);
+        if (r.players.length === 0) {
+          if (r.countdownTimer) clearTimeout(r.countdownTimer);
+          delete rooms[code];
+          console.log(`Room ${code} removed`);
+        }
         else { if (r.hostId === socket.id) r.hostId = r.players[0].id; }
         console.log(`${name} left room ${code}`);
       }

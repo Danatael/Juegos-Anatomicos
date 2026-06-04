@@ -73,6 +73,30 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .btn-empezar-multi{width:100%;background:linear-gradient(135deg,var(--accent),#0099bb);color:#001122;font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;padding:.9rem 2rem;border:none;border-radius:50px;cursor:pointer;letter-spacing:.05em;box-shadow:0 0 25px rgba(0,212,255,.35);transition:all .3s;text-transform:uppercase;}
 .btn-empezar-multi:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,212,255,.5);}
 .btn-empezar-multi:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.registro-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:.5rem;align-items:stretch;}
+.registro-card{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:18px;padding:1rem;box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;flex-direction:column;gap:.8rem;min-width:0;}
+.registro-card-title{display:flex;align-items:center;gap:.6rem;font-weight:900;font-size:1rem;color:var(--text);text-transform:uppercase;letter-spacing:.08em;}
+.registro-card-title .rct-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.25);font-size:1rem;flex-shrink:0;}
+.registro-card-body{display:flex;flex-direction:column;gap:.7rem;min-width:0;}
+.registro-card .input-nombre{width:100%;min-width:0;}
+.registro-card .btn-secondary,.registro-card .btn-primary{width:100%;justify-content:center;}
+.registro-card-actions{display:flex;gap:.6rem;flex-wrap:wrap;}
+.plus-launcher{display:flex;align-items:center;justify-content:center;min-height:148px;border-radius:18px;border:1px dashed rgba(0,212,255,.35);background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(0,255,157,.06));color:var(--accent2);cursor:pointer;transition:all .25s ease;flex-direction:column;gap:.7rem;text-align:center;}
+.plus-launcher:hover{transform:translateY(-2px);border-color:rgba(0,212,255,.6);box-shadow:0 12px 28px rgba(0,0,0,.18);}
+.plus-launcher .plus-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:900;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.28);box-shadow:inset 0 0 20px rgba(0,212,255,.08);}
+.plus-launcher .plus-label{font-size:.82rem;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(2,8,18,.72);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:500;padding:1rem;}
+.modal-overlay.show{display:flex;}
+.modal-card{width:min(100%,440px);background:linear-gradient(180deg,rgba(16,30,58,.98),rgba(8,18,36,.98));border:1px solid rgba(0,212,255,.22);border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.45);padding:1.2rem;animation:fadeInUp .25s ease both;}
+.modal-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.modal-close{background:transparent;border:1px solid var(--border);color:var(--text-dim);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem;transition:all .2s;flex-shrink:0;}
+.modal-close:hover{color:var(--accent);border-color:var(--accent);}
+.modal-body{display:flex;flex-direction:column;gap:.9rem;}
+.modal-help{font-size:.9rem;color:var(--text-dim);line-height:1.5;}
+.modal-footer{display:flex;gap:.7rem;justify-content:flex-end;flex-wrap:wrap;margin-top:.4rem;}
+.modal-footer .btn-primary,.modal-footer .btn-secondary{min-width:140px;}
 
 /* ============ SCREEN: TURNO ============ */
 #screen-turno{background:radial-gradient(ellipse at 50% 40%,rgba(0,212,255,.07) 0%,transparent 60%);}
@@ -111,6 +135,31 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .nivel-badge{display:inline-block;margin-top:.7rem;background:rgba(255,255,255,.07);border-radius:50px;padding:.2rem .7rem;font-size:.7rem;color:var(--text-dim);}
 .nivel-stars{color:var(--gold);font-size:.78rem;margin-bottom:.25rem;}
 .nivel-jugado-tag{position:absolute;top:.6rem;right:.6rem;background:rgba(0,255,157,.15);border:1px solid var(--accent2);border-radius:50px;padding:.15rem .5rem;font-size:.65rem;color:var(--accent2);font-weight:800;}
+
+/* ============ SCREEN: SALA DE ESPERA ============ */
+#screen-lobby{background:radial-gradient(ellipse at 50% 36%,rgba(0,212,255,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(255,215,0,.06) 0%,transparent 45%);}
+.lobby-wrap{max-width:760px;width:min(100%,760px);animation:fadeInUp .55s ease both;display:flex;flex-direction:column;gap:1rem;}
+.lobby-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;}
+.lobby-sub{text-align:center;color:var(--text-dim);font-size:.95rem;line-height:1.5;max-width:620px;margin:0 auto;}
+.lobby-code-box{background:linear-gradient(135deg,rgba(0,212,255,.12),rgba(0,255,157,.08));border:1px solid rgba(0,212,255,.28);border-radius:18px;padding:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;box-shadow:0 14px 32px rgba(0,0,0,.18);}
+.lobby-code-label{font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.25rem;}
+.lobby-code-value{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;letter-spacing:.18em;color:var(--gold);word-break:break-all;}
+.lobby-code-actions{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:flex-end;}
+.lobby-section{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:18px;padding:1rem;box-shadow:0 10px 26px rgba(0,0,0,.16);}
+.lobby-section-title{display:flex;align-items:center;justify-content:space-between;gap:.8rem;font-size:.85rem;font-weight:900;text-transform:uppercase;letter-spacing:.09em;color:var(--text);margin-bottom:.8rem;}
+.lobby-status{font-size:.9rem;color:var(--text-dim);line-height:1.5;}
+.lobby-players{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin-top:.8rem;}
+.lobby-player-card{background:rgba(255,255,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:14px;padding:.8rem .9rem;display:flex;align-items:center;gap:.75rem;}
+.lobby-player-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;flex-shrink:0;}
+.lobby-player-info{min-width:0;flex:1;}
+.lobby-player-name{font-size:.96rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lobby-player-meta{font-size:.72rem;color:var(--text-dim);margin-top:.1rem;}
+.lobby-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:stretch;justify-content:center;}
+.lobby-countdown{display:none;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.28);border-radius:18px;padding:1rem;text-align:center;}
+.lobby-countdown.show{display:flex;animation:bounceIn .4s ease both;}
+.lobby-countdown-value{font-size:clamp(2.4rem,9vw,4rem);font-weight:900;line-height:1;color:var(--gold);}
+.lobby-countdown-note{font-size:.85rem;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;}
+.lobby-countdown-title{font-size:1rem;font-weight:800;color:var(--text);}
 
 /* ============ SCREEN: JUEGO ============ */
 #screen-juego{padding:clamp(.75rem,2vw,1rem);flex-direction:column;background:radial-gradient(ellipse at 70% 20%,rgba(0,212,255,.05) 0%,transparent 50%);}
@@ -241,6 +290,9 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   .add-jugador-row{flex-direction:column;}
   .input-nombre{width:100%;min-width:0;}
   #input-sala{max-width:none !important;}
+  .registro-actions{grid-template-columns:1fr;}
+  .registro-card{padding:.9rem;}
+  .modal-footer .btn-primary,.modal-footer .btn-secondary{width:100%;min-width:0;}
   .turno-banner{padding:.7rem 1rem;}
   .niveles-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
   .game-jugador-badge{width:100%;text-align:center;}
@@ -306,17 +358,44 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     <h2 class="registro-title">👥 Registrar Jugadores</h2>
     <p class="registro-sub">Agrega de 1 a 6 jugadores para comenzar</p>
     <div class="jugadores-lista" id="jugadores-lista"></div>
-    <div class="add-jugador-row">
-      <input class="input-nombre" id="input-nombre" type="text" maxlength="20" placeholder="Nombre del jugador..." autocomplete="off">
-      <button class="btn-agregar" onclick="agregarJugador()">+ Agregar</button>
-    </div>
-    <div style="display:flex;gap:.6rem;margin-top:.6rem;align-items:center;flex-wrap:wrap;">
-      <input id="input-sala" class="input-nombre" type="text" placeholder="Código de sala (o crear)" style="max-width:180px;min-width:0">
-      <button class="btn-secondary" onclick="crearSala()">Crear Sala</button>
-      <button class="btn-primary" onclick="unirseSala()">Unirse a Sala</button>
+    <div class="registro-actions">
+      <div class="registro-card">
+        <div class="registro-card-title"><span class="rct-icon">➕</span>Agregar jugador</div>
+        <button class="plus-launcher" onclick="abrirModalJugador()" type="button">
+          <span class="plus-icon">+</span>
+          <span class="plus-label">Crear nombre y comenzar</span>
+        </button>
+      </div>
+      <div class="registro-card">
+        <div class="registro-card-title"><span class="rct-icon">🔗</span>Entrar con código</div>
+        <div class="registro-card-body">
+          <input id="input-sala" class="input-nombre" type="text" placeholder="Código de sala" style="max-width:none;min-width:0">
+          <input id="input-nombre-sala" class="input-nombre" type="text" placeholder="Tu nombre" maxlength="20" style="max-width:none;min-width:0">
+          <div class="registro-card-actions">
+            <button class="btn-primary" onclick="unirseSala()">Unirse a Sala</button>
+          </div>
+        </div>
+      </div>
     </div>
     <p class="hint-jugadores" id="hint-jugadores">Mínimo 1 jugador para comenzar</p>
     <button class="btn-empezar-multi" id="btn-empezar" onclick="empezarPartida()" disabled>¡Comenzar Partida! →</button>
+  </div>
+</div>
+
+<div id="modal-jugador" class="modal-overlay" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-jugador-title">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-jugador-title">Nuevo jugador</div>
+      <button class="modal-close" type="button" onclick="cerrarModalJugador()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-help">Escribe el nombre del jugador para continuar a la vista de niveles.</p>
+      <input class="input-nombre" id="input-nombre-modal" type="text" maxlength="20" placeholder="Nombre del jugador..." autocomplete="off">
+      <div class="modal-footer">
+        <button class="btn-secondary" type="button" onclick="cerrarModalJugador()">Cancelar</button>
+        <button class="btn-primary" type="button" onclick="confirmarModalJugador()">Comenzar</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -349,7 +428,47 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="niveles-grid" id="niveles-grid"></div>
 </div>
 
-<!-- ===== SCREEN 5: JUEGO ===== -->
+<!-- ===== SCREEN 5: SALA DE ESPERA ===== -->
+<div id="screen-lobby" class="screen">
+  <button class="btn-back" onclick="volverNiveles()">← Niveles</button>
+  <div class="lobby-wrap">
+    <h2 class="lobby-title">Sala de espera</h2>
+    <p class="lobby-sub">Comparte el código para que los demás se integren a la partida. Cuando estés listo, presiona comenzar y todos verán una cuenta regresiva de 5 segundos.</p>
+
+    <div class="lobby-code-box">
+      <div>
+        <div class="lobby-code-label">Código de sala</div>
+        <div class="lobby-code-value" id="lobby-code">-----</div>
+      </div>
+      <div class="lobby-code-actions">
+        <button class="btn-secondary" type="button" onclick="copiarCodigoSala()">Copiar código</button>
+        <button class="btn-primary" type="button" onclick="mostrarInvitacionSala()">Compartir</button>
+      </div>
+    </div>
+
+    <div class="lobby-section">
+      <div class="lobby-section-title">
+        <span>Integrándose a la partida</span>
+        <span id="lobby-player-count">0 jugadores</span>
+      </div>
+      <div class="lobby-status" id="lobby-status">Esperando jugadores para comenzar.</div>
+      <div class="lobby-players" id="lobby-players"></div>
+    </div>
+
+    <div class="lobby-countdown" id="lobby-countdown">
+      <div class="lobby-countdown-title">La partida comienza en</div>
+      <div class="lobby-countdown-value" id="lobby-countdown-value">5</div>
+      <div class="lobby-countdown-note">No cierres esta pantalla</div>
+    </div>
+
+    <div class="lobby-actions">
+      <button class="btn-gold" id="btn-comenzar-lobby" type="button" onclick="comenzarPartidaConCuentaRegresiva()">Comenzar</button>
+      <button class="btn-secondary" type="button" onclick="volverNiveles()">Elegir otro nivel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN 6: JUEGO ===== -->
 <div id="screen-juego" class="screen">
   <div class="screen-header-nav">
     <button class="btn-back" onclick="volverNiveles()" style="margin-bottom:0">← Niveles</button>
@@ -382,7 +501,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="cards-grid" id="cards-grid"></div>
 </div>
 
-<!-- ===== SCREEN 6: RESULTADO INDIVIDUAL ===== -->
+<!-- ===== SCREEN 7: RESULTADO INDIVIDUAL ===== -->
 <div id="screen-resultado" class="screen">
   <div class="resultado-content">
     <span class="resultado-emoji" id="res-emoji">🏆</span>
@@ -406,7 +525,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
-<!-- ===== SCREEN 7: RANKING FINAL ===== -->
+<!-- ===== SCREEN 8: RANKING FINAL ===== -->
 <div id="screen-ranking" class="screen">
   <div class="ranking-wrap">
     <h2 class="ranking-titulo">🏆 Tabla de Puntajes</h2>
@@ -427,12 +546,21 @@ const SOCKET_URL = 'http://localhost:3000';
 let socket = null;
 let mySocketId = null;
 let currentRoomCode = null;
+let currentRoomHostId = null;
+let currentRoomPlayers = [];
+let currentRoomCountdownEndsAt = null;
+let countdownIntervalLobby = null;
+let countdownSecondsLeft = 0;
+let countdownActive = false;
+let nivelPendiente = 0;
 function connectSocket(){ if(socket) return; socket = io(SOCKET_URL);
   socket.on('connect', ()=>{ mySocketId = socket.id; console.log('connected', socket.id); });
-  socket.on('roomCreated', data=>{ document.getElementById('input-sala').value = data.code; renderSocketPlayers(data.players); showToast('Sala creada: '+data.code); currentRoomCode = data.code; });
-  socket.on('joinedRoom', data=>{ document.getElementById('input-sala').value = data.code; renderSocketPlayers(data.players); showToast('Unido a: '+data.code); currentRoomCode = data.code; });
-  socket.on('playerList', data=>{ renderSocketPlayers(data.players); });
+  socket.on('roomCreated', data=>{ syncRoomState(data); document.getElementById('input-sala').value = data.code; showToast('Sala creada: '+data.code); mostrarLobby(); });
+  socket.on('joinedRoom', data=>{ syncRoomState(data); document.getElementById('input-sala').value = data.code; showToast('Unido a: '+data.code); mostrarLobby(); });
+  socket.on('playerList', data=>{ syncRoomState(data); if(isLobbyVisible()) mostrarLobby(); });
+  socket.on('countdownStarted', data=>{ syncRoomState(data); mostrarLobby(); iniciarCuentaRegresivaCliente(data.seconds || 5, data.countdownEndsAt); });
   socket.on('gameStarted', data=>{ // recibir jugadores y empezar nivel (sincronizado)
+    cancelarCuentaRegresivaCliente();
     const players = data.players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx, colorIdx:p.colorIdx, puntosTotal:p.puntosTotal, nivelesJugados:p.nivelesJugados, terminado:p.terminado }));
     jugadores = players;
     // colocar turnoActual según mi socket id
@@ -440,6 +568,7 @@ function connectSocket(){ if(socket) return; socket = io(SOCKET_URL);
     if(meIndex!==-1) turnoActual = meIndex; else turnoActual = 0;
     selectedSemester = data.semester || selectedSemester;
     currentRoomCode = data.code || currentRoomCode;
+    currentRoomHostId = data.hostId || currentRoomHostId;
     // iniciar nivel en modo multijugador usando la permutación enviada
     iniciarNivelMultiplayer(data.levelIdx || 0, data.permutation || null);
   });
@@ -447,14 +576,142 @@ function connectSocket(){ if(socket) return; socket = io(SOCKET_URL);
     // map server players to local jugadores by name
     jugadores = data.players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx, colorIdx:p.colorIdx, puntosTotal:p.puntosTotal, nivelesJugados:p.nivelesJugados, terminado:p.terminado }));
     renderJugadoresList();
+    syncRoomState(data);
   });
   socket.on('errorMsg', msg=> showToast(msg));
 }
 
-function crearSala(){ const name=document.getElementById('input-nombre').value.trim(); if(!name){ showToast('Escribe tu nombre primero'); return; } connectSocket(); socket.emit('createRoom',{name}); }
-function unirseSala(){ const name=document.getElementById('input-nombre').value.trim(); const code=document.getElementById('input-sala').value.trim().toUpperCase(); if(!name){ showToast('Escribe tu nombre primero'); return; } if(!code){ showToast('Escribe el código de sala'); return; } connectSocket(); socket.emit('joinRoom',{code,name}); }
+function syncRoomState(data){
+  if(!data) return;
+  if(data.code) currentRoomCode = data.code;
+  if(data.hostId) currentRoomHostId = data.hostId;
+  if(Array.isArray(data.players)) currentRoomPlayers = data.players;
+  if(typeof data.semester === 'number') selectedSemester = data.semester;
+  if(typeof data.levelIdx === 'number') nivelPendiente = data.levelIdx;
+  if(typeof data.countdownEndsAt === 'number') currentRoomCountdownEndsAt = data.countdownEndsAt;
+  renderLobbyPlayers(currentRoomPlayers);
+  updateLobbyScreen();
+}
 
-function renderSocketPlayers(players){ jugadores = players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx||0, colorIdx:p.colorIdx||0, puntosTotal:p.puntosTotal||0, nivelesJugados:p.nivelesJugados||[], terminado:p.terminado||false })); renderJugadoresList(); }
+function isLobbyVisible(){ const lobby=document.getElementById('screen-lobby'); return !!lobby && lobby.classList.contains('active'); }
+
+function updateLobbyScreen(){
+  const codeEl = document.getElementById('lobby-code');
+  const statusEl = document.getElementById('lobby-status');
+  const countEl = document.getElementById('lobby-player-count');
+  const btn = document.getElementById('btn-comenzar-lobby');
+  if(codeEl) codeEl.textContent = currentRoomCode || '-----';
+  if(countEl) countEl.textContent = `${currentRoomPlayers.length} jugador${currentRoomPlayers.length===1?'':'es'}`;
+  if(statusEl){
+    const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId;
+    if(countdownActive){
+      statusEl.textContent = 'Cuenta regresiva activa. Todos están por entrar al memorama.';
+    } else if(currentRoomCode){
+      statusEl.textContent = hostReady ? 'Listo para comenzar. Presiona el botón y comparte el código con los demás.' : 'Esperando a que el creador inicie la partida.';
+    } else {
+      statusEl.textContent = 'Creando sala de espera...';
+    }
+  }
+  if(btn){
+    const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId;
+    btn.disabled = !currentRoomCode || !hostReady || countdownActive;
+    btn.textContent = countdownActive ? 'Cuenta regresiva...' : 'Comenzar';
+  }
+}
+
+function renderLobbyPlayers(players){
+  const wrap = document.getElementById('lobby-players');
+  if(!wrap) return;
+  const list = Array.isArray(players) ? players : [];
+  wrap.innerHTML = '';
+  if(list.length === 0){
+    wrap.innerHTML = '<div class="lobby-status">Aún no hay jugadores integrados.</div>';
+    return;
+  }
+  list.forEach(p=>{
+    const avatarIdx = p.avatarIdx || 0;
+    const colorIdx = p.colorIdx || 0;
+    const div = document.createElement('div');
+    div.className = 'lobby-player-card';
+    div.innerHTML = `
+      <div class="lobby-player-avatar" style="background:${COLORES_AVATAR[colorIdx]}22;border:2px solid ${COLORES_AVATAR[colorIdx]};color:${COLORES_AVATAR[colorIdx]}">${AVATARES[avatarIdx]}</div>
+      <div class="lobby-player-info">
+        <div class="lobby-player-name">${p.name}</div>
+        <div class="lobby-player-meta">${p.id === currentRoomHostId ? 'Creador de la sala' : 'Integrado a la partida'}</div>
+      </div>`;
+    wrap.appendChild(div);
+  });
+}
+
+function mostrarLobby(){
+  updateLobbyScreen();
+  mostrarScreen('screen-lobby');
+}
+
+function copiarCodigoSala(){
+  if(!currentRoomCode){ showToast('Aún no hay código'); return; }
+  navigator.clipboard?.writeText(currentRoomCode).then(()=>showToast('Código copiado')).catch(()=>showToast('No se pudo copiar'));
+}
+
+function mostrarInvitacionSala(){
+  if(!currentRoomCode){ showToast('Aún no hay código'); return; }
+  const texto = `Únete a mi sala de Memorama Anatómico con el código ${currentRoomCode}`;
+  if(navigator.share){ navigator.share({ title:'Memorama Anatómico', text:texto }).catch(()=>{}); return; }
+  copiarCodigoSala();
+}
+
+function iniciarCuentaRegresivaCliente(segundos, endsAt){
+  cancelarCuentaRegresivaCliente();
+  countdownActive = true;
+  const box = document.getElementById('lobby-countdown');
+  const value = document.getElementById('lobby-countdown-value');
+  if(!box || !value) return;
+  if(typeof endsAt === 'number'){
+    currentRoomCountdownEndsAt = endsAt;
+    countdownSecondsLeft = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000));
+  } else {
+    countdownSecondsLeft = typeof segundos === 'number' ? segundos : 5;
+  }
+  value.textContent = countdownSecondsLeft;
+  box.classList.add('show');
+  updateLobbyScreen();
+  countdownIntervalLobby = setInterval(()=>{
+    countdownSecondsLeft--;
+    if(countdownSecondsLeft <= 0){
+      value.textContent = '0';
+      cancelarCuentaRegresivaCliente();
+      return;
+    }
+    value.textContent = countdownSecondsLeft;
+  }, 1000);
+}
+
+function cancelarCuentaRegresivaCliente(){
+  if(countdownIntervalLobby){ clearInterval(countdownIntervalLobby); countdownIntervalLobby = null; }
+  countdownActive = false;
+  currentRoomCountdownEndsAt = null;
+  const box = document.getElementById('lobby-countdown');
+  if(box) box.classList.remove('show');
+  updateLobbyScreen();
+}
+
+function crearSala(){
+  const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || '';
+  if(!name){ showToast('Usa el + para crear un jugador primero'); return; }
+  connectSocket();
+  socket.emit('createRoom',{name});
+}
+function unirseSala(){
+  const nameInput = document.getElementById('input-nombre-sala');
+  const name = (nameInput && nameInput.value.trim()) || nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || '';
+  const code=document.getElementById('input-sala').value.trim().toUpperCase();
+  if(!name){ showToast('Escribe tu nombre para unirte'); return; }
+  if(!code){ showToast('Escribe el código de sala'); return; }
+  connectSocket();
+  socket.emit('joinRoom',{code,name});
+}
+
+function renderSocketPlayers(players){ jugadores = players.map(p=>({ nombre:p.name, avatarIdx:p.avatarIdx||0, colorIdx:p.colorIdx||0, puntosTotal:p.puntosTotal||0, nivelesJugados:p.nivelesJugados||[], terminado:p.terminado||false })); renderJugadoresList(); renderLobbyPlayers(players); }
 
 // Cuando el host presiona empezar, emitir al servidor en vez de iniciar localmente
 const originalEmpezarPartida = empezarPartida;
@@ -562,22 +819,54 @@ function showToast(msg){ const t=document.getElementById('toast'); t.textContent
 function irInicio(){ mostrarScreen('screen-inicio'); }
 function irRegistro(){ jugadores=[]; renderJugadoresList(); mostrarScreen('screen-registro'); }
 
-function agregarJugador(){
-  const inp=document.getElementById('input-nombre');
-  const nombre=inp.value.trim();
-  if(!nombre){ showToast('⚠️ Escribe un nombre'); return; }
-  if(jugadores.length>=6){ showToast('⚠️ Máximo 6 jugadores'); return; }
-  if(jugadores.find(j=>j.nombre.toLowerCase()===nombre.toLowerCase())){ showToast('⚠️ Ese nombre ya existe'); return; }
+let nombreJugadorActivo = '';
+
+function abrirModalJugador(){
+  const modal = document.getElementById('modal-jugador');
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  const inp = document.getElementById('input-nombre-modal');
+  inp.value = nombreJugadorActivo || '';
+  setTimeout(()=>inp.focus(), 50);
+}
+
+function cerrarModalJugador(){
+  const modal = document.getElementById('modal-jugador');
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+}
+
+function agregarJugador(nombre){
+  const nombreNormalizado = (nombre || '').trim();
+  if(!nombreNormalizado){ showToast('⚠️ Escribe un nombre'); return false; }
+  if(jugadores.length>=6){ showToast('⚠️ Máximo 6 jugadores'); return false; }
+  if(jugadores.find(j=>j.nombre.toLowerCase()===nombreNormalizado.toLowerCase())){ showToast('⚠️ Ese nombre ya existe'); return false; }
   const ci=jugadores.length % COLORES_AVATAR.length;
   const ai=jugadores.length % AVATARES.length;
-  jugadores.push({ nombre, avatarIdx:ai, colorIdx:ci, puntosTotal:0, nivelesJugados:[], terminado:false });
-  inp.value='';
+  jugadores.push({ nombre: nombreNormalizado, avatarIdx:ai, colorIdx:ci, puntosTotal:0, nivelesJugados:[], terminado:false });
+  nombreJugadorActivo = nombreNormalizado;
   renderJugadoresList();
-  showToast(`✅ ${nombre} agregado`);
+  showToast(`✅ ${nombreNormalizado} agregado`);
+  return true;
+}
+
+function confirmarModalJugador(){
+  const inp = document.getElementById('input-nombre-modal');
+  const nombre = inp.value.trim();
+  if(!agregarJugador(nombre)) return;
+  cerrarModalJugador();
+  turnoActual = 0;
+  jugadores.forEach(j=>{ j.puntosTotal=0; j.nivelesJugados=[]; j.terminado=false; });
+  empezarPartida();
+  irNivelesDesde();
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('input-nombre').addEventListener('keydown',e=>{ if(e.key==='Enter') agregarJugador(); });
+  const modalInput = document.getElementById('input-nombre-modal');
+  if(modalInput){
+    modalInput.addEventListener('keydown',e=>{ if(e.key==='Enter') confirmarModalJugador(); if(e.key==='Escape') cerrarModalJugador(); });
+  }
+  document.getElementById('modal-jugador').addEventListener('click',e=>{ if(e.target.id==='modal-jugador') cerrarModalJugador(); });
 });
 
 function renderJugadoresList(){
@@ -661,9 +950,34 @@ function renderNiveles(){
       <div class="nivel-desc">${n.pares.slice(0,4).map(p=>p.nombre).join(', ')}${n.pares.length>4?'...':''}</div>
       <div class="nivel-badge">${n.pares.length} parejas · ${n.dif}</div>
       <span class="nivel-icon">${n.icono}</span>`;
-    if(!yaJugado) card.onclick=()=>iniciarNivel(i);
+    if(!yaJugado) card.onclick=()=>abrirLobbyNivel(i);
     grid.appendChild(card);
   });
+}
+
+function abrirLobbyNivel(idx){
+  nivelPendiente = idx;
+  connectSocket();
+  updateLobbyScreen();
+  mostrarLobby();
+  if(!currentRoomCode){
+    const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || 'Jugador';
+    socket.emit('createRoom',{name});
+  } else {
+    updateLobbyScreen();
+  }
+  showToast(`Nivel ${idx+1} listo para preparar la sala`);
+}
+
+function comenzarPartidaConCuentaRegresiva(){
+  const code = currentRoomCode || document.getElementById('input-sala').value.trim().toUpperCase();
+  if(!code){ showToast('Primero crea o entra a una sala'); return; }
+  if(mySocketId && currentRoomHostId && mySocketId !== currentRoomHostId){ showToast('Solo el creador puede comenzar'); return; }
+  if(countdownActive){ return; }
+  const nivel = SEMESTER_DATA[selectedSemester].levels[nivelPendiente] || SEMESTER_DATA[selectedSemester].levels[0];
+  const pairsCount = nivel ? nivel.pares.length : 0;
+  if(!socket){ connectSocket(); }
+  socket.emit('startRoomCountdown',{code,semester:selectedSemester,levelIdx:nivelPendiente,pairsCount});
 }
 
 // ========== JUEGO ==========
