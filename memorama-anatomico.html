@@ -398,7 +398,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     <div style="display:flex;gap:.6rem;justify-content:center;margin-bottom:.6rem;flex-wrap:wrap;">
       <button class="btn-secondary" id="sem1-btn" onclick="selectSemester(1)">Primer Semestre</button>
       <button class="btn-secondary" id="sem2-btn" onclick="selectSemester(2)">Segundo Semestre</button>
-      <button class="btn-secondary" id="sem3-btn" onclick="selectSemester(3)">Tercer Semestre (Trivia)</button>
+      <button class="btn-secondary" id="sem3-btn" onclick="selectSemester(3)">Casos clínicos (Trivia)</button>
     </div>
     <h2 id="niveles-titulo">Elige un Nivel</h2>
     <p id="niveles-sub">Selecciona el tema o dificultad que deseas practicar</p>
@@ -601,7 +601,7 @@ const SEMESTER_DATA = {
     { nombre: 'Memorama Anatómico', color:'#00d4ff', icono:'🖼️', stars:'★☆☆☆☆', dif:'Básico', pares: imagenesMemorama, type: 'memorama' },
     { nombre: 'Trivia Anatómica', color:'#00ff9d', icono:'📖', stars:'★★★☆☆', dif:'Intermedio', questions: triviaBasico, type: 'trivia' }
   ] },
-  3: { name: 'Tercer Semestre (Trivia Avanzada)', levels: [
+  3: { name: 'Casos clínicos (Trivia Avanzada)', levels: [
     { nombre: 'Básico', color:'#00d4ff', icono:'📖', stars:'★☆☆☆☆', dif:'Básico', questions: triviaBasico, type: 'trivia' },
     { nombre: 'Intermedio', color:'#00ff9d', icono:'📘', stars:'★★★☆☆', dif:'Intermedio', questions: triviaIntermedio, type: 'trivia' },
     { nombre: 'Avanzado', color:'#c678dd', icono:'🏆', stars:'★★★★★', dif:'Avanzado', questions: triviaAvanzado, type: 'trivia' }
