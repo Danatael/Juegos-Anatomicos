@@ -15,16 +15,11 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.4;}
-
-/* PARTICLES */
 #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
 .particle{position:absolute;border-radius:50%;animation:floatP linear infinite;opacity:.15;}
 @keyframes floatP{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:.15;}90%{opacity:.15;}100%{transform:translateY(-10vh) rotate(360deg);opacity:0;}}
-
-/* SCREENS */
 .screen{display:none;position:relative;z-index:1;min-height:100vh;width:100%;padding:clamp(1rem,2.5vw,2rem);}
 .screen.active{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(.75rem,2vw,1.25rem);}
-
 @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @keyframes bounceIn{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
@@ -32,8 +27,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 @keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
 @keyframes rankIn{from{opacity:0;transform:translateY(20px) scale(0.9)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-/* ============ SCREEN: INICIO ============ */
 #screen-inicio{background:radial-gradient(ellipse at 50% 30%,rgba(0,212,255,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(0,255,157,.05) 0%,transparent 50%);}
 .inicio-content{text-align:center;max-width:700px;width:min(100%,700px);animation:fadeInUp .8s ease both;}
 .logo-icon{font-size:5rem;margin-bottom:1rem;display:block;filter:drop-shadow(0 0 20px rgba(0,212,255,.6));animation:pulse 2.5s ease-in-out infinite;}
@@ -50,8 +43,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .info-card .ic-icon{font-size:1.6rem;margin-bottom:.2rem;display:block;}
 .info-card .ic-label{font-size:.68rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;}
 .info-card .ic-value{font-size:.95rem;font-weight:800;color:var(--accent2);}
-
-/* ============ SCREEN: REGISTRO ============ */
 #screen-registro{background:radial-gradient(ellipse at 50% 40%,rgba(0,212,255,.07) 0%,transparent 60%);}
 .registro-wrap{max-width:520px;width:min(100%,520px);animation:fadeInUp .6s ease both;}
 .registro-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;margin-bottom:.4rem;}
@@ -63,7 +54,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .jugador-estado{font-size:.72rem;color:var(--text-dim);}
 .jugador-remove{background:none;border:none;color:rgba(255,100,100,.6);cursor:pointer;font-size:1.1rem;padding:.2rem .4rem;border-radius:6px;transition:color .2s;}
 .jugador-remove:hover{color:var(--accent3);}
-.add-jugador-row{display:flex;gap:.6rem;margin-bottom:.5rem;flex-wrap:wrap;}
 .input-nombre{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:12px;padding:.7rem 1rem;color:var(--text);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;}
 .input-nombre:focus{border-color:var(--accent);}
 .input-nombre::placeholder{color:var(--text-dim);}
@@ -79,13 +69,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .registro-card-title .rct-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.25);font-size:1rem;flex-shrink:0;}
 .registro-card-body{display:flex;flex-direction:column;gap:.7rem;min-width:0;}
 .registro-card .input-nombre{width:100%;min-width:0;}
-.registro-card .btn-secondary,.registro-card .btn-primary{width:100%;justify-content:center;}
-.registro-card-actions{display:flex;gap:.6rem;flex-wrap:wrap;}
 .plus-launcher{display:flex;align-items:center;justify-content:center;min-height:148px;border-radius:18px;border:1px dashed rgba(0,212,255,.35);background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(0,255,157,.06));color:var(--accent2);cursor:pointer;transition:all .25s ease;flex-direction:column;gap:.7rem;text-align:center;}
 .plus-launcher:hover{transform:translateY(-2px);border-color:rgba(0,212,255,.6);box-shadow:0 12px 28px rgba(0,0,0,.18);}
 .plus-launcher .plus-icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:900;background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.28);box-shadow:inset 0 0 20px rgba(0,212,255,.08);}
 .plus-launcher .plus-label{font-size:.82rem;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;}
-
 .modal-overlay{position:fixed;inset:0;background:rgba(2,8,18,.72);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:500;padding:1rem;}
 .modal-overlay.show{display:flex;}
 .modal-card{width:min(100%,440px);background:linear-gradient(180deg,rgba(16,30,58,.98),rgba(8,18,36,.98));border:1px solid rgba(0,212,255,.22);border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.45);padding:1.2rem;animation:fadeInUp .25s ease both;}
@@ -97,25 +84,18 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .modal-help{font-size:.9rem;color:var(--text-dim);line-height:1.5;}
 .modal-footer{display:flex;gap:.7rem;justify-content:flex-end;flex-wrap:wrap;margin-top:.4rem;}
 .modal-footer .btn-primary,.modal-footer .btn-secondary{min-width:140px;}
-
-/* ============ SCREEN: TURNO ============ */
 #screen-turno{background:radial-gradient(ellipse at 50% 40%,rgba(0,212,255,.07) 0%,transparent 60%);}
 .turno-wrap{max-width:480px;width:min(100%,480px);text-align:center;animation:fadeInUp .5s ease both;}
 .turno-icono{font-size:5rem;margin-bottom:.8rem;display:block;animation:bounceIn .6s ease both;}
 .turno-texto{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:.4rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .turno-nombre{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;color:var(--gold);margin-bottom:.5rem;}
 .turno-sub{color:var(--text-dim);font-size:.9rem;margin-bottom:1rem;}
-.turno-nivel-info{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:1rem 1.5rem;margin-bottom:2rem;display:inline-block;}
-.turno-nivel-info .tni-label{font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;}
-.turno-nivel-info .tni-val{font-size:1.1rem;font-weight:800;color:var(--accent);}
 .progreso-jugadores{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
 .pj-chip{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:50px;padding:.3rem .9rem;font-size:.78rem;display:flex;align-items:center;gap:.4rem;}
 .pj-chip.activo{border-color:var(--gold);background:rgba(255,215,0,.08);}
 .pj-chip .pjc-dot{width:7px;height:7px;border-radius:50%;}
 .btn-jugar-turno{background:linear-gradient(135deg,var(--gold),#ff9f43);color:#1a0d00;font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;padding:.9rem 2.5rem;border:none;border-radius:50px;cursor:pointer;letter-spacing:.05em;transition:all .3s;text-transform:uppercase;box-shadow:0 0 25px rgba(255,215,0,.35);}
 .btn-jugar-turno:hover{transform:translateY(-3px);box-shadow:0 0 40px rgba(255,215,0,.5);}
-
-/* ============ SCREEN: NIVELES ============ */
 #screen-niveles{background:radial-gradient(ellipse at 20% 50%,rgba(0,255,157,.06) 0%,transparent 50%);}
 .niveles-header{text-align:center;margin-bottom:1.5rem;animation:fadeInUp .5s ease both;}
 .niveles-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);background:linear-gradient(135deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -135,8 +115,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .nivel-badge{display:inline-block;margin-top:.7rem;background:rgba(255,255,255,.07);border-radius:50px;padding:.2rem .7rem;font-size:.7rem;color:var(--text-dim);}
 .nivel-stars{color:var(--gold);font-size:.78rem;margin-bottom:.25rem;}
 .nivel-jugado-tag{position:absolute;top:.6rem;right:.6rem;background:rgba(0,255,157,.15);border:1px solid var(--accent2);border-radius:50px;padding:.15rem .5rem;font-size:.65rem;color:var(--accent2);font-weight:800;}
-
-/* ============ SCREEN: SALA DE ESPERA ============ */
 #screen-lobby{background:radial-gradient(ellipse at 50% 36%,rgba(0,212,255,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(255,215,0,.06) 0%,transparent 45%);}
 .lobby-wrap{max-width:760px;width:min(100%,760px);animation:fadeInUp .55s ease both;display:flex;flex-direction:column;gap:1rem;}
 .lobby-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;}
@@ -160,8 +138,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .lobby-countdown-value{font-size:clamp(2.4rem,9vw,4rem);font-weight:900;line-height:1;color:var(--gold);}
 .lobby-countdown-note{font-size:.85rem;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;}
 .lobby-countdown-title{font-size:1rem;font-weight:800;color:var(--text);}
-
-/* ============ SCREEN: JUEGO ============ */
 #screen-juego{padding:clamp(.75rem,2vw,1rem);flex-direction:column;background:radial-gradient(ellipse at 70% 20%,rgba(0,212,255,.05) 0%,transparent 50%);}
 .game-header{width:100%;max-width:900px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.7rem;padding:.7rem 1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;margin-bottom:1rem;}
 .game-title{font-weight:800;font-size:.95rem;color:var(--accent);}
@@ -172,7 +148,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .stat-value.green{color:var(--accent2);}.stat-value.red{color:var(--accent3);}
 .progress-bar-wrap{width:100%;height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-bottom:1rem;max-width:900px;}
 .progress-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s;box-shadow:0 0 10px rgba(0,212,255,.5);}
-.cards-grid{display:grid;gap:clamp(.45rem,1.4vw,.9rem);width:100%;max-width:900px;padding:0 .25rem;}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.45rem,1.4vw,.9rem);width:100%;max-width:900px;padding:0 .25rem;}
 .card{aspect-ratio:3/4;perspective:800px;cursor:pointer;}
 .card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);border-radius:12px;}
 .card.flipped .card-inner,.card.matched .card-inner{transform:rotateY(180deg);}
@@ -183,14 +159,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .card-front-face{background:var(--card-bg,linear-gradient(135deg,#0d2845,#0a1f3a));border:2px solid var(--card-accent,rgba(0,212,255,.4));transform:rotateY(180deg);flex-direction:column;gap:.4rem;padding:.6rem .4rem;box-shadow:inset 0 0 20px rgba(0,0,0,.3);}
 .card.matched .card-front-face{border-color:var(--accent2)!important;background:linear-gradient(135deg,#0a2d1a,#072318)!important;box-shadow:0 0 20px rgba(0,255,157,.3);}
 .card-emoji{font-size:clamp(1.4rem,4vw,2.1rem);line-height:1;}
-/* Estilo para imágenes dentro de las cartas */
-.card-front-face img {
-  max-width: 90%;
-  max-height: 80%;
-  object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 4px;
-}
+.card-front-face img{max-width:90%;max-height:80%;object-fit:contain;border-radius:8px;margin-bottom:4px;}
 .card-label{font-size:clamp(.58rem,1.8vw,.76rem);font-weight:700;color:var(--text);line-height:1.2;text-align:center;}
 .card-type{font-size:clamp(.48rem,1.2vw,.6rem);color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.07);border-radius:50px;padding:.12rem .35rem;}
 .card:hover:not(.flipped):not(.matched) .card-back-face{border-color:rgba(0,212,255,.5);background:#152f5a;}
@@ -204,8 +173,22 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .screen-header-nav{width:100%;max-width:900px;display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap;margin-bottom:.8rem;}
 .nivel-indicator{display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:700;color:var(--text-dim);}
 .nivel-dot{width:8px;height:8px;border-radius:50%;}
-
-/* ============ SCREEN: RESULTADO INDIVIDUAL ============ */
+#screen-trivia{background:radial-gradient(ellipse at 70% 20%,rgba(0,212,255,.05) 0%,transparent 50%);}
+.trivia-container{max-width:800px;width:100%;background:rgba(0,0,0,.4);border-radius:24px;padding:1.5rem;backdrop-filter:blur(8px);border:1px solid var(--border);}
+.trivia-header{display:flex;justify-content:space-between;margin-bottom:1.5rem;font-weight:800;color:var(--gold);}
+.trivia-question{font-size:1.4rem;font-weight:800;margin-bottom:2rem;text-align:center;line-height:1.3;color:white;}
+.trivia-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:2rem;}
+.trivia-option{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:16px;padding:1rem;text-align:center;font-weight:700;cursor:pointer;transition:all .2s;color:white;}
+.trivia-option:hover{background:rgba(0,212,255,.15);transform:scale(1.02);}
+.trivia-option.disabled{opacity:.5;pointer-events:none;}
+.trivia-feedback{text-align:center;font-size:1rem;padding:1rem;border-radius:12px;margin-bottom:1.5rem;color:white;}
+.trivia-feedback.correct{background:rgba(0,255,157,.2);border:1px solid var(--accent2);color:var(--accent2);}
+.trivia-feedback.incorrect{background:rgba(255,107,107,.2);border:1px solid var(--accent3);color:var(--accent3);}
+.trivia-next{background:linear-gradient(135deg,var(--gold),#ff9f43);color:#1a0d00;font-weight:900;padding:.8rem 2rem;border:none;border-radius:50px;cursor:pointer;text-transform:uppercase;display:block;margin:0 auto;transition:all .3s;}
+.trivia-next:disabled{opacity:.4;cursor:not-allowed;}
+.trivia-next:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 5px 15px rgba(255,215,0,.3);}
+.trivia-progress{font-size:.9rem;text-align:center;margin-bottom:1rem;color:var(--text-dim);}
+.trivia-score{font-size:1.2rem;font-weight:900;color:var(--accent2);}
 #screen-resultado{text-align:center;background:radial-gradient(ellipse at 50% 40%,rgba(0,255,157,.08) 0%,transparent 60%);}
 .resultado-content{max-width:520px;width:min(100%,520px);animation:fadeInUp .6s ease both;}
 .resultado-emoji{font-size:4rem;margin-bottom:.7rem;display:block;animation:bounceIn .7s cubic-bezier(.36,.07,.19,.97) both;}
@@ -222,8 +205,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .calificacion-stars{font-size:1.3rem;margin-top:.2rem;}
 .puntos-obtenidos{font-size:1rem;color:var(--gold);font-weight:800;margin-top:.4rem;}
 .btn-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;}
-
-/* ============ SCREEN: RANKING FINAL ============ */
+.ranking-nivel{background:rgba(0,0,0,.3);border-radius:16px;padding:1rem;margin-top:1rem;width:100%;}
+.ranking-nivel h4{color:var(--gold);margin-bottom:.5rem;}
+.ranking-nivel-item{display:flex;justify-content:space-between;font-size:.8rem;padding:.2rem 0;border-bottom:1px solid var(--border);}
+.ranking-nivel-item .pos{font-weight:800;width:30px;}
+.ranking-nivel-item .name{flex:1;text-align:left;}
+.ranking-nivel-item .metric{color:var(--accent2);}
 #screen-ranking{background:radial-gradient(ellipse at 50% 30%,rgba(255,215,0,.07) 0%,transparent 55%);}
 .ranking-wrap{max-width:640px;width:min(100%,640px);text-align:center;animation:fadeInUp .6s ease both;}
 .ranking-titulo{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;background:linear-gradient(135deg,var(--gold),#ff9f43);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;}
@@ -251,10 +238,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .rank-puntos{text-align:right;}
 .rank-pts-num{font-size:1.5rem;font-weight:900;color:var(--gold);}
 .rank-pts-label{font-size:.65rem;color:var(--text-dim);text-transform:uppercase;}
-.rank-cal{font-size:.78rem;font-weight:700;}
-.rank-medalla{font-size:1.5rem;}
-
-/* BUTTONS */
 .btn-back{background:transparent;border:1px solid var(--border);color:var(--text-dim);border-radius:50px;padding:.45rem 1.1rem;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.82rem;transition:all .2s;margin-bottom:1.2rem;display:flex;align-items:center;gap:.4rem;max-width:100%;}
 .btn-back:hover{border-color:var(--accent);color:var(--accent);}
 .btn-primary{background:linear-gradient(135deg,var(--accent2),#00aa6e);color:#001a0d;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:900;padding:.75rem 1.7rem;border:none;border-radius:50px;cursor:pointer;transition:all .3s;letter-spacing:.05em;text-transform:uppercase;}
@@ -263,17 +246,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
 .btn-gold{background:linear-gradient(135deg,var(--gold),#ff9f43);color:#1a0d00;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;padding:.8rem 2rem;border:none;border-radius:50px;cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:.05em;}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,215,0,.35);}
-
-/* CONFETTI */
 .confetti-piece{position:fixed;width:8px;height:12px;border-radius:2px;animation:confettiFall 2.5s ease-in forwards;pointer-events:none;z-index:200;}
-
-/* SCROLLBAR */
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:rgba(0,212,255,.3);border-radius:2px;}
-
-/* TOAST */
 .toast{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%) translateY(-80px);background:rgba(0,255,157,.15);border:1px solid var(--accent2);border-radius:50px;padding:.6rem 1.5rem;font-size:.85rem;font-weight:700;color:var(--accent2);z-index:300;transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none;}
 .toast.show{transform:translateX(-50%) translateY(0);}
-
 @media(max-width:480px){
   .stats-row{gap:.7rem;}
   .podio-lugar:nth-child(1) .podio-avatar{width:58px;height:58px;}
@@ -281,7 +257,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   .podio-lugar:nth-child(3) .podio-avatar{width:40px;height:40px;font-size:.9rem;}
   .podio-barra{width:58px;}
 }
-
 @media(max-width:768px){
   .screen.active{justify-content:flex-start;padding-top:1rem;padding-bottom:1.25rem;}
   .inicio-content,.registro-wrap,.turno-wrap,.resultado-content,.ranking-wrap{width:100%;}
@@ -290,7 +265,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   .stats-final{grid-template-columns:repeat(2,1fr);}
   .rank-item{padding:.8rem 1rem;gap:.8rem;}
 }
-
 @media(max-width:560px){
   .logo-icon{font-size:4rem;}
   .badge-row{gap:.5rem;}
@@ -315,8 +289,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   .ranking-podio{flex-direction:column;align-items:center;}
   .podio-lugar{width:100%;}
   .podio-barra{width:100%;}
+  .trivia-options{grid-template-columns:1fr;}
 }
-
 @media(max-width:380px){
   .titulo-main{font-size:clamp(1.9rem,10vw,2.6rem);}
   .titulo-sub{letter-spacing:.08em;}
@@ -334,14 +308,13 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 <div id="particles"></div>
 <div id="toast" class="toast"></div>
 
-<!-- ===== SCREEN 1: INICIO ===== -->
 <div id="screen-inicio" class="screen active">
   <div class="inicio-content">
     <span class="logo-icon">🫀</span>
     <h1 class="titulo-main">Memorama Anatómico</h1>
     <p class="titulo-sub">Juego Educativo · Multijugador</p>
     <div class="badge-row">
-      <span class="badge">5 Niveles</span>
+      <span class="badge">3 Semestres</span>
       <span class="badge">Multijugador</span>
       <span class="badge">Ranking</span>
       <span class="badge">Puntaje</span>
@@ -352,14 +325,13 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     </div>
     <div class="info-cards">
       <div class="info-card"><span class="ic-icon">👥</span><div class="ic-value">1–6</div><div class="ic-label">Jugadores</div></div>
-      <div class="info-card"><span class="ic-icon">🧠</span><div class="ic-value">5</div><div class="ic-label">Niveles</div></div>
+      <div class="info-card"><span class="ic-icon">🧠</span><div class="ic-value">3-5</div><div class="ic-label">Niveles</div></div>
       <div class="info-card"><span class="ic-icon">🏆</span><div class="ic-value">10</div><div class="ic-label">Max puntos</div></div>
       <div class="info-card"><span class="ic-icon">⚡</span><div class="ic-value">Turnos</div><div class="ic-label">Por ronda</div></div>
     </div>
   </div>
 </div>
 
-<!-- ===== SCREEN 2: REGISTRO ===== -->
 <div id="screen-registro" class="screen">
   <div class="registro-wrap">
     <button class="btn-back" onclick="irInicio()">← Inicio</button>
@@ -391,23 +363,22 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 </div>
 
 <div id="modal-jugador" class="modal-overlay" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-jugador-title">
+  <div class="modal-card">
     <div class="modal-header">
-      <div class="modal-title" id="modal-jugador-title">Nuevo jugador</div>
-      <button class="modal-close" type="button" onclick="cerrarModalJugador()">✕</button>
+      <div class="modal-title">Nuevo jugador</div>
+      <button class="modal-close" onclick="cerrarModalJugador()">✕</button>
     </div>
     <div class="modal-body">
       <p class="modal-help">Escribe el nombre del jugador para continuar a la vista de niveles.</p>
       <input class="input-nombre" id="input-nombre-modal" type="text" maxlength="20" placeholder="Nombre del jugador..." autocomplete="off">
       <div class="modal-footer">
-        <button class="btn-secondary" type="button" onclick="cerrarModalJugador()">Cancelar</button>
-        <button class="btn-primary" type="button" onclick="confirmarModalJugador()">Comenzar</button>
+        <button class="btn-secondary" onclick="cerrarModalJugador()">Cancelar</button>
+        <button class="btn-primary" onclick="confirmarModalJugador()">Comenzar</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== SCREEN 3: TURNO ===== -->
 <div id="screen-turno" class="screen">
   <div class="turno-wrap">
     <span class="turno-icono" id="turno-icono">🎮</span>
@@ -419,16 +390,14 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
-<!-- ===== SCREEN 4: NIVELES ===== -->
 <div id="screen-niveles" class="screen">
   <button class="btn-back" onclick="volverTurno()">← Turno</button>
   <div class="niveles-header">
-    <div class="turno-banner">
-      Turno de: <span class="tb-nombre" id="banner-nombre">-</span>
-    </div>
-    <div style="display:flex;gap:.6rem;align-items:center;justify-content:center;margin-bottom:.6rem;">
+    <div class="turno-banner">Turno de: <span class="tb-nombre" id="banner-nombre">-</span></div>
+    <div style="display:flex;gap:.6rem;justify-content:center;margin-bottom:.6rem;flex-wrap:wrap;">
       <button class="btn-secondary" id="sem1-btn" onclick="selectSemester(1)">Primer Semestre</button>
       <button class="btn-secondary" id="sem2-btn" onclick="selectSemester(2)">Segundo Semestre</button>
+      <button class="btn-secondary" id="sem3-btn" onclick="selectSemester(3)">Tercer Semestre (Trivia)</button>
     </div>
     <h2 id="niveles-titulo">Elige un Nivel</h2>
     <p id="niveles-sub">Selecciona el tema o dificultad que deseas practicar</p>
@@ -436,80 +405,61 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="niveles-grid" id="niveles-grid"></div>
 </div>
 
-<!-- ===== SCREEN 5: SALA DE ESPERA ===== -->
 <div id="screen-lobby" class="screen">
   <button class="btn-back" onclick="volverNiveles()">← Niveles</button>
   <div class="lobby-wrap">
     <h2 class="lobby-title">Sala de espera</h2>
-    <p class="lobby-sub">Comparte el código para que los demás se integren a la partida. Cuando estés listo, presiona comenzar y todos verán una cuenta regresiva de 5 segundos.</p>
-
+    <p class="lobby-sub">Comparte el código para que los demás se integren. Cuando estés listo, presiona comenzar.</p>
     <div class="lobby-code-box">
-      <div>
-        <div class="lobby-code-label">Código de sala</div>
-        <div class="lobby-code-value" id="lobby-code">-----</div>
-      </div>
-      <div class="lobby-code-actions">
-        <button class="btn-secondary" type="button" onclick="copiarCodigoSala()">Copiar código</button>
-        <button class="btn-primary" type="button" onclick="mostrarInvitacionSala()">Compartir</button>
-      </div>
+      <div><div class="lobby-code-label">Código de sala</div><div class="lobby-code-value" id="lobby-code">-----</div></div>
+      <div class="lobby-code-actions"><button class="btn-secondary" onclick="copiarCodigoSala()">Copiar código</button><button class="btn-primary" onclick="mostrarInvitacionSala()">Compartir</button></div>
     </div>
-
     <div class="lobby-section">
-      <div class="lobby-section-title">
-        <span>Integrándose a la partida</span>
-        <span id="lobby-player-count">0 jugadores</span>
-      </div>
-      <div class="lobby-status" id="lobby-status">Esperando jugadores para comenzar.</div>
+      <div class="lobby-section-title"><span>Integrándose</span><span id="lobby-player-count">0 jugadores</span></div>
+      <div class="lobby-status" id="lobby-status">Esperando jugadores...</div>
       <div class="lobby-players" id="lobby-players"></div>
     </div>
-
     <div class="lobby-countdown" id="lobby-countdown">
       <div class="lobby-countdown-title">La partida comienza en</div>
       <div class="lobby-countdown-value" id="lobby-countdown-value">5</div>
       <div class="lobby-countdown-note">No cierres esta pantalla</div>
     </div>
-
     <div class="lobby-actions">
-      <button class="btn-gold" id="btn-comenzar-lobby" type="button" onclick="comenzarPartidaConCuentaRegresiva()">Comenzar</button>
-      <button class="btn-secondary" type="button" onclick="volverNiveles()">Elegir otro nivel</button>
+      <button class="btn-gold" id="btn-comenzar-lobby" onclick="comenzarPartidaConCuentaRegresiva()">Comenzar</button>
+      <button class="btn-secondary" onclick="volverNiveles()">Elegir otro nivel</button>
     </div>
   </div>
 </div>
 
-<!-- ===== SCREEN 6: JUEGO ===== -->
 <div id="screen-juego" class="screen">
   <div class="screen-header-nav">
     <button class="btn-back" onclick="volverNiveles()" style="margin-bottom:0">← Niveles</button>
-    <div class="nivel-indicator">
-      <div class="nivel-dot" id="nivel-dot"></div>
-      <span id="nivel-nombre-top">Nivel 1</span>
-    </div>
+    <div class="nivel-indicator"><div class="nivel-dot" id="nivel-dot"></div><span id="nivel-nombre-top">Nivel 1</span></div>
   </div>
   <div class="game-header">
-    <div>
-      <div class="game-title" id="game-level-title">Nivel 1</div>
-      <div class="game-jugador-badge" id="game-jugador-badge">👤 Jugador</div>
-    </div>
+    <div><div class="game-title" id="game-level-title">Nivel 1</div><div class="game-jugador-badge" id="game-jugador-badge">👤 Jugador</div></div>
     <div class="stats-row">
       <div class="stat-item"><div class="stat-value green" id="stat-aciertos">0</div><div>Aciertos</div></div>
       <div class="stat-item"><div class="stat-value" id="stat-intentos">0</div><div>Intentos</div></div>
       <div class="stat-item"><div class="stat-value red" id="stat-errores">0</div><div>Errores</div></div>
-      <div class="stat-item">
-        <div class="timer-ring">
-          <svg width="40" height="40" viewBox="0 0 40 40">
-            <circle class="bg" cx="20" cy="20" r="17"/>
-            <circle class="fg" id="timer-circle" cx="20" cy="20" r="17" stroke-dasharray="107" stroke-dashoffset="0"/>
-          </svg>
-          <div class="num" id="timer-num">0:00</div>
-        </div>
-      </div>
+      <div class="stat-item"><div class="timer-ring"><svg width="40" height="40" viewBox="0 0 40 40"><circle class="bg" cx="20" cy="20" r="17"/><circle class="fg" id="timer-circle" cx="20" cy="20" r="17" stroke-dasharray="107" stroke-dashoffset="0"/></svg><div class="num" id="timer-num">0:00</div></div></div>
     </div>
   </div>
   <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
   <div class="cards-grid" id="cards-grid"></div>
 </div>
 
-<!-- ===== SCREEN 7: RESULTADO INDIVIDUAL ===== -->
+<div id="screen-trivia" class="screen">
+  <div class="trivia-container">
+    <div class="trivia-header"><span>📚 Trivia Anatómica</span><span class="trivia-score">Puntos: 0</span></div>
+    <div class="trivia-progress" id="trivia-progress">Pregunta 1 / X</div>
+    <div class="trivia-question" id="trivia-question"></div>
+    <div class="trivia-options" id="trivia-options"></div>
+    <div class="trivia-feedback" id="trivia-feedback" style="display:none;"></div>
+    <button class="trivia-next" id="trivia-next-btn" disabled>Siguiente pregunta</button>
+  </div>
+</div>
+
 <div id="screen-resultado" class="screen">
   <div class="resultado-content">
     <span class="resultado-emoji" id="res-emoji">🏆</span>
@@ -520,36 +470,25 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
       <div class="stat-final-card"><span class="sf-icon">🎯</span><div class="sf-value" id="res-intentos">0</div><div class="sf-label">Intentos</div></div>
       <div class="stat-final-card"><span class="sf-icon">⏱</span><div class="sf-value" id="res-tiempo">0:00</div><div class="sf-label">Tiempo</div></div>
     </div>
-    <div class="calificacion-wrap">
-      <div class="calificacion-label">Calificación obtenida</div>
-      <div class="calificacion-num" id="res-calificacion">10</div>
-      <div class="calificacion-stars" id="res-stars">⭐⭐⭐⭐⭐</div>
-      <div class="puntos-obtenidos" id="res-puntos">+1000 puntos</div>
-    </div>
-    <div class="btn-row">
-      <button class="btn-primary" id="btn-siguiente-turno" onclick="siguienteTurno()">Siguiente Turno →</button>
-      <button class="btn-secondary" onclick="irRankingFinal()">🏆 Ver Ranking</button>
-    </div>
+    <div class="calificacion-wrap"><div class="calificacion-label">Calificación obtenida</div><div class="calificacion-num" id="res-calificacion">10</div><div class="calificacion-stars" id="res-stars">⭐⭐⭐⭐⭐</div><div class="puntos-obtenidos" id="res-puntos">+1000 puntos</div></div>
+    <div class="btn-row"><button class="btn-primary" id="btn-siguiente-turno" onclick="siguienteTurno()">Siguiente Turno →</button><button class="btn-secondary" onclick="irRankingFinal()">🏆 Ver Ranking</button></div>
+    <div id="ranking-nivel-container" style="display:none;" class="ranking-nivel"></div>
   </div>
 </div>
 
-<!-- ===== SCREEN 8: RANKING FINAL ===== -->
 <div id="screen-ranking" class="screen">
   <div class="ranking-wrap">
     <h2 class="ranking-titulo">🏆 Tabla de Puntajes</h2>
     <p class="ranking-sub" id="ranking-sub">Resultados de la partida</p>
     <div class="ranking-podio" id="ranking-podio"></div>
     <div class="ranking-lista" id="ranking-lista"></div>
-    <div class="btn-row">
-      <button class="btn-gold" onclick="nuevaPartida()">🔄 Nueva Partida</button>
-      <button class="btn-secondary" onclick="irInicio()">🏠 Inicio</button>
-    </div>
+    <div class="btn-row"><button class="btn-gold" onclick="nuevaPartida()">🔄 Nueva Partida</button><button class="btn-secondary" onclick="irInicio()">🏠 Inicio</button></div>
   </div>
 </div>
 
 <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 <script>
-// ---- Socket.io cliente mejorado ----
+// ========== SOCKET.IO CLIENTE ==========
 const SOCKET_URL = (window.location.protocol === 'file:' ? 'http://localhost:3000' : window.location.origin);
 let socket = null;
 let socketConnected = false;
@@ -562,808 +501,473 @@ let countdownIntervalLobby = null;
 let countdownSecondsLeft = 0;
 let countdownActive = false;
 let nivelPendiente = 0;
-let pendingRoomAction = null; // para acciones pendientes mientras se conecta
+let pendingRoomAction = null;
 
 function connectSocket() {
   if (socket && socket.connected) return;
-
-  if (socket) {
-    socket.disconnect();
-    socket = null;
-  }
-
-  socket = io(SOCKET_URL, {
-    reconnection: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 1000,
-  });
-
-  socket.on('connect', () => {
-    socketConnected = true;
-    mySocketId = socket.id;
-    console.log('✅ Socket conectado', mySocketId);
-    if (pendingRoomAction) {
-      pendingRoomAction();
-      pendingRoomAction = null;
-    }
-  });
-
-  socket.on('disconnect', () => {
-    socketConnected = false;
-    console.log('⚠️ Socket desconectado');
-    showToast('Se perdió la conexión con el servidor. Reconectando...');
-  });
-
-  socket.on('connect_error', (err) => {
-    console.error('Error de conexión:', err);
-    showToast('Error de conexión. Verifica que el servidor esté corriendo.');
-  });
-
-  // Eventos de sala
-  socket.on('roomCreated', data => {
-    syncRoomState(data);
-    document.getElementById('input-sala').value = data.code;
-    showToast('Sala creada: ' + data.code);
-    mostrarLobby();
-  });
-
-  socket.on('joinedRoom', data => {
-    syncRoomState(data);
-    document.getElementById('input-sala').value = data.code;
-    showToast('Unido a: ' + data.code);
-    mostrarLobby();
-  });
-
-  socket.on('playerList', data => {
-    syncRoomState(data);
-    if (isLobbyVisible()) mostrarLobby();
-  });
-
-  socket.on('countdownStarted', data => {
-    syncRoomState(data);
-    mostrarLobby();
-    iniciarCuentaRegresivaCliente(data.seconds || 5, data.countdownEndsAt);
-  });
-
-  socket.on('gameStarted', data => {
-    cancelarCuentaRegresivaCliente();
-    const players = data.players.map(p => ({
-      nombre: p.name,
-      avatarIdx: p.avatarIdx,
-      colorIdx: p.colorIdx,
-      puntosTotal: p.puntosTotal,
-      nivelesJugados: p.nivelesJugados,
-      terminado: p.terminado
-    }));
-    jugadores = players;
-    const meIndex = data.players.findIndex(p => p.id === mySocketId);
-    if (meIndex !== -1) turnoActual = meIndex;
-    else turnoActual = 0;
-    selectedSemester = data.semester || selectedSemester;
-    currentRoomCode = data.code || currentRoomCode;
-    currentRoomHostId = data.hostId || currentRoomHostId;
-    iniciarNivelMultiplayer(data.levelIdx || 0, data.permutation || null);
-  });
-
-  socket.on('updateRanking', data => {
-    jugadores = data.players.map(p => ({
-      nombre: p.name,
-      avatarIdx: p.avatarIdx,
-      colorIdx: p.colorIdx,
-      puntosTotal: p.puntosTotal,
-      nivelesJugados: p.nivelesJugados,
-      terminado: p.terminado
-    }));
-    renderJugadoresList();
-    syncRoomState(data);
-  });
-
+  if (socket) { socket.disconnect(); socket = null; }
+  socket = io(SOCKET_URL, { reconnection: true, reconnectionAttempts: 5, reconnectionDelay: 1000 });
+  socket.on('connect', () => { socketConnected = true; mySocketId = socket.id; console.log('✅ Socket conectado', mySocketId); if (pendingRoomAction) { pendingRoomAction(); pendingRoomAction = null; } });
+  socket.on('disconnect', () => { socketConnected = false; console.log('⚠️ Socket desconectado'); showToast('Se perdió la conexión con el servidor. Reconectando...'); });
+  socket.on('connect_error', (err) => { console.error('Error de conexión:', err); showToast('Error de conexión. Verifica que el servidor esté corriendo.'); });
+  socket.on('roomCreated', data => { syncRoomState(data); document.getElementById('input-sala').value = data.code; showToast('Sala creada: ' + data.code); mostrarLobby(); });
+  socket.on('joinedRoom', data => { syncRoomState(data); document.getElementById('input-sala').value = data.code; showToast('Unido a: ' + data.code); mostrarLobby(); });
+  socket.on('playerList', data => { syncRoomState(data); if (isLobbyVisible()) mostrarLobby(); });
+  socket.on('countdownStarted', data => { syncRoomState(data); mostrarLobby(); iniciarCuentaRegresivaCliente(data.seconds || 5, data.countdownEndsAt); });
+  socket.on('gameStarted', data => { cancelarCuentaRegresivaCliente(); const players = data.players.map(p => ({ nombre: p.name, avatarIdx: p.avatarIdx, colorIdx: p.colorIdx, puntosTotal: p.puntosTotal, nivelesJugados: p.nivelesJugados, terminado: p.terminado })); jugadores = players; const meIndex = data.players.findIndex(p => p.id === mySocketId); if (meIndex !== -1) turnoActual = meIndex; else turnoActual = 0; selectedSemester = data.semester || selectedSemester; currentRoomCode = data.code || currentRoomCode; currentRoomHostId = data.hostId || currentRoomHostId; iniciarNivelMultiplayer(data.levelIdx || 0, data.permutation || null); });
+  socket.on('updateRanking', data => { jugadores = data.players.map(p => ({ nombre: p.name, avatarIdx: p.avatarIdx, colorIdx: p.colorIdx, puntosTotal: p.puntosTotal, nivelesJugados: p.nivelesJugados, terminado: p.terminado })); renderJugadoresList(); syncRoomState(data); });
   socket.on('errorMsg', msg => showToast(msg));
 }
+function syncRoomState(data) { if (!data) return; if (data.code) currentRoomCode = data.code; if (data.hostId) currentRoomHostId = data.hostId; if (Array.isArray(data.players)) currentRoomPlayers = data.players; if (typeof data.semester === 'number') selectedSemester = data.semester; if (typeof data.levelIdx === 'number') nivelPendiente = data.levelIdx; if (typeof data.countdownEndsAt === 'number') currentRoomCountdownEndsAt = data.countdownEndsAt; renderLobbyPlayers(currentRoomPlayers); updateLobbyScreen(); }
+function isLobbyVisible() { const lobby = document.getElementById('screen-lobby'); return !!lobby && lobby.classList.contains('active'); }
+function updateLobbyScreen() { const codeEl = document.getElementById('lobby-code'); const statusEl = document.getElementById('lobby-status'); const countEl = document.getElementById('lobby-player-count'); const btn = document.getElementById('btn-comenzar-lobby'); if (codeEl) codeEl.textContent = currentRoomCode || '-----'; if (countEl) countEl.textContent = `${currentRoomPlayers.length} jugador${currentRoomPlayers.length === 1 ? '' : 'es'}`; if (statusEl) { const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId; if (countdownActive) statusEl.textContent = 'Cuenta regresiva activa. Todos están por entrar al memorama.'; else if (currentRoomCode) statusEl.textContent = hostReady ? 'Listo para comenzar. Presiona el botón y comparte el código.' : 'Esperando a que el creador inicie la partida.'; else statusEl.textContent = 'Creando sala de espera...'; } if (btn) { const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId; btn.disabled = !currentRoomCode || !hostReady || countdownActive; btn.textContent = countdownActive ? 'Cuenta regresiva...' : 'Comenzar'; } }
+function renderLobbyPlayers(players) { const wrap = document.getElementById('lobby-players'); if (!wrap) return; const list = Array.isArray(players) ? players : []; wrap.innerHTML = ''; if (list.length === 0) { wrap.innerHTML = '<div class="lobby-status">Aún no hay jugadores integrados.</div>'; return; } list.forEach(p => { const avatarIdx = p.avatarIdx || 0; const colorIdx = p.colorIdx || 0; const div = document.createElement('div'); div.className = 'lobby-player-card'; div.innerHTML = `<div class="lobby-player-avatar" style="background:${COLORES_AVATAR[colorIdx]}22;border:2px solid ${COLORES_AVATAR[colorIdx]};color:${COLORES_AVATAR[colorIdx]}">${AVATARES[avatarIdx]}</div><div class="lobby-player-info"><div class="lobby-player-name">${p.name}</div><div class="lobby-player-meta">${p.id === currentRoomHostId ? 'Creador' : 'Integrado'}</div></div>`; wrap.appendChild(div); }); }
+function mostrarLobby() { updateLobbyScreen(); mostrarScreen('screen-lobby'); }
+function copiarCodigoSala() { if (!currentRoomCode) { showToast('Aún no hay código'); return; } navigator.clipboard?.writeText(currentRoomCode).then(() => showToast('Código copiado')).catch(() => showToast('No se pudo copiar')); }
+function mostrarInvitacionSala() { if (!currentRoomCode) { showToast('Aún no hay código'); return; } const texto = `Únete a mi sala de Memorama Anatómico con el código ${currentRoomCode}`; if (navigator.share) { navigator.share({ title: 'Memorama Anatómico', text: texto }).catch(() => {}); return; } copiarCodigoSala(); }
+function iniciarCuentaRegresivaCliente(segundos, endsAt) { cancelarCuentaRegresivaCliente(); countdownActive = true; const box = document.getElementById('lobby-countdown'); const value = document.getElementById('lobby-countdown-value'); if (!box || !value) return; if (typeof endsAt === 'number') { currentRoomCountdownEndsAt = endsAt; countdownSecondsLeft = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000)); } else { countdownSecondsLeft = typeof segundos === 'number' ? segundos : 5; } value.textContent = countdownSecondsLeft; box.classList.add('show'); updateLobbyScreen(); countdownIntervalLobby = setInterval(() => { countdownSecondsLeft--; if (countdownSecondsLeft <= 0) { value.textContent = '0'; cancelarCuentaRegresivaCliente(); return; } value.textContent = countdownSecondsLeft; }, 1000); }
+function cancelarCuentaRegresivaCliente() { if (countdownIntervalLobby) { clearInterval(countdownIntervalLobby); countdownIntervalLobby = null; } countdownActive = false; currentRoomCountdownEndsAt = null; const box = document.getElementById('lobby-countdown'); if (box) box.classList.remove('show'); updateLobbyScreen(); }
+function crearSala() { const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || ''; if (!name) { showToast('Usa el + para crear un jugador primero'); return; } connectSocket(); socket.emit('createRoom', { name }); }
+function unirseSala() { const nameInput = document.getElementById('input-nombre-sala'); const name = (nameInput && nameInput.value.trim()) || nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || ''; const code = document.getElementById('input-sala').value.trim().toUpperCase(); if (!name) { showToast('Escribe tu nombre para unirte'); return; } if (!code) { showToast('Escribe el código de sala'); return; } const action = () => { socket.emit('joinRoom', { code, name }); }; if (!socketConnected) { pendingRoomAction = action; connectSocket(); } else { action(); } }
+function abrirLobbyNivel(idx) { nivelPendiente = idx; const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || 'Jugador'; const action = () => { if (!currentRoomCode) { socket.emit('createRoom', { name }); } else { updateLobbyScreen(); mostrarLobby(); } showToast(`Nivel ${idx+1} listo para preparar la sala`); }; if (!socketConnected) { pendingRoomAction = action; connectSocket(); } else { action(); } }
 
-function syncRoomState(data) {
-  if (!data) return;
-  if (data.code) currentRoomCode = data.code;
-  if (data.hostId) currentRoomHostId = data.hostId;
-  if (Array.isArray(data.players)) currentRoomPlayers = data.players;
-  if (typeof data.semester === 'number') selectedSemester = data.semester;
-  if (typeof data.levelIdx === 'number') nivelPendiente = data.levelIdx;
-  if (typeof data.countdownEndsAt === 'number') currentRoomCountdownEndsAt = data.countdownEndsAt;
-  renderLobbyPlayers(currentRoomPlayers);
-  updateLobbyScreen();
-}
-
-function isLobbyVisible() {
-  const lobby = document.getElementById('screen-lobby');
-  return !!lobby && lobby.classList.contains('active');
-}
-
-function updateLobbyScreen() {
-  const codeEl = document.getElementById('lobby-code');
-  const statusEl = document.getElementById('lobby-status');
-  const countEl = document.getElementById('lobby-player-count');
-  const btn = document.getElementById('btn-comenzar-lobby');
-  if (codeEl) codeEl.textContent = currentRoomCode || '-----';
-  if (countEl) countEl.textContent = `${currentRoomPlayers.length} jugador${currentRoomPlayers.length === 1 ? '' : 'es'}`;
-  if (statusEl) {
-    const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId;
-    if (countdownActive) {
-      statusEl.textContent = 'Cuenta regresiva activa. Todos están por entrar al memorama.';
-    } else if (currentRoomCode) {
-      statusEl.textContent = hostReady ? 'Listo para comenzar. Presiona el botón y comparte el código con los demás.' : 'Esperando a que el creador inicie la partida.';
-    } else {
-      statusEl.textContent = 'Creando sala de espera...';
-    }
-  }
-  if (btn) {
-    const hostReady = mySocketId && currentRoomHostId && mySocketId === currentRoomHostId;
-    btn.disabled = !currentRoomCode || !hostReady || countdownActive;
-    btn.textContent = countdownActive ? 'Cuenta regresiva...' : 'Comenzar';
-  }
-}
-
-function renderLobbyPlayers(players) {
-  const wrap = document.getElementById('lobby-players');
-  if (!wrap) return;
-  const list = Array.isArray(players) ? players : [];
-  wrap.innerHTML = '';
-  if (list.length === 0) {
-    wrap.innerHTML = '<div class="lobby-status">Aún no hay jugadores integrados.</div>';
-    return;
-  }
-  list.forEach(p => {
-    const avatarIdx = p.avatarIdx || 0;
-    const colorIdx = p.colorIdx || 0;
-    const div = document.createElement('div');
-    div.className = 'lobby-player-card';
-    div.innerHTML = `
-      <div class="lobby-player-avatar" style="background:${COLORES_AVATAR[colorIdx]}22;border:2px solid ${COLORES_AVATAR[colorIdx]};color:${COLORES_AVATAR[colorIdx]}">${AVATARES[avatarIdx]}</div>
-      <div class="lobby-player-info">
-        <div class="lobby-player-name">${p.name}</div>
-        <div class="lobby-player-meta">${p.id === currentRoomHostId ? 'Creador de la sala' : 'Integrado a la partida'}</div>
-      </div>`;
-    wrap.appendChild(div);
-  });
-}
-
-function mostrarLobby() {
-  updateLobbyScreen();
-  mostrarScreen('screen-lobby');
-}
-
-function copiarCodigoSala() {
-  if (!currentRoomCode) { showToast('Aún no hay código'); return; }
-  navigator.clipboard?.writeText(currentRoomCode).then(() => showToast('Código copiado')).catch(() => showToast('No se pudo copiar'));
-}
-
-function mostrarInvitacionSala() {
-  if (!currentRoomCode) { showToast('Aún no hay código'); return; }
-  const texto = `Únete a mi sala de Memorama Anatómico con el código ${currentRoomCode}`;
-  if (navigator.share) { navigator.share({ title: 'Memorama Anatómico', text: texto }).catch(() => {}); return; }
-  copiarCodigoSala();
-}
-
-function iniciarCuentaRegresivaCliente(segundos, endsAt) {
-  cancelarCuentaRegresivaCliente();
-  countdownActive = true;
-  const box = document.getElementById('lobby-countdown');
-  const value = document.getElementById('lobby-countdown-value');
-  if (!box || !value) return;
-  if (typeof endsAt === 'number') {
-    currentRoomCountdownEndsAt = endsAt;
-    countdownSecondsLeft = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000));
-  } else {
-    countdownSecondsLeft = typeof segundos === 'number' ? segundos : 5;
-  }
-  value.textContent = countdownSecondsLeft;
-  box.classList.add('show');
-  updateLobbyScreen();
-  countdownIntervalLobby = setInterval(() => {
-    countdownSecondsLeft--;
-    if (countdownSecondsLeft <= 0) {
-      value.textContent = '0';
-      cancelarCuentaRegresivaCliente();
-      return;
-    }
-    value.textContent = countdownSecondsLeft;
-  }, 1000);
-}
-
-function cancelarCuentaRegresivaCliente() {
-  if (countdownIntervalLobby) { clearInterval(countdownIntervalLobby); countdownIntervalLobby = null; }
-  countdownActive = false;
-  currentRoomCountdownEndsAt = null;
-  const box = document.getElementById('lobby-countdown');
-  if (box) box.classList.remove('show');
-  updateLobbyScreen();
-}
-
-function crearSala() {
-  const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || '';
-  if (!name) { showToast('Usa el + para crear un jugador primero'); return; }
-  connectSocket();
-  socket.emit('createRoom', { name });
-}
-
-// Modifica unirseSala (con pendingRoomAction)
-function unirseSala() {
-  const nameInput = document.getElementById('input-nombre-sala');
-  const name = (nameInput && nameInput.value.trim()) || nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || '';
-  const code = document.getElementById('input-sala').value.trim().toUpperCase();
-  if (!name) { showToast('Escribe tu nombre para unirte'); return; }
-  if (!code) { showToast('Escribe el código de sala'); return; }
-
-  const action = () => {
-    socket.emit('joinRoom', { code, name });
-  };
-
-  if (!socketConnected) {
-    pendingRoomAction = action;
-    connectSocket();
-  } else {
-    action();
-  }
-}
-
-// Modifica abrirLobbyNivel (crear sala)
-function abrirLobbyNivel(idx) {
-  nivelPendiente = idx;
-  const name = nombreJugadorActivo || (jugadores[turnoActual] && jugadores[turnoActual].nombre) || (jugadores[0] && jugadores[0].nombre) || 'Jugador';
-
-  const action = () => {
-    if (!currentRoomCode) {
-      socket.emit('createRoom', { name });
-    } else {
-      updateLobbyScreen();
-      mostrarLobby();
-    }
-    showToast(`Nivel ${idx+1} listo para preparar la sala`);
-  };
-
-  if (!socketConnected) {
-    pendingRoomAction = action;
-    connectSocket();
-  } else {
-    action();
-  }
-}
-
-// ========== DATA Y FUNCIONES DEL JUEGO (con imágenes integradas) ==========
-// Estructura por semestres y niveles (Primer y Segundo semestre).
-// Se han añadido imageSrc a los primeros 9 pares del nivel Básico del Primer Semestre.
-const SEMESTER_DATA = {
-  1: {
-    name: 'Primer Semestre',
-    levels: [
-      { nombre: 'Básico', color:'#00d4ff', icono:'🧍', stars:'★☆☆☆☆', dif:'Básico', pares:[
-          { id:'medial', imageSrc:'img/1.jpeg', nombre:'Medial', tipo:'Orientación' },
-          { id:'transversal', emoji:'✂️', nombre:'Transversal (axial)', tipo:'Definición' },
-          { id:'abduccion', emoji:'↔️', nombre:'Abducción', tipo:'Movimiento' },
-          { id:'esferoidea', imageSrc:'img/4.jpeg', nombre:'Esferoidea (Enartrosis)', tipo:'Articulación' },
-          { id:'epimisio', imageSrc:'img/5.jpeg', nombre:'Epimisio', tipo:'Tejido' },
-          { id:'vena', emoji:'🩸', nombre:'Vena', tipo:'Vaso' },
-          { id:'dendrita', imageSrc:'img/7.jpeg', nombre:'Dendrita', tipo:'Neurona' },
-          { id:'peritoneo', emoji:'🧻', nombre:'Peritoneo', tipo:'Función' },
-          { id:'dermis', imageSrc:'img/8.jpeg', nombre:'Dermis', tipo:'Piel' },
-          { id:'arteria_tiroidea_ima', imageSrc:'img/9.jpeg', nombre:'Arteria tiroidea ima', tipo:'Vascular' },
-          { id:'laringe', imageSrc:'img/11.jpeg', nombre:'Laringe', tipo:'Sistema respiratorio' },
-          { id:'articulacion_coronal', imageSrc:'img/14.jpeg', nombre:'Articulación coronal', tipo:'Articulación' },
-          { id:'conducto_toracico', imageSrc:'img/15.jpeg', nombre:'Conducto torácico', tipo:'Vascular' },
-          { id:'meninges', emoji:'🧠', nombre:'Duramadre, aracnoides, piamadre', tipo:'Capas' },
-      ]},
-      { nombre: 'Intermedio', color:'#00ff9d', icono:'🫀', stars:'★★★☆☆', dif:'Intermedio', pares:[
-          {id:'c1_atlas',emoji:'🦴',nombre:'C1 (Atlas)',tipo:'Vértebra'},
-          {id:'agu_trans',emoji:'🔍',nombre:'Agujero transverso',tipo:'Características'},
-          {id:'sifisis',emoji:'🔗',nombre:'Sínfisis',tipo:'Articulación'},
-          {id:'resp_ext',emoji:'🌬️',nombre:'Respiración externa',tipo:'Fisiología'},
-          {id:'cardiaco',emoji:'❤️',nombre:'Músculo cardíaco',tipo:'Músculo'},
-          {id:'peritoneo_func',emoji:'🧭',nombre:'Envuelve cavidad abdominal',tipo:'Función'},
-          {id:'lig_hiperext',emoji:'🪢',nombre:'Ligamento ant. columna',tipo:'Ligamento'},
-      ]},
-      { nombre: 'Avanzado', color:'#ff6b6b', icono:'🧠', stars:'★★★★☆', dif:'Avanzado', pares:[
-          {id:'caso1',emoji:'🩺',nombre:'Caso Clínico 1',tipo:'Caso'},
-          {id:'caso2',emoji:'🩺',nombre:'Caso Clínico 2',tipo:'Caso'},
-          {id:'caso3',emoji:'🩺',nombre:'Caso Clínico 3',tipo:'Caso'},
-          {id:'caso4',emoji:'🩺',nombre:'Caso Clínico 4',tipo:'Caso'},
-      ]},
-    ]
-  },
-  2: {
-    name: 'Segundo Semestre',
-    levels: [
-      { nombre: 'Básico', color:'#00d4ff', icono:'🧍', stars:'★☆☆☆☆', dif:'Básico', pares:[
-          {id:'carotidas',emoji:'🩸',nombre:'Arterias carótidas internas',tipo:'Vascular'},
-          {id:'cuerpo_calloso',emoji:'🔗',nombre:'Cuerpo calloso',tipo:'Estructura'},
-          {id:'tronco_comp',emoji:'🧩',nombre:'Mesencéfalo, puente y bulbo',tipo:'Componentes'},
-          {id:'n_hipogloso',emoji:'👅',nombre:'Nervio hipogloso (XII)',tipo:'NC'},
-          {id:'n_troclear',emoji:'🔄',nombre:'Nervio troclear (IV)',tipo:'NC'},
-          {id:'trigemino',emoji:'🧭',nombre:'Nervio trigémino (V)',tipo:'NC'},
-          {id:'acomodacion',emoji:'🔎',nombre:'Músculo ciliar (acomodación)',tipo:'Ojo'},
-      ]},
-      { nombre: 'Intermedio', color:'#00ff9d', icono:'🫁', stars:'★★★☆☆', dif:'Intermedio', pares:[
-          {id:'vaso1',emoji:'🩺',nombre:'Pregunta intermedia 1',tipo:'Tema'},
-          {id:'vaso2',emoji:'🩺',nombre:'Pregunta intermedia 2',tipo:'Tema'},
-      ]},
-      { nombre: 'Avanzado', color:'#c678dd', icono:'🏆', stars:'★★★★★', dif:'Avanzado', pares:[
-          {id:'cc1',emoji:'📄',nombre:'Caso Clínico A',tipo:'Caso'},
-          {id:'cc2',emoji:'📄',nombre:'Caso Clínico B',tipo:'Caso'},
-      ]},
-    ]
-  }
-};
-
-let selectedSemester = 1;
-
-function selectSemester(sem){ selectedSemester = sem; document.getElementById('sem1-btn').classList.toggle('active', sem===1); document.getElementById('sem2-btn').classList.toggle('active', sem===2); document.getElementById('niveles-titulo').textContent = `${SEMESTER_DATA[sem].name} · Elige un Nivel`; document.getElementById('niveles-sub').textContent = `Niveles disponibles: ${SEMESTER_DATA[sem].levels.length}`; renderNiveles(); }
-
+// ========== DATOS DEL JUEGO ==========
 const AVATARES = ["🧑","👩","🧒","👦","👧","🧔","👨‍🦰","👩‍🦱","🧑‍🦲","👩‍🦳","🧑‍🎓","👩‍🔬"];
 const COLORES_AVATAR = ["#00d4ff","#00ff9d","#ff9f43","#ff6b6b","#c678dd","#ffd700","#2ec4b6","#e94560"];
 
-// ========== ESTADO GLOBAL ==========
-let jugadores = [];       // [{nombre, avatarIdx, colorIdx, puntosTotal, nivelesJugados:[{nivelIdx,cal,pts,tiempo}], terminado}]
+// Imágenes para memorama (primer semestre y segundo semestre - memorama)
+const imagenesMemorama = [
+  { kind:'image', id:'medial', imageSrc:'img/1.jpeg', nombre:'Medial', tipo:'Orientación' },
+  { kind:'image', id:'transversal', emoji:'✂️', nombre:'Transversal (axial)', tipo:'Definición' },
+  { kind:'image', id:'abduccion', emoji:'↔️', nombre:'Abducción', tipo:'Movimiento' },
+  { kind:'image', id:'esferoidea', imageSrc:'img/4.jpeg', nombre:'Esferoidea (Enartrosis)', tipo:'Articulación' },
+  { kind:'image', id:'epimisio', imageSrc:'img/5.jpeg', nombre:'Epimisio', tipo:'Tejido' },
+  { kind:'image', id:'vena', emoji:'🩸', nombre:'Vena', tipo:'Vaso' },
+  { kind:'image', id:'dendrita', imageSrc:'img/7.jpeg', nombre:'Dendrita', tipo:'Neurona' },
+  { kind:'image', id:'peritoneo', emoji:'🧻', nombre:'Peritoneo', tipo:'Función' },
+  { kind:'image', id:'dermis', imageSrc:'img/8.jpeg', nombre:'Dermis', tipo:'Piel' },
+  { kind:'image', id:'arteria_tiroidea_ima', imageSrc:'img/9.jpeg', nombre:'Arteria tiroidea ima', tipo:'Vascular' },
+  { kind:'image', id:'laringe', imageSrc:'img/11.jpeg', nombre:'Laringe', tipo:'Sistema respiratorio' },
+  { kind:'image', id:'articulacion_coronal', imageSrc:'img/14.jpeg', nombre:'Articulación coronal', tipo:'Articulación' },
+  { kind:'image', id:'conducto_toracico', imageSrc:'img/15.jpeg', nombre:'Conducto torácico', tipo:'Vascular' },
+  { kind:'image', id:'meninges', emoji:'🧠', nombre:'Duramadre, aracnoides, piamadre', tipo:'Capas' }
+];
+
+// Trivia (para segundo y tercer semestre)
+function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+function generateOptions(correct, allAnswers, currentIdx) {
+  let incorrect = allAnswers.filter((a, i) => i !== currentIdx && a !== correct);
+  incorrect = [...new Set(incorrect)];
+  while(incorrect.length < 3) incorrect.push("Respuesta no especificada");
+  let opts = [correct, ...incorrect.slice(0,3)];
+  return shuffleArray(opts);
+}
+const triviaBase = {
+  basico: [
+    { text: "¿Qué arteria irriga la mayor parte del encéfalo?", answer: "Arteria cerebral media" },
+    { text: "¿Cuál es la función del cuerpo calloso?", answer: "Conectar los hemisferios cerebrales" },
+    { text: "¿Qué nervio craneal es motor para los músculos de la masticación?", answer: "Nervio trigémino (V)" },
+    { text: "¿Dónde se produce el líquido cefalorraquídeo?", answer: "Plexos coroideos" }
+  ],
+  intermedio: [
+    { text: "¿Cuál es el principal neurotransmisor inhibitorio del SNC?", answer: "GABA" },
+    { text: "¿Qué estructura regula la temperatura corporal?", answer: "Hipotálamo" },
+    { text: "¿Cómo se llaman los vasos que llevan sangre desde el corazón a los pulmones?", answer: "Arterias pulmonares" },
+    { text: "¿Qué hueso de la mano se articula con el radio?", answer: "Escafoides" }
+  ],
+  avanzado: [
+    { text: "¿Cuál es la vía final común del sistema motor?", answer: "Neurona motora inferior" },
+    { text: "¿Qué parte del cerebelo se encarga del equilibrio?", answer: "Arquicerebelo (lóbulo floculonodular)" },
+    { text: "¿Qué hormona produce la glándula pineal?", answer: "Melatonina" },
+    { text: "¿Qué ligamento de la rodilla evita la traslación anterior de la tibia?", answer: "Ligamento cruzado anterior" }
+  ]
+};
+const allTriviaAnswers = [...triviaBase.basico.map(b=>b.answer), ...triviaBase.intermedio.map(i=>i.answer), ...triviaBase.avanzado.map(a=>a.answer)];
+function buildTriviaQuestions(level) {
+  const base = triviaBase[level];
+  return base.map((q, idx) => ({ text: q.text, correct: q.answer, options: generateOptions(q.answer, allTriviaAnswers, allTriviaAnswers.indexOf(q.answer)) }));
+}
+const triviaBasico = buildTriviaQuestions('basico');
+const triviaIntermedio = buildTriviaQuestions('intermedio');
+const triviaAvanzado = buildTriviaQuestions('avanzado');
+
+const SEMESTER_DATA = {
+  1: { name: 'Primer Semestre (Memorama)', levels: [
+    { nombre: 'Memorama Anatómico', color:'#00d4ff', icono:'🖼️', stars:'★☆☆☆☆', dif:'Básico', pares: imagenesMemorama, type: 'memorama' }
+  ] },
+  2: { name: 'Segundo Semestre (Memorama + Trivia)', levels: [
+    { nombre: 'Memorama Anatómico', color:'#00d4ff', icono:'🖼️', stars:'★☆☆☆☆', dif:'Básico', pares: imagenesMemorama, type: 'memorama' },
+    { nombre: 'Trivia Anatómica', color:'#00ff9d', icono:'📖', stars:'★★★☆☆', dif:'Intermedio', questions: triviaBasico, type: 'trivia' }
+  ] },
+  3: { name: 'Tercer Semestre (Trivia Avanzada)', levels: [
+    { nombre: 'Básico', color:'#00d4ff', icono:'📖', stars:'★☆☆☆☆', dif:'Básico', questions: triviaBasico, type: 'trivia' },
+    { nombre: 'Intermedio', color:'#00ff9d', icono:'📘', stars:'★★★☆☆', dif:'Intermedio', questions: triviaIntermedio, type: 'trivia' },
+    { nombre: 'Avanzado', color:'#c678dd', icono:'🏆', stars:'★★★★★', dif:'Avanzado', questions: triviaAvanzado, type: 'trivia' }
+  ] }
+};
+
+let selectedSemester = 1;
+function selectSemester(sem){ 
+  selectedSemester = sem; 
+  document.getElementById('sem1-btn').classList.toggle('active', sem===1); 
+  document.getElementById('sem2-btn').classList.toggle('active', sem===2); 
+  const sem3 = document.getElementById('sem3-btn'); if(sem3) sem3.classList.toggle('active', sem===3);
+  document.getElementById('niveles-titulo').textContent = `${SEMESTER_DATA[sem].name} · Elige un Nivel`; 
+  document.getElementById('niveles-sub').textContent = `Niveles disponibles: ${SEMESTER_DATA[sem].levels.length}`; 
+  renderNiveles(); 
+}
+
+// ========== VARIABLES GLOBALES DEL JUEGO ==========
+let jugadores = [];
 let turnoActual = 0;
 let nivelActual = 0;
 let modoSoloRanking = false;
+// Memorama por rondas
+let cartasGlobal = [];          // Todas las cartas del nivel completo
+let cartasRonda = [];           // Cartas de la ronda actual (máx 8-10)
+let voltadas = [];
+let aciertos = 0, intentos = 0, errores = 0;
+let bloqueado = false;
+let timerInterval = null;
+let segundos = 0;
+let totalPares = 0;
+let currentRoundIndex = 0;
+let totalRounds = 0;
+let remainingPairs = [];        // Pares completos pendientes
+let currentRoundPairs = [];
+let isMemoramaComplete = false;
+// Trivia
+let currentTriviaQuestions = [];
+let currentTriviaIndex = 0;
+let triviaScore = 0;
+let triviaAnswered = false;
+// Ranking
+let rankingNivel = [];
 
-// Estado juego
-let cartas=[], voltadas=[], aciertos=0, intentos=0, errores=0;
-let bloqueado=false, timerInterval=null, segundos=0, totalPares=0;
-
-// ========== UTILIDADES ==========
+// Funciones base
 function mostrarScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
 function formatTiempo(s){ return `${Math.floor(s/60)}:${(s%60).toString().padStart(2,'0')}`; }
 function calcCalificacion(ac,int){ const p=int>0?(ac/int)*100:100; if(p>=95)return 10; if(p>=85)return 9; if(p>=72)return 8; if(p>=60)return 7; if(p>=48)return 6; return 5; }
 function calcPuntos(cal,tiempo,pares){ const base=cal*100; const bonus=Math.max(0,500-tiempo*2); return base+bonus+(pares*10); }
+function calcTriviaPuntos(aciertos, total){ const p = (aciertos/total)*100; if(p>=90) return 10; if(p>=75) return 9; if(p>=60) return 8; if(p>=45) return 7; return 6; }
 function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
-
-// ========== NAVEGACIÓN ==========
-function irInicio(){ mostrarScreen('screen-inicio'); }
-function irRegistro(){ jugadores=[]; renderJugadoresList(); mostrarScreen('screen-registro'); }
-
-let nombreJugadorActivo = '';
-
-function abrirModalJugador(){
-  const modal = document.getElementById('modal-jugador');
-  modal.classList.add('show');
-  modal.setAttribute('aria-hidden','false');
-  const inp = document.getElementById('input-nombre-modal');
-  inp.value = nombreJugadorActivo || '';
-  setTimeout(()=>inp.focus(), 50);
-}
-
-function cerrarModalJugador(){
-  const modal = document.getElementById('modal-jugador');
-  modal.classList.remove('show');
-  modal.setAttribute('aria-hidden','true');
-}
-
-function agregarJugador(nombre){
-  const nombreNormalizado = (nombre || '').trim();
-  if(!nombreNormalizado){ showToast('⚠️ Escribe un nombre'); return false; }
-  if(jugadores.length>=6){ showToast('⚠️ Máximo 6 jugadores'); return false; }
-  if(jugadores.find(j=>j.nombre.toLowerCase()===nombreNormalizado.toLowerCase())){ showToast('⚠️ Ese nombre ya existe'); return false; }
-  const ci=jugadores.length % COLORES_AVATAR.length;
-  const ai=jugadores.length % AVATARES.length;
-  jugadores.push({ nombre: nombreNormalizado, avatarIdx:ai, colorIdx:ci, puntosTotal:0, nivelesJugados:[], terminado:false });
-  nombreJugadorActivo = nombreNormalizado;
-  renderJugadoresList();
-  showToast(`✅ ${nombreNormalizado} agregado`);
-  return true;
-}
-
-function confirmarModalJugador(){
-  const inp = document.getElementById('input-nombre-modal');
-  const nombre = inp.value.trim();
-  if(!agregarJugador(nombre)) return;
-  cerrarModalJugador();
-  turnoActual = 0;
-  jugadores.forEach(j=>{ j.puntosTotal=0; j.nivelesJugados=[]; j.terminado=false; });
-  empezarPartida();
-  irNivelesDesde();
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  const modalInput = document.getElementById('input-nombre-modal');
-  if(modalInput){
-    modalInput.addEventListener('keydown',e=>{ if(e.key==='Enter') confirmarModalJugador(); if(e.key==='Escape') cerrarModalJugador(); });
-  }
-  document.getElementById('modal-jugador').addEventListener('click',e=>{ if(e.target.id==='modal-jugador') cerrarModalJugador(); });
-});
-
-function renderJugadoresList(){
-  const lista=document.getElementById('jugadores-lista');
-  lista.innerHTML='';
-  jugadores.forEach((j,i)=>{
-    const div=document.createElement('div');
-    div.className='jugador-item';
-    div.style.animationDelay=`${i*0.05}s`;
-    div.innerHTML=`
-      <div class="jugador-avatar" style="background:${COLORES_AVATAR[j.colorIdx]}22;border:2px solid ${COLORES_AVATAR[j.colorIdx]};color:${COLORES_AVATAR[j.colorIdx]}">${AVATARES[j.avatarIdx]}</div>
-      <div><div class="jugador-nombre">${j.nombre}</div><div class="jugador-estado">Listo para jugar</div></div>
-      <button class="jugador-remove" onclick="quitarJugador(${i})" title="Eliminar">✕</button>`;
-    lista.appendChild(div);
-  });
-  const btn=document.getElementById('btn-empezar');
-  const hint=document.getElementById('hint-jugadores');
-  btn.disabled=jugadores.length<1;
-  hint.textContent=jugadores.length===0?'Mínimo 1 jugador para comenzar':`${jugadores.length} jugador${jugadores.length>1?'es':''} registrado${jugadores.length>1?'s':''}`;
-}
-
-function quitarJugador(i){ jugadores.splice(i,1); renderJugadoresList(); }
-
-function empezarPartida(){
-  if(jugadores.length<1) return;
-  turnoActual=0;
-  jugadores.forEach(j=>{ j.puntosTotal=0; j.nivelesJugados=[]; j.terminado=false; });
-  mostrarTurno();
-}
-
-// ========== TURNO ==========
-function mostrarTurno(){
-  // Verificar si todos terminaron (cada uno jugó 5 niveles o no quedan niveles)
-  const todosTerminaron = jugadores.every(j => j.terminado);
-  if(todosTerminaron){ irRankingFinal(); return; }
-  // Encontrar próximo jugador que no haya terminado
-  let intentosBusqueda=0;
-  while(jugadores[turnoActual].terminado && intentosBusqueda < jugadores.length){
-    turnoActual=(turnoActual+1)%jugadores.length;
-    intentosBusqueda++;
-  }
-  const j=jugadores[turnoActual];
-  if(j.terminado){ irRankingFinal(); return; }
-
-  document.getElementById('turno-icono').textContent=AVATARES[j.avatarIdx];
-  document.getElementById('turno-nombre').textContent=j.nombre;
-
-  // Progreso
-  const prog=document.getElementById('progreso-jugadores');
-  prog.innerHTML=jugadores.map((jj,i)=>`
-    <div class="pj-chip ${i===turnoActual?'activo':''}">
-      <div class="pjc-dot" style="background:${COLORES_AVATAR[jj.colorIdx]}"></div>
-      ${jj.nombre} · ${jj.nivelesJugados.length}/5
-    </div>`).join('');
-
-  mostrarScreen('screen-turno');
-}
-
-function irNivelesDesde(){ renderNiveles(); mostrarScreen('screen-niveles'); }
-function volverTurno(){ mostrarScreen('screen-turno'); }
-function volverNiveles(){ renderNiveles(); mostrarScreen('screen-niveles'); }
-
-// ========== NIVELES ==========
-function renderNiveles(){
-  // Puede llamarse antes de que se registren jugadores; usar valores por defecto si es necesario
-  const j = jugadores[turnoActual] || { nombre: '-', avatarIdx: 0, colorIdx: 0, nivelesJugados: [] };
-  document.getElementById('banner-nombre').textContent = `${AVATARES[j.avatarIdx] || AVATARES[0]} ${j.nombre}`;
-  const grid=document.getElementById('niveles-grid');
-  grid.innerHTML='';
-  const niveles = SEMESTER_DATA[selectedSemester].levels;
-  niveles.forEach((n,i)=>{
-    const yaJugado = (j.nivelesJugados || []).some(nl=>nl.nivelIdx===i && nl.semester===selectedSemester);
-    const card=document.createElement('div');
-    card.className='nivel-card'+(yaJugado?' ya-jugado':'');
-    card.style.cssText=`--nivel-color:${n.color};--nivel-glow:${n.color}44;animation-delay:${i*0.08}s`;
-    card.innerHTML=`
-      ${yaJugado?`<div class="nivel-jugado-tag">✓ Jugado</div>`:''}
-      <div class="nivel-num">Nivel ${i+1}</div>
-      <div class="nivel-stars">${n.stars}</div>
-      <div class="nivel-titulo">${n.nombre}</div>
-      <div class="nivel-desc">${n.pares.slice(0,4).map(p=>p.nombre).join(', ')}${n.pares.length>4?'...':''}</div>
-      <div class="nivel-badge">${n.pares.length} parejas · ${n.dif}</div>
-      <span class="nivel-icon">${n.icono}</span>`;
-    if(!yaJugado) card.onclick=()=>abrirLobbyNivel(i);
-    grid.appendChild(card);
-  });
-}
-
-function comenzarPartidaConCuentaRegresiva(){
-  const code = currentRoomCode || document.getElementById('input-sala').value.trim().toUpperCase();
-  if(!code){ showToast('Primero crea o entra a una sala'); return; }
-  if(mySocketId && currentRoomHostId && mySocketId !== currentRoomHostId){ showToast('Solo el creador puede comenzar'); return; }
-  if(countdownActive){ return; }
-  const nivel = SEMESTER_DATA[selectedSemester].levels[nivelPendiente] || SEMESTER_DATA[selectedSemester].levels[0];
-  const pairsCount = nivel ? nivel.pares.length : 0;
-  if(!socket){ connectSocket(); }
-  socket.emit('startRoomCountdown',{code,semester:selectedSemester,levelIdx:nivelPendiente,pairsCount});
-}
-
-// ========== JUEGO ==========
-function iniciarNivel(idx){
-  nivelActual=idx;
-  const nivel = SEMESTER_DATA[selectedSemester].levels[idx];
-  const j=jugadores[turnoActual];
-  aciertos=0;intentos=0;errores=0;voltadas=[];bloqueado=false;segundos=0;
-  totalPares=nivel.pares.length;
-
-  document.getElementById('game-level-title').textContent=`Nivel ${idx+1} · ${nivel.nombre}`;
-  document.getElementById('nivel-nombre-top').textContent=`Nivel ${idx+1}`;
-  document.getElementById('game-jugador-badge').textContent=`${AVATARES[j.avatarIdx]} ${j.nombre}`;
-  document.querySelector('.nivel-dot').style.background=nivel.color;
-  document.querySelector('.nivel-dot').style.boxShadow=`0 0 8px ${nivel.color}`;
-  document.querySelector('.timer-ring .fg').style.stroke=nivel.color;
-  updateStats();
-  document.getElementById('progress-bar').style.width='0%';
-
-  cartas=[];
-  nivel.pares.forEach(par=>{
-    // carta imagen
-    cartas.push({pairId:par.id, isImage:true, imageSrc: par.imageSrc || null, emoji: par.emoji || '🖼️', label:par.nombre, tipo:par.tipo, matched:false});
-    // carta texto (definición)
-    cartas.push({pairId:par.id, isImage:false, imageSrc: null, emoji: par.emoji, label:par.nombre, tipo:par.tipo, matched:false});
-  });
-  shuffle(cartas);
-  renderCartas(nivel.color);
-  mostrarScreen('screen-juego');
-  iniciarTimer();
-}
-
-function iniciarNivelMultiplayer(idx, permutation){
-  // Build deck using permutation indices for consistent order across clients
-  nivelActual = idx;
-  const nivel = SEMESTER_DATA[selectedSemester].levels[idx];
-  const j = jugadores[turnoActual];
-  aciertos=0;intentos=0;errores=0;voltadas=[];bloqueado=false;segundos=0;
-  totalPares = nivel.pares.length;
-
-  document.getElementById('game-level-title').textContent=`Nivel ${idx+1} · ${nivel.nombre}`;
-  document.getElementById('nivel-nombre-top').textContent=`Nivel ${idx+1}`;
-  document.getElementById('game-jugador-badge').textContent=`${AVATARES[j.avatarIdx]} ${j.nombre}`;
-  document.querySelector('.nivel-dot').style.background=nivel.color;
-  document.querySelector('.nivel-dot').style.boxShadow=`0 0 8px ${nivel.color}`;
-  document.querySelector('.timer-ring .fg').style.stroke=nivel.color;
-  updateStats();
-  document.getElementById('progress-bar').style.width='0%';
-
-  // Crear pares en el orden dado por permutation (permutación de índices de los pares)
-  const order = Array.isArray(permutation) && permutation.length===nivel.pares.length ? permutation : Array.from({length:nivel.pares.length},(_,i)=>i);
-  cartas = [];
-  order.forEach(pi=>{
-    const par = nivel.pares[pi];
-    cartas.push({pairId:par.id, isImage:true, imageSrc: par.imageSrc || null, emoji: par.emoji || '🖼️', label:par.nombre, tipo:par.tipo, matched:false});
-    cartas.push({pairId:par.id, isImage:false, imageSrc: null, emoji: par.emoji, label:par.nombre, tipo:par.tipo, matched:false});
-  });
-  // Si el servidor envía una permutación completa del mazo (longitud 2*n), reordenamos
-  if(Array.isArray(permutation) && permutation.length===cartas.length){
-    const reordered = permutation.map(i=>cartas[i]);
-    cartas = reordered;
-  }
-  renderCartas(nivel.color);
-  mostrarScreen('screen-juego');
-  iniciarTimer();
-}
-
-function renderCartas(color){
-  const grid=document.getElementById('cards-grid');
-  const total=cartas.length;
-  const cols=total<=12?4:total<=20?5:6;
-  grid.style.gridTemplateColumns=`repeat(${window.innerWidth<500?Math.min(cols,4):cols},1fr)`;
-  grid.innerHTML='';
-  cartas.forEach((carta,idx)=>{
-    const div=document.createElement('div');
-    div.className='card'; div.dataset.idx=idx;
-    div.style.setProperty('--card-accent',color+'66');
-    let frontContent = '';
-    if(carta.isImage){
-      if(carta.imageSrc){
-        frontContent = `<img src="${carta.imageSrc}" alt="${carta.label}" loading="lazy">`;
-      } else {
-        frontContent = `<div class="card-emoji">${carta.emoji}</div>`;
-      }
-    } else {
-      frontContent = `<div class="card-label">${carta.label}</div><div class="card-type">${carta.tipo}</div>`;
-    }
-    div.innerHTML = `
-      <div class="card-inner">
-        <div class="card-face card-back-face"></div>
-        <div class="card-face card-front-face">
-          ${frontContent}
-        </div>
-      </div>`;
-    div.addEventListener('click',()=>voltearCarta(idx));
-    grid.appendChild(div);
-  });
-}
-
-function voltearCarta(idx){
-  if(bloqueado) return;
-  const carta=cartas[idx];
-  if(carta.matched) return;
-  const el=document.querySelector(`.card[data-idx="${idx}"]`);
-  if(el.classList.contains('flipped')) return;
-  el.classList.add('flipped');
-  voltadas.push(idx);
-  if(voltadas.length===2){ intentos++; bloqueado=true; setTimeout(verificarPar,700); }
-}
-
-function verificarPar(){
-  const[a,b]=voltadas;
-  const ca=cartas[a],cb=cartas[b];
-  const elA=document.querySelector(`.card[data-idx="${a}"]`);
-  const elB=document.querySelector(`.card[data-idx="${b}"]`);
-  if(ca.pairId===cb.pairId && ca.isImage!==cb.isImage){
-    ca.matched=true; cb.matched=true;
-    elA.classList.add('matched'); elB.classList.add('matched');
-    aciertos++;
-    document.getElementById('progress-bar').style.width=(aciertos/totalPares*100)+'%';
-    if(aciertos===totalPares) setTimeout(mostrarResultadoJugador,600);
-  } else {
-    errores++;
-    elA.classList.add('wrong'); elB.classList.add('wrong');
-    setTimeout(()=>{ elA.classList.remove('flipped','wrong'); elB.classList.remove('flipped','wrong'); },800);
-  }
-  voltadas=[];bloqueado=false;updateStats();
-}
-
-function updateStats(){
-  document.getElementById('stat-aciertos').textContent=aciertos;
-  document.getElementById('stat-intentos').textContent=intentos;
-  document.getElementById('stat-errores').textContent=errores;
-}
-
+function updateStats(){ document.getElementById('stat-aciertos').textContent=aciertos; document.getElementById('stat-intentos').textContent=intentos; document.getElementById('stat-errores').textContent=errores; }
 function iniciarTimer(){ limpiarTimer(); segundos=0; updateTimerDisplay(); timerInterval=setInterval(()=>{segundos++;updateTimerDisplay();},1000); }
 function limpiarTimer(){ if(timerInterval){clearInterval(timerInterval);timerInterval=null;} }
 function updateTimerDisplay(){ document.getElementById('timer-num').textContent=formatTiempo(segundos); }
 
-// ========== RESULTADO INDIVIDUAL ==========
-function mostrarResultadoJugador(){
+function irInicio(){ mostrarScreen('screen-inicio'); }
+function irRegistro(){ jugadores=[]; renderJugadoresList(); mostrarScreen('screen-registro'); }
+let nombreJugadorActivo = '';
+function abrirModalJugador(){ const modal = document.getElementById('modal-jugador'); modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); const inp = document.getElementById('input-nombre-modal'); inp.value = nombreJugadorActivo || ''; setTimeout(()=>inp.focus(), 50); }
+function cerrarModalJugador(){ const modal = document.getElementById('modal-jugador'); modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); document.getElementById('btn-iniciar')?.focus(); }
+function agregarJugador(nombre){ const nombreNormalizado = (nombre || '').trim(); if(!nombreNormalizado){ showToast('⚠️ Escribe un nombre'); return false; } if(jugadores.length>=6){ showToast('⚠️ Máximo 6 jugadores'); return false; } if(jugadores.find(j=>j.nombre.toLowerCase()===nombreNormalizado.toLowerCase())){ showToast('⚠️ Ese nombre ya existe'); return false; } const ci=jugadores.length % COLORES_AVATAR.length; const ai=jugadores.length % AVATARES.length; jugadores.push({ nombre: nombreNormalizado, avatarIdx:ai, colorIdx:ci, puntosTotal:0, nivelesJugados:[], terminado:false }); nombreJugadorActivo = nombreNormalizado; renderJugadoresList(); showToast(`✅ ${nombreNormalizado} agregado`); return true; }
+function confirmarModalJugador(){ const inp = document.getElementById('input-nombre-modal'); const nombre = inp.value.trim(); if(!agregarJugador(nombre)) return; cerrarModalJugador(); turnoActual = 0; jugadores.forEach(j=>{ j.puntosTotal=0; j.nivelesJugados=[]; j.terminado=false; }); empezarPartida(); irNivelesDesde(); }
+document.addEventListener('DOMContentLoaded',()=>{ const modalInput = document.getElementById('input-nombre-modal'); if(modalInput){ modalInput.addEventListener('keydown',e=>{ if(e.key==='Enter') confirmarModalJugador(); if(e.key==='Escape') cerrarModalJugador(); }); } document.getElementById('modal-jugador').addEventListener('click',e=>{ if(e.target.id==='modal-jugador') cerrarModalJugador(); }); });
+function renderJugadoresList(){ const lista=document.getElementById('jugadores-lista'); lista.innerHTML=''; jugadores.forEach((j,i)=>{ const div=document.createElement('div'); div.className='jugador-item'; div.style.animationDelay=`${i*0.05}s`; div.innerHTML=`<div class="jugador-avatar" style="background:${COLORES_AVATAR[j.colorIdx]}22;border:2px solid ${COLORES_AVATAR[j.colorIdx]};color:${COLORES_AVATAR[j.colorIdx]}">${AVATARES[j.avatarIdx]}</div><div><div class="jugador-nombre">${j.nombre}</div><div class="jugador-estado">Listo para jugar</div></div><button class="jugador-remove" onclick="quitarJugador(${i})" title="Eliminar">✕</button>`; lista.appendChild(div); }); const btn=document.getElementById('btn-empezar'); const hint=document.getElementById('hint-jugadores'); btn.disabled=jugadores.length<1; hint.textContent=jugadores.length===0?'Mínimo 1 jugador para comenzar':`${jugadores.length} jugador${jugadores.length>1?'es':''} registrado${jugadores.length>1?'s':''}`; }
+function quitarJugador(i){ jugadores.splice(i,1); renderJugadoresList(); }
+function empezarPartida(){ if(jugadores.length<1) return; turnoActual=0; jugadores.forEach(j=>{ j.puntosTotal=0; j.nivelesJugados=[]; j.terminado=false; }); rankingNivel = []; mostrarTurno(); }
+function mostrarTurno(){ const todosTerminaron = jugadores.every(j => j.terminado); if(todosTerminaron){ irRankingFinal(); return; } let intentosBusqueda=0; while(jugadores[turnoActual].terminado && intentosBusqueda < jugadores.length){ turnoActual=(turnoActual+1)%jugadores.length; intentosBusqueda++; } const j=jugadores[turnoActual]; if(j.terminado){ irRankingFinal(); return; } document.getElementById('turno-icono').textContent=AVATARES[j.avatarIdx]; document.getElementById('turno-nombre').textContent=j.nombre; const prog=document.getElementById('progreso-jugadores'); prog.innerHTML=jugadores.map((jj,i)=>`<div class="pj-chip ${i===turnoActual?'activo':''}"><div class="pjc-dot" style="background:${COLORES_AVATAR[jj.colorIdx]}"></div>${jj.nombre} · ${jj.nivelesJugados.length}/${SEMESTER_DATA[selectedSemester].levels.length}</div>`).join(''); mostrarScreen('screen-turno'); }
+function irNivelesDesde(){ renderNiveles(); mostrarScreen('screen-niveles'); }
+function volverTurno(){ mostrarScreen('screen-turno'); }
+function volverNiveles(){ renderNiveles(); mostrarScreen('screen-niveles'); }
+function renderNiveles(){ const j = jugadores[turnoActual] || { nombre: '-', avatarIdx: 0, colorIdx: 0, nivelesJugados: [] }; document.getElementById('banner-nombre').textContent = `${AVATARES[j.avatarIdx] || AVATARES[0]} ${j.nombre}`; const grid=document.getElementById('niveles-grid'); grid.innerHTML=''; const niveles = SEMESTER_DATA[selectedSemester].levels; niveles.forEach((n,i)=>{ const yaJugado = (j.nivelesJugados || []).some(nl=>nl.nivelIdx===i && nl.semester===selectedSemester); const card=document.createElement('div'); card.className='nivel-card'+(yaJugado?' ya-jugado':''); card.style.cssText=`--nivel-color:${n.color};--nivel-glow:${n.color}44;animation-delay:${i*0.08}s`; let desc = ''; if(n.type === 'trivia') desc = n.questions.map(q=>q.text).slice(0,4).join(', '); else desc = n.pares.slice(0,4).map(p=>p.nombre).join(', '); card.innerHTML=`${yaJugado?`<div class="nivel-jugado-tag">✓ Jugado</div>`:''}<div class="nivel-num">Nivel ${i+1}</div><div class="nivel-stars">${n.stars}</div><div class="nivel-titulo">${n.nombre}</div><div class="nivel-desc">${desc}${desc.length>50?'...':''}</div><div class="nivel-badge">${n.type === 'trivia' ? n.questions.length+' preguntas' : n.pares.length+' parejas'} · ${n.dif}</div><span class="nivel-icon">${n.icono}</span>`; if(!yaJugado) card.onclick=()=>abrirLobbyNivel(i); grid.appendChild(card); }); }
+function comenzarPartidaConCuentaRegresiva(){ const code = currentRoomCode || document.getElementById('input-sala').value.trim().toUpperCase(); if(!code){ showToast('Primero crea o entra a una sala'); return; } if(mySocketId && currentRoomHostId && mySocketId !== currentRoomHostId){ showToast('Solo el creador puede comenzar'); return; } if(countdownActive){ return; } const nivel = SEMESTER_DATA[selectedSemester].levels[nivelPendiente] || SEMESTER_DATA[selectedSemester].levels[0]; const pairsCount = nivel.type === 'trivia' ? (nivel.questions ? nivel.questions.length : 0) : (nivel.pares ? nivel.pares.length : 0); if(!socket){ connectSocket(); } socket.emit('startRoomCountdown',{code,semester:selectedSemester,levelIdx:nivelPendiente,pairsCount}); }
+
+// ========== NUEVA FUNCIÓN PARA INICIAR NIVEL MULTIPLAYER ==========
+function iniciarNivelMultiplayer(idx, permutation) {
+  // Si hay permutación, la ignoramos porque usamos rondas fijas
+  iniciarNivel(idx);
+}
+
+function iniciarNivel(idx) {
+  const nivel = SEMESTER_DATA[selectedSemester].levels[idx];
+  if (nivel.type === 'trivia') {
+    iniciarTrivia(nivel.questions);
+    return;
+  }
+  // --- Inicializar memorama por rondas ---
+  nivelActual = idx;
+  const jugador = jugadores[turnoActual];
+  aciertos = 0;
+  intentos = 0;
+  errores = 0;
+  voltadas = [];
+  bloqueado = false;
+  segundos = 0;
+  totalPares = nivel.pares.length;
+  isMemoramaComplete = false;
+
+  // Preparar todas las cartas (pares)
+  const allPairs = [];
+  nivel.pares.forEach(par => {
+    allPairs.push([
+      { pairId: par.id, isImage: true, imageSrc: par.imageSrc || null, emoji: par.emoji || '🖼️', label: par.nombre, tipo: par.tipo, matched: false },
+      { pairId: par.id, isImage: false, imageSrc: null, emoji: par.emoji, label: par.nombre, tipo: par.tipo, matched: false }
+    ]);
+  });
+  shuffle(allPairs);
+  remainingPairs = [...allPairs];
+  currentRoundIndex = 0;
+  totalRounds = Math.ceil(remainingPairs.length / 4); // 4 pares por ronda (8 cartas)
+  cargarSiguienteRonda(nivel.color);
+
+  // Actualizar UI
+  document.getElementById('game-level-title').textContent = `Nivel ${idx+1} · ${nivel.nombre}`;
+  document.getElementById('nivel-nombre-top').textContent = `Nivel ${idx+1}`;
+  document.getElementById('game-jugador-badge').textContent = `${AVATARES[jugador.avatarIdx]} ${jugador.nombre}`;
+  document.querySelector('.nivel-dot').style.background = nivel.color;
+  document.querySelector('.nivel-dot').style.boxShadow = `0 0 8px ${nivel.color}`;
+  document.querySelector('.timer-ring .fg').style.stroke = nivel.color;
+  updateStats();
+  document.getElementById('progress-bar').style.width = '0%';
+  mostrarScreen('screen-juego');
+  iniciarTimer();
+}
+
+function cargarSiguienteRonda(color) {
+  if (remainingPairs.length === 0) {
+    // Fin del memorama
+    isMemoramaComplete = true;
+    if (selectedSemester === 2 && nivelActual === 0) {
+      // Segundo semestre: pasar a trivia
+      const nivelTrivia = SEMESTER_DATA[2].levels[1];
+      iniciarTrivia(nivelTrivia.questions);
+    } else {
+      mostrarResultadoJugador();
+    }
+    return;
+  }
+  const paresTomados = remainingPairs.splice(0, 4);
+  currentRoundPairs = paresTomados;
+  cartasRonda = [];
+  for (const [cartaA, cartaB] of paresTomados) {
+    cartasRonda.push(cartaA, cartaB);
+  }
+  shuffle(cartasRonda);
+  renderCartas(cartasRonda, color);
+  currentRoundIndex++;
+  document.getElementById('progress-bar').style.width = `${(aciertos / totalPares) * 100}%`;
+}
+
+function renderCartas(cartasArray, color) {
+  const grid = document.getElementById('cards-grid');
+  grid.innerHTML = '';
+  cartasArray.forEach((carta, idx) => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.dataset.idx = idx;
+    div.style.setProperty('--card-accent', color + '66');
+    let frontContent = '';
+    if (carta.isImage) {
+      if (carta.imageSrc) {
+        frontContent = `<img src="${carta.imageSrc}" alt="${carta.label}" loading="lazy">`;
+      } else {
+        frontContent = `<div class="card-emoji">${carta.emoji}</div><div class="card-type">Imagen</div>`;
+      }
+    } else {
+      frontContent = `<div class="card-label">${carta.label}</div><div class="card-type">${carta.tipo}</div>`;
+    }
+    div.innerHTML = `<div class="card-inner"><div class="card-face card-back-face"></div><div class="card-face card-front-face">${frontContent}</div></div>`;
+    div.addEventListener('click', () => voltearCarta(idx));
+    grid.appendChild(div);
+  });
+}
+
+function voltearCarta(idx) {
+  if (bloqueado) return;
+  const carta = cartasRonda[idx];
+  if (carta.matched) return;
+  const el = document.querySelector(`.card[data-idx="${idx}"]`);
+  if (el.classList.contains('flipped')) return;
+  el.classList.add('flipped');
+  voltadas.push(idx);
+  if (voltadas.length === 2) {
+    intentos++;
+    bloqueado = true;
+    setTimeout(() => verificarPar(), 700);
+  }
+}
+
+function verificarPar() {
+  const [a, b] = voltadas;
+  const ca = cartasRonda[a];
+  const cb = cartasRonda[b];
+  const elA = document.querySelector(`.card[data-idx="${a}"]`);
+  const elB = document.querySelector(`.card[data-idx="${b}"]`);
+  if (ca.pairId === cb.pairId && ca.isImage !== cb.isImage) {
+    ca.matched = true;
+    cb.matched = true;
+    elA.classList.add('matched');
+    elB.classList.add('matched');
+    aciertos++;
+    document.getElementById('progress-bar').style.width = `${(aciertos / totalPares) * 100}%`;
+    // Comprobar si la ronda actual está completa
+    const allMatched = cartasRonda.every(c => c.matched);
+    if (allMatched) {
+      cargarSiguienteRonda(document.querySelector('.nivel-dot').style.background);
+    }
+  } else {
+    errores++;
+    elA.classList.add('wrong');
+    elB.classList.add('wrong');
+    setTimeout(() => {
+      elA.classList.remove('flipped', 'wrong');
+      elB.classList.remove('flipped', 'wrong');
+    }, 800);
+  }
+  voltadas = [];
+  bloqueado = false;
+  updateStats();
+}
+
+function mostrarResultadoJugador() {
   limpiarTimer();
-  const cal=calcCalificacion(aciertos,intentos);
-  const pts=calcPuntos(cal,segundos,totalPares);
-  const j=jugadores[turnoActual];
+  const cal = calcCalificacion(aciertos, intentos);
+  const pts = calcPuntos(cal, segundos, totalPares);
+  const j = jugadores[turnoActual];
+  j.nivelesJugados.push({ semester: selectedSemester, nivelIdx: nivelActual, cal, pts, tiempo: segundos, aciertos, intentos });
+  j.puntosTotal += pts;
+  if (j.nivelesJugados.length >= SEMESTER_DATA[selectedSemester].levels.length) j.terminado = true;
 
-  // Guardar resultado
-  j.nivelesJugados.push({semester:selectedSemester,nivelIdx:nivelActual,cal,pts,tiempo:segundos,aciertos,intentos});
-  j.puntosTotal+=pts;
-  if(j.nivelesJugados.length>=5) j.terminado=true;
+  if (selectedSemester === 1 || (selectedSemester === 2 && nivelActual === 0)) {
+    rankingNivel.push({ nombre: j.nombre, errores: errores, tiempo: segundos });
+    rankingNivel.sort((a,b) => {
+      if (a.errores !== b.errores) return a.errores - b.errores;
+      return a.tiempo - b.tiempo;
+    });
+  }
+  mostrarResultadoUI(cal, pts, aciertos, intentos, j, false);
+}
 
-  // UI
-  let emoji,titulo,subtitulo,stars;
-  if(cal===10){emoji="🏆";titulo="¡Perfecto!";subtitulo="Memoria excepcional. ¡Experto en anatomía!";stars="⭐⭐⭐⭐⭐";}
-  else if(cal>=9){emoji="🥇";titulo="¡Excelente!";subtitulo="Casi sin errores, muy buen desempeño.";stars="⭐⭐⭐⭐½";}
-  else if(cal>=8){emoji="🥈";titulo="¡Muy Bien!";subtitulo="Buen trabajo, sigue practicando.";stars="⭐⭐⭐⭐";}
-  else if(cal>=7){emoji="🥉";titulo="¡Bien!";subtitulo="Puedes mejorar con más práctica.";stars="⭐⭐⭐";}
-  else{emoji="📚";titulo="Sigue Practicando";subtitulo="Repasa los conceptos e inténtalo de nuevo.";stars="⭐⭐";}
-
+// ========== TRIVIA ==========
+function iniciarTrivia(questions) {
+  currentTriviaQuestions = [...questions];
+  currentTriviaIndex = 0;
+  triviaScore = 0;
+  triviaAnswered = false;
+  actualizarInterfazTrivia();
+  mostrarScreen('screen-trivia');
+}
+function actualizarInterfazTrivia() {
+  const total = currentTriviaQuestions.length;
+  document.getElementById('trivia-progress').textContent = `Pregunta ${currentTriviaIndex+1} / ${total}`;
+  document.querySelector('.trivia-score').textContent = `Puntos: ${triviaScore}`;
+  const q = currentTriviaQuestions[currentTriviaIndex];
+  document.getElementById('trivia-question').textContent = q.text;
+  const optionsDiv = document.getElementById('trivia-options');
+  optionsDiv.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'trivia-option';
+    btn.textContent = opt;
+    btn.onclick = () => responderTrivia(opt);
+    optionsDiv.appendChild(btn);
+  });
+  document.getElementById('trivia-feedback').style.display = 'none';
+  document.getElementById('trivia-next-btn').disabled = true;
+  triviaAnswered = false;
+}
+function responderTrivia(selected) {
+  if (triviaAnswered) return;
+  triviaAnswered = true;
+  const q = currentTriviaQuestions[currentTriviaIndex];
+  const isCorrect = (selected === q.correct);
+  const feedbackDiv = document.getElementById('trivia-feedback');
+  if (isCorrect) {
+    triviaScore += 100;
+    feedbackDiv.className = 'trivia-feedback correct';
+    feedbackDiv.innerHTML = '✅ ¡Correcto! +100 puntos';
+    feedbackDiv.style.display = 'block';
+  } else {
+    feedbackDiv.className = 'trivia-feedback incorrect';
+    feedbackDiv.innerHTML = `❌ Incorrecto. La respuesta correcta era: ${q.correct}.`;
+    feedbackDiv.style.display = 'block';
+  }
+  document.querySelector('.trivia-score').textContent = `Puntos: ${triviaScore}`;
+  document.querySelectorAll('.trivia-option').forEach(btn => btn.classList.add('disabled'));
+  document.getElementById('trivia-next-btn').disabled = false;
+}
+function siguientePregunta() {
+  if (currentTriviaIndex + 1 < currentTriviaQuestions.length) {
+    currentTriviaIndex++;
+    actualizarInterfazTrivia();
+  } else {
+    finalizarTrivia();
+  }
+}
+function finalizarTrivia() {
+  const total = currentTriviaQuestions.length;
+  const aciertos = triviaScore / 100;
+  const cal = calcTriviaPuntos(aciertos, total);
+  const pts = triviaScore;
+  const j = jugadores[turnoActual];
+  j.nivelesJugados.push({ semester: selectedSemester, nivelIdx: nivelActual, cal, pts, aciertos: aciertos, total: total, type: 'trivia' });
+  j.puntosTotal += pts;
+  if (j.nivelesJugados.length >= SEMESTER_DATA[selectedSemester].levels.length) j.terminado = true;
+  mostrarResultadoUI(cal, pts, aciertos, total, j, true);
+}
+function mostrarResultadoUI(cal, pts, aciertos, total, j, isTrivia) {
+  let emoji, titulo, subtitulo, stars;
+  if(cal===10){emoji="🏆";titulo="¡Perfecto!";subtitulo="¡Conoces muy bien la anatomía!";stars="⭐⭐⭐⭐⭐";}
+  else if(cal>=9){emoji="🥇";titulo="¡Excelente!";subtitulo="Muy buen desempeño.";stars="⭐⭐⭐⭐½";}
+  else if(cal>=8){emoji="🥈";titulo="¡Muy Bien!";subtitulo="Sigue así.";stars="⭐⭐⭐⭐";}
+  else if(cal>=7){emoji="🥉";titulo="¡Bien!";subtitulo="Puedes mejorar.";stars="⭐⭐⭐";}
+  else{emoji="📚";titulo="Sigue Practicando";subtitulo="Repasa los conceptos.";stars="⭐⭐";}
   document.getElementById('res-emoji').textContent=emoji;
   document.getElementById('res-titulo').textContent=titulo;
   document.getElementById('res-subtitulo').textContent=`${j.nombre} — ${subtitulo}`;
   document.getElementById('res-aciertos').textContent=aciertos;
-  document.getElementById('res-intentos').textContent=intentos;
-  document.getElementById('res-tiempo').textContent=formatTiempo(segundos);
+  document.getElementById('res-intentos').textContent=total;
+  document.getElementById('res-tiempo').textContent=isTrivia ? 'Trivia' : formatTiempo(segundos);
   document.getElementById('res-calificacion').textContent=cal;
   document.getElementById('res-stars').textContent=stars;
   document.getElementById('res-puntos').textContent=`+${pts} puntos · Total: ${j.puntosTotal}`;
 
-  // Botón siguiente
-  const btnSig=document.getElementById('btn-siguiente-turno');
-  const todosTerminaron=jugadores.every(jj=>jj.terminado);
+  const rankingDiv = document.getElementById('ranking-nivel-container');
+  if((selectedSemester === 1) || (selectedSemester === 2 && nivelActual === 0)) {
+    rankingDiv.style.display = 'block';
+    const top5 = rankingNivel.slice(0,5);
+    let html = '<h4>🏆 Ranking del nivel (menos errores y tiempo)</h4>';
+    top5.forEach((item, idx) => {
+      html += `<div class="ranking-nivel-item"><span class="pos">${idx+1}º</span><span class="name">${item.nombre}</span><span class="metric">${item.errores} err · ${formatTiempo(item.tiempo)}</span></div>`;
+    });
+    rankingDiv.innerHTML = html;
+  } else {
+    rankingDiv.style.display = 'none';
+  }
+
+  const btnSig = document.getElementById('btn-siguiente-turno');
+  const todosTerminaron = jugadores.every(jj => jj.terminado);
   if(todosTerminaron){ btnSig.textContent='🏆 Ver Ranking Final'; }
   else {
-    // Siguiente jugador
-    let sig=(turnoActual+1)%jugadores.length;
-    let loops=0;
-    while(jugadores[sig].terminado && loops<jugadores.length){sig=(sig+1)%jugadores.length;loops++;}
-    btnSig.textContent=jugadores[sig].terminado?'🏆 Ver Ranking Final':`Turno de ${jugadores[sig].nombre} →`;
+    let sig = (turnoActual+1) % jugadores.length;
+    let loops = 0;
+    while(jugadores[sig].terminado && loops < jugadores.length){ sig = (sig+1)%jugadores.length; loops++; }
+    btnSig.textContent = jugadores[sig].terminado ? '🏆 Ver Ranking Final' : `Turno de ${jugadores[sig].nombre} →`;
   }
-
   mostrarScreen('screen-resultado');
   if(cal>=8) lanzarConfetti();
-
-  // Enviar resultado al servidor si estamos en modo sala
   if(socket && currentRoomCode){
-    socket.emit('playerResult',{ code: currentRoomCode, playerId: mySocketId, result: { semester:selectedSemester, nivelIdx:nivelActual, cal, pts, tiempo:segundos, aciertos, intentos } });
+    socket.emit('playerResult',{ code: currentRoomCode, playerId: mySocketId, result: { semester:selectedSemester, nivelIdx:nivelActual, cal, pts, aciertos, total, type: isTrivia ? 'trivia' : 'memorama' } });
   }
 }
-
 function siguienteTurno(){
-  // Avanzar al siguiente jugador
-  turnoActual=(turnoActual+1)%jugadores.length;
-  const todosTerminaron=jugadores.every(j=>j.terminado);
+  turnoActual = (turnoActual+1) % jugadores.length;
+  const todosTerminaron = jugadores.every(j => j.terminado);
   if(todosTerminaron){ irRankingFinal(); return; }
   mostrarTurno();
 }
-
-// ========== RANKING FINAL ==========
-function irRankingFinal(){
-  renderRanking(false);
-  mostrarScreen('screen-ranking');
-  setTimeout(lanzarConfetti,400);
-}
-
-function irRankingDesdeInicio(){
-  modoSoloRanking=true;
-  if(jugadores.length===0){ showToast('⚠️ No hay partida activa'); return; }
-  renderRanking(true);
-  mostrarScreen('screen-ranking');
-}
-
-function renderRanking(soloVer){
-  const sorted=[...jugadores].sort((a,b)=>b.puntosTotal-a.puntosTotal);
-  document.getElementById('ranking-sub').textContent=soloVer?'Puntajes actuales':'¡Partida terminada! Resultados finales';
-
-  // Podio (top 3)
-  const podio=document.getElementById('ranking-podio');
-  podio.innerHTML='';
-  const orden=sorted.length>=3?[sorted[1],sorted[0],sorted[2]]:[...sorted];
-  const alturas=[80,110,60];
-  const podioColors=['#aaaaaa','#ffd700','#cd7f32'];
-  const medallas=['🥈','🥇','🥉'];
-  const posLabels=[2,1,3];
-
-  if(sorted.length>=3){
-    orden.forEach((j,i)=>{
-      if(!j) return;
-      const div=document.createElement('div');
-      div.className='podio-lugar';
-      div.style.animationDelay=`${i*0.15}s`;
-      div.innerHTML=`
-        ${i===1?`<div class="podio-corona">👑</div>`:''}
-        <div class="podio-avatar" style="background:${COLORES_AVATAR[j.colorIdx]}22;border-color:${podioColors[i]};color:${COLORES_AVATAR[j.colorIdx]};width:${i===1?'70px':'55px'};height:${i===1?'70px':'55px'}">${AVATARES[j.avatarIdx]}</div>
-        <div class="podio-nombre">${j.nombre}</div>
-        <div class="podio-pts" style="color:${podioColors[i]}">${j.puntosTotal}</div>
-        <div class="podio-barra" style="background:${podioColors[i]}22;border:1px solid ${podioColors[i]}44;height:${alturas[i]}px">${posLabels[i]}</div>`;
-      podio.appendChild(div);
-    });
-  }
-
-  // Lista completa
-  const lista=document.getElementById('ranking-lista');
-  lista.innerHTML='';
-  sorted.forEach((j,i)=>{
-    const pos=['🥇','🥈','🥉'][i]||(i+1+'º');
-    const medallas2=['rank-1','rank-2','rank-3'][i]||'';
-    const div=document.createElement('div');
-    div.className=`rank-item ${medallas2}`;
-    div.style.animationDelay=`${i*0.08}s`;
-    const nivJug=j.nivelesJugados.length;
-    const calProm=nivJug>0?(j.nivelesJugados.reduce((s,n)=>s+n.cal,0)/nivJug).toFixed(1):'—';
-    const tiempoTotal=j.nivelesJugados.reduce((s,n)=>s+n.tiempo,0);
-    div.innerHTML=`
-      <div class="rank-pos">${pos}</div>
-      <div class="rank-avatar" style="background:${COLORES_AVATAR[j.colorIdx]}22;border:2px solid ${COLORES_AVATAR[j.colorIdx]};color:${COLORES_AVATAR[j.colorIdx]}">${AVATARES[j.avatarIdx]}</div>
-      <div class="rank-info">
-        <div class="rank-nombre">${j.nombre}</div>
-        <div class="rank-detalle">Cal. prom: ${calProm} · Niveles: ${nivJug}/5 · Tiempo: ${formatTiempo(tiempoTotal)}</div>
-      </div>
-      <div class="rank-puntos">
-        <div class="rank-pts-num">${j.puntosTotal}</div>
-        <div class="rank-pts-label">puntos</div>
-      </div>`;
-    lista.appendChild(div);
-  });
-}
-
+function irRankingFinal(){ renderRanking(false); mostrarScreen('screen-ranking'); setTimeout(lanzarConfetti,400); }
+function irRankingDesdeInicio(){ modoSoloRanking=true; if(jugadores.length===0){ showToast('⚠️ No hay partida activa'); return; } renderRanking(true); mostrarScreen('screen-ranking'); }
+function renderRanking(soloVer){ const sorted=[...jugadores].sort((a,b)=>b.puntosTotal-a.puntosTotal); document.getElementById('ranking-sub').textContent=soloVer?'Puntajes actuales':'¡Partida terminada! Resultados finales'; const podio=document.getElementById('ranking-podio'); podio.innerHTML=''; const orden=sorted.length>=3?[sorted[1],sorted[0],sorted[2]]:[...sorted]; const alturas=[80,110,60]; const podioColors=['#aaaaaa','#ffd700','#cd7f32']; const posLabels=[2,1,3]; if(sorted.length>=3){ orden.forEach((j,i)=>{ if(!j) return; const div=document.createElement('div'); div.className='podio-lugar'; div.style.animationDelay=`${i*0.15}s`; div.innerHTML=`${i===1?`<div class="podio-corona">👑</div>`:''}<div class="podio-avatar" style="background:${COLORES_AVATAR[j.colorIdx]}22;border-color:${podioColors[i]};color:${COLORES_AVATAR[j.colorIdx]};width:${i===1?'70px':'55px'};height:${i===1?'70px':'55px'}">${AVATARES[j.avatarIdx]}</div><div class="podio-nombre">${j.nombre}</div><div class="podio-pts" style="color:${podioColors[i]}">${j.puntosTotal}</div><div class="podio-barra" style="background:${podioColors[i]}22;border:1px solid ${podioColors[i]}44;height:${alturas[i]}px">${posLabels[i]}</div>`; podio.appendChild(div); }); } const lista=document.getElementById('ranking-lista'); lista.innerHTML=''; sorted.forEach((j,i)=>{ const pos=['🥇','🥈','🥉'][i]||(i+1+'º'); const medallas2=['rank-1','rank-2','rank-3'][i]||''; const div=document.createElement('div'); div.className=`rank-item ${medallas2}`; div.style.animationDelay=`${i*0.08}s`; const nivJug=j.nivelesJugados.length; const calProm=nivJug>0?(j.nivelesJugados.reduce((s,n)=>s+n.cal,0)/nivJug).toFixed(1):'—'; const tiempoTotal=j.nivelesJugados.reduce((s,n)=>s+n.tiempo,0); div.innerHTML=`<div class="rank-pos">${pos}</div><div class="rank-avatar" style="background:${COLORES_AVATAR[j.colorIdx]}22;border:2px solid ${COLORES_AVATAR[j.colorIdx]};color:${COLORES_AVATAR[j.colorIdx]}">${AVATARES[j.avatarIdx]}</div><div class="rank-info"><div class="rank-nombre">${j.nombre}</div><div class="rank-detalle">Cal. prom: ${calProm} · Niveles: ${nivJug}/${SEMESTER_DATA[selectedSemester].levels.length} · Tiempo: ${formatTiempo(tiempoTotal)}</div></div><div class="rank-puntos"><div class="rank-pts-num">${j.puntosTotal}</div><div class="rank-pts-label">puntos</div></div>`; lista.appendChild(div); }); }
 function nuevaPartida(){ irRegistro(); }
+function lanzarConfetti(){ const cols=['#00d4ff','#00ff9d','#ffd700','#ff6b6b','#c678dd','#ff9f43']; for(let i=0;i<70;i++){ setTimeout(()=>{ const el=document.createElement('div'); el.className='confetti-piece'; el.style.left=Math.random()*100+'vw'; el.style.background=cols[Math.floor(Math.random()*cols.length)]; el.style.animationDuration=(1.5+Math.random()*1.5)+'s'; el.style.transform=`rotate(${Math.random()*360}deg)`; document.body.appendChild(el); setTimeout(()=>el.remove(),3000); },i*35); } }
+function initParticles(){ const c=document.getElementById('particles'); for(let i=0;i<20;i++){ const p=document.createElement('div'); p.className='particle'; const s=3+Math.random()*5; p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${Math.random()>.5?'#00d4ff':'#00ff9d'};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*10}s;`; c.appendChild(p); } }
 
-// ========== CONFETTI ==========
-function lanzarConfetti(){
-  const cols=['#00d4ff','#00ff9d','#ffd700','#ff6b6b','#c678dd','#ff9f43'];
-  for(let i=0;i<70;i++){
-    setTimeout(()=>{
-      const el=document.createElement('div');
-      el.className='confetti-piece';
-      el.style.left=Math.random()*100+'vw';
-      el.style.background=cols[Math.floor(Math.random()*cols.length)];
-      el.style.animationDuration=(1.5+Math.random()*1.5)+'s';
-      el.style.transform=`rotate(${Math.random()*360}deg)`;
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(),3000);
-    },i*35);
-  }
-}
-
-// ========== PARTICLES ==========
-function initParticles(){
-  const c=document.getElementById('particles');
-  for(let i=0;i<20;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    const s=3+Math.random()*5;
-    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${Math.random()>.5?'#00d4ff':'#00ff9d'};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*10}s;`;
-    c.appendChild(p);
-  }
-}
+document.getElementById('trivia-next-btn').addEventListener('click', siguientePregunta);
+connectSocket();
 initParticles();
 selectSemester(1);
 </script>
