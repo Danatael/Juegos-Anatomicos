@@ -6,6 +6,7 @@
 <title>Memorama Anatómico Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
+/* ========== ESTILOS (completos, igual que antes) ========== */
 :root {
   --bg:#0a1628; --bg2:#0e1f3d; --card-back:#112244;
   --accent:#00d4ff; --accent2:#00ff9d; --accent3:#ff6b6b;
@@ -488,7 +489,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 
 <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 <script>
-// ========== SOCKET.IO CLIENTE ==========
+// ========== SOCKET.IO CLIENTE (sin cambios, igual que antes) ==========
 const SOCKET_URL = (window.location.protocol === 'file:' ? 'http://localhost:3000' : window.location.origin);
 let socket = null;
 let socketConnected = false;
@@ -535,25 +536,26 @@ function abrirLobbyNivel(idx) { nivelPendiente = idx; const name = nombreJugador
 const AVATARES = ["🧑","👩","🧒","👦","👧","🧔","👨‍🦰","👩‍🦱","🧑‍🦲","👩‍🦳","🧑‍🎓","👩‍🔬"];
 const COLORES_AVATAR = ["#00d4ff","#00ff9d","#ff9f43","#ff6b6b","#c678dd","#ffd700","#2ec4b6","#e94560"];
 
-// Imágenes para memorama (primer semestre y segundo semestre - memorama)
+// ========== NUEVO ARRAY CON LAS 15 IMÁGENES ANATÓMICAS ==========
 const imagenesMemorama = [
   { kind:'image', id:'medial', imageSrc:'img/1.jpeg', nombre:'Medial', tipo:'Orientación' },
-  { kind:'image', id:'transversal', emoji:'✂️', nombre:'Transversal (axial)', tipo:'Definición' },
-  { kind:'image', id:'abduccion', emoji:'↔️', nombre:'Abducción', tipo:'Movimiento' },
+  { kind:'image', id:'transversal', imageSrc:'img/2.jpeg', nombre:'Transversal (axial)', tipo:'Plano anatómico' },
+  { kind:'image', id:'abduccion', imageSrc:'img/3.jpeg', nombre:'Abducción', tipo:'Movimiento' },
   { kind:'image', id:'esferoidea', imageSrc:'img/4.jpeg', nombre:'Esferoidea (Enartrosis)', tipo:'Articulación' },
   { kind:'image', id:'epimisio', imageSrc:'img/5.jpeg', nombre:'Epimisio', tipo:'Tejido' },
-  { kind:'image', id:'vena', emoji:'🩸', nombre:'Vena', tipo:'Vaso' },
+  { kind:'image', id:'vena', imageSrc:'img/6.jpeg', nombre:'Vena', tipo:'Vaso sanguíneo' },
   { kind:'image', id:'dendrita', imageSrc:'img/7.jpeg', nombre:'Dendrita', tipo:'Neurona' },
-  { kind:'image', id:'peritoneo', emoji:'🧻', nombre:'Peritoneo', tipo:'Función' },
   { kind:'image', id:'dermis', imageSrc:'img/8.jpeg', nombre:'Dermis', tipo:'Piel' },
   { kind:'image', id:'arteria_tiroidea_ima', imageSrc:'img/9.jpeg', nombre:'Arteria tiroidea ima', tipo:'Vascular' },
+  { kind:'image', id:'palmar_plantar', imageSrc:'img/10.jpeg', nombre:'Superficie palmar y plantar', tipo:'Terminología' },
   { kind:'image', id:'laringe', imageSrc:'img/11.jpeg', nombre:'Laringe', tipo:'Sistema respiratorio' },
-  { kind:'image', id:'articulacion_coronal', imageSrc:'img/14.jpeg', nombre:'Articulación coronal', tipo:'Articulación' },
-  { kind:'image', id:'conducto_toracico', imageSrc:'img/15.jpeg', nombre:'Conducto torácico', tipo:'Vascular' },
-  { kind:'image', id:'meninges', emoji:'🧠', nombre:'Duramadre, aracnoides, piamadre', tipo:'Capas' }
+  { kind:'image', id:'aferente', imageSrc:'img/12.jpeg', nombre:'Vía aferente (sensorial)', tipo:'Neuroanatomía' },
+  { kind:'image', id:'hueso_corto', imageSrc:'img/13.jpeg', nombre:'Hueso corto (carpo)', tipo:'Clasificación ósea' },
+  { kind:'image', id:'articulacion_coronal', imageSrc:'img/14.jpeg', nombre:'Articulación coronal', tipo:'Articulación del cráneo' },
+  { kind:'image', id:'conducto_toracico', imageSrc:'img/15.jpeg', nombre:'Conducto torácico', tipo:'Sistema linfático' }
 ];
 
-// Trivia (para segundo y tercer semestre)
+// Trivia (para segundo y tercer semestre) - igual que antes
 function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 function generateOptions(correct, allAnswers, currentIdx) {
   let incorrect = allAnswers.filter((a, i) => i !== currentIdx && a !== correct);
@@ -623,8 +625,8 @@ let turnoActual = 0;
 let nivelActual = 0;
 let modoSoloRanking = false;
 // Memorama por rondas
-let cartasGlobal = [];          // Todas las cartas del nivel completo
-let cartasRonda = [];           // Cartas de la ronda actual (máx 8-10)
+let cartasGlobal = [];
+let cartasRonda = [];
 let voltadas = [];
 let aciertos = 0, intentos = 0, errores = 0;
 let bloqueado = false;
@@ -633,7 +635,7 @@ let segundos = 0;
 let totalPares = 0;
 let currentRoundIndex = 0;
 let totalRounds = 0;
-let remainingPairs = [];        // Pares completos pendientes
+let remainingPairs = [];
 let currentRoundPairs = [];
 let isMemoramaComplete = false;
 // Trivia
@@ -675,9 +677,8 @@ function volverNiveles(){ renderNiveles(); mostrarScreen('screen-niveles'); }
 function renderNiveles(){ const j = jugadores[turnoActual] || { nombre: '-', avatarIdx: 0, colorIdx: 0, nivelesJugados: [] }; document.getElementById('banner-nombre').textContent = `${AVATARES[j.avatarIdx] || AVATARES[0]} ${j.nombre}`; const grid=document.getElementById('niveles-grid'); grid.innerHTML=''; const niveles = SEMESTER_DATA[selectedSemester].levels; niveles.forEach((n,i)=>{ const yaJugado = (j.nivelesJugados || []).some(nl=>nl.nivelIdx===i && nl.semester===selectedSemester); const card=document.createElement('div'); card.className='nivel-card'+(yaJugado?' ya-jugado':''); card.style.cssText=`--nivel-color:${n.color};--nivel-glow:${n.color}44;animation-delay:${i*0.08}s`; let desc = ''; if(n.type === 'trivia') desc = n.questions.map(q=>q.text).slice(0,4).join(', '); else desc = n.pares.slice(0,4).map(p=>p.nombre).join(', '); card.innerHTML=`${yaJugado?`<div class="nivel-jugado-tag">✓ Jugado</div>`:''}<div class="nivel-num">Nivel ${i+1}</div><div class="nivel-stars">${n.stars}</div><div class="nivel-titulo">${n.nombre}</div><div class="nivel-desc">${desc}${desc.length>50?'...':''}</div><div class="nivel-badge">${n.type === 'trivia' ? n.questions.length+' preguntas' : n.pares.length+' parejas'} · ${n.dif}</div><span class="nivel-icon">${n.icono}</span>`; if(!yaJugado) card.onclick=()=>abrirLobbyNivel(i); grid.appendChild(card); }); }
 function comenzarPartidaConCuentaRegresiva(){ const code = currentRoomCode || document.getElementById('input-sala').value.trim().toUpperCase(); if(!code){ showToast('Primero crea o entra a una sala'); return; } if(mySocketId && currentRoomHostId && mySocketId !== currentRoomHostId){ showToast('Solo el creador puede comenzar'); return; } if(countdownActive){ return; } const nivel = SEMESTER_DATA[selectedSemester].levels[nivelPendiente] || SEMESTER_DATA[selectedSemester].levels[0]; const pairsCount = nivel.type === 'trivia' ? (nivel.questions ? nivel.questions.length : 0) : (nivel.pares ? nivel.pares.length : 0); if(!socket){ connectSocket(); } socket.emit('startRoomCountdown',{code,semester:selectedSemester,levelIdx:nivelPendiente,pairsCount}); }
 
-// ========== NUEVA FUNCIÓN PARA INICIAR NIVEL MULTIPLAYER ==========
+// ========== FUNCIONES DE MEMORAMA POR RONDAS (3x3) ==========
 function iniciarNivelMultiplayer(idx, permutation) {
-  // Si hay permutación, la ignoramos porque usamos rondas fijas
   iniciarNivel(idx);
 }
 
