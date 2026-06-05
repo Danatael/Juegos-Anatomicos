@@ -183,6 +183,14 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .card-front-face{background:var(--card-bg,linear-gradient(135deg,#0d2845,#0a1f3a));border:2px solid var(--card-accent,rgba(0,212,255,.4));transform:rotateY(180deg);flex-direction:column;gap:.4rem;padding:.6rem .4rem;box-shadow:inset 0 0 20px rgba(0,0,0,.3);}
 .card.matched .card-front-face{border-color:var(--accent2)!important;background:linear-gradient(135deg,#0a2d1a,#072318)!important;box-shadow:0 0 20px rgba(0,255,157,.3);}
 .card-emoji{font-size:clamp(1.4rem,4vw,2.1rem);line-height:1;}
+/* Estilo para imágenes dentro de las cartas */
+.card-front-face img {
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 4px;
+}
 .card-label{font-size:clamp(.58rem,1.8vw,.76rem);font-weight:700;color:var(--text);line-height:1.2;text-align:center;}
 .card-type{font-size:clamp(.48rem,1.2vw,.6rem);color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.07);border-radius:50px;padding:.12rem .35rem;}
 .card:hover:not(.flipped):not(.matched) .card-back-face{border-color:rgba(0,212,255,.5);background:#152f5a;}
@@ -820,27 +828,28 @@ function abrirLobbyNivel(idx) {
   }
 }
 
-// ========== DATA Y FUNCIONES DEL JUEGO (SIN CAMBIOS) ==========
+// ========== DATA Y FUNCIONES DEL JUEGO (con imágenes integradas) ==========
 // Estructura por semestres y niveles (Primer y Segundo semestre).
+// Se han añadido imageSrc a los primeros 9 pares del nivel Básico del Primer Semestre.
 const SEMESTER_DATA = {
   1: {
     name: 'Primer Semestre',
     levels: [
       { nombre: 'Básico', color:'#00d4ff', icono:'🧍', stars:'★☆☆☆☆', dif:'Básico', pares:[
-          {id:'medial',emoji:'📍',nombre:'Medial',tipo:'Definición'},
-          {id:'transversal',emoji:'✂️',nombre:'Transversal (axial)',tipo:'Definición'},
-          {id:'abduccion',emoji:'↔️',nombre:'Abducción',tipo:'Movimiento'},
-          {id:'esferoidea',emoji:'🔴',nombre:'Esferoidea (Enartrosis)',tipo:'Articulación'},
-          {id:'epimisio',emoji:'🧵',nombre:'Epimisio',tipo:'Tejido'},
-          {id:'vena',emoji:'🩸',nombre:'Vena',tipo:'Vaso'},
-          {id:'dendrita',emoji:'🌿',nombre:'Dendrita',tipo:'Neurona'},
-          {id:'peritoneo',emoji:'🧻',nombre:'Peritoneo',tipo:'Función'},
-          {id:'trapecio',emoji:'💪',nombre:'Trapecio',tipo:'Músculo'},
-          {id:'erector_columna',emoji:'🦴',nombre:'Erector de la columna (Sacroespinal)',tipo:'Músculo'},
-          {id:'meninges',emoji:'🧠',nombre:'Duramadre, aracnoides, piamadre',tipo:'Capas'},
-          {id:'medula_termina',emoji:'📍',nombre:'L1 o L2',tipo:'Anatomía'},
-          {id:'ramo_posterior',emoji:'🔌',nombre:'Ramo posterior: músculos profundos del dorso y piel suprayacente',tipo:'Inervación'},
-          {id:'arterias_segmentarias',emoji:'🩸',nombre:'Arterias intercostales posteriores y lumbares',tipo:'Vascular'},
+          { id:'medial', imageSrc:'img/1.jpeg', nombre:'Medial', tipo:'Orientación' },
+          { id:'transversal', emoji:'✂️', nombre:'Transversal (axial)', tipo:'Definición' },
+          { id:'abduccion', emoji:'↔️', nombre:'Abducción', tipo:'Movimiento' },
+          { id:'esferoidea', imageSrc:'img/4.jpeg', nombre:'Esferoidea (Enartrosis)', tipo:'Articulación' },
+          { id:'epimisio', imageSrc:'img/5.jpeg', nombre:'Epimisio', tipo:'Tejido' },
+          { id:'vena', emoji:'🩸', nombre:'Vena', tipo:'Vaso' },
+          { id:'dendrita', imageSrc:'img/7.jpeg', nombre:'Dendrita', tipo:'Neurona' },
+          { id:'peritoneo', emoji:'🧻', nombre:'Peritoneo', tipo:'Función' },
+          { id:'dermis', imageSrc:'img/8.jpeg', nombre:'Dermis', tipo:'Piel' },
+          { id:'arteria_tiroidea_ima', imageSrc:'img/9.jpeg', nombre:'Arteria tiroidea ima', tipo:'Vascular' },
+          { id:'laringe', imageSrc:'img/11.jpeg', nombre:'Laringe', tipo:'Sistema respiratorio' },
+          { id:'articulacion_coronal', imageSrc:'img/14.jpeg', nombre:'Articulación coronal', tipo:'Articulación' },
+          { id:'conducto_toracico', imageSrc:'img/15.jpeg', nombre:'Conducto torácico', tipo:'Vascular' },
+          { id:'meninges', emoji:'🧠', nombre:'Duramadre, aracnoides, piamadre', tipo:'Capas' },
       ]},
       { nombre: 'Intermedio', color:'#00ff9d', icono:'🫀', stars:'★★★☆☆', dif:'Intermedio', pares:[
           {id:'c1_atlas',emoji:'🦴',nombre:'C1 (Atlas)',tipo:'Vértebra'},
@@ -1078,8 +1087,10 @@ function iniciarNivel(idx){
 
   cartas=[];
   nivel.pares.forEach(par=>{
-    cartas.push({pairId:par.id,isImage:true,emoji:par.emoji,label:par.nombre,tipo:par.tipo,matched:false});
-    cartas.push({pairId:par.id,isImage:false,emoji:par.emoji,label:par.nombre,tipo:par.tipo,matched:false});
+    // carta imagen
+    cartas.push({pairId:par.id, isImage:true, imageSrc: par.imageSrc || null, emoji: par.emoji || '🖼️', label:par.nombre, tipo:par.tipo, matched:false});
+    // carta texto (definición)
+    cartas.push({pairId:par.id, isImage:false, imageSrc: null, emoji: par.emoji, label:par.nombre, tipo:par.tipo, matched:false});
   });
   shuffle(cartas);
   renderCartas(nivel.color);
@@ -1104,16 +1115,15 @@ function iniciarNivelMultiplayer(idx, permutation){
   updateStats();
   document.getElementById('progress-bar').style.width='0%';
 
-  cartas = [];
-  // permutation is an array of indices into nivel.pares (0..n-1)
+  // Crear pares en el orden dado por permutation (permutación de índices de los pares)
   const order = Array.isArray(permutation) && permutation.length===nivel.pares.length ? permutation : Array.from({length:nivel.pares.length},(_,i)=>i);
-  // create pairs in the given order
+  cartas = [];
   order.forEach(pi=>{
     const par = nivel.pares[pi];
-    cartas.push({pairId:par.id,isImage:true,emoji:par.emoji,label:par.nombre,tipo:par.tipo,matched:false});
-    cartas.push({pairId:par.id,isImage:false,emoji:par.emoji,label:par.nombre,tipo:par.tipo,matched:false});
+    cartas.push({pairId:par.id, isImage:true, imageSrc: par.imageSrc || null, emoji: par.emoji || '🖼️', label:par.nombre, tipo:par.tipo, matched:false});
+    cartas.push({pairId:par.id, isImage:false, imageSrc: null, emoji: par.emoji, label:par.nombre, tipo:par.tipo, matched:false});
   });
-  // if server sent a full-deck permutation (length 2*n), reorder cartas accordingly
+  // Si el servidor envía una permutación completa del mazo (longitud 2*n), reordenamos
   if(Array.isArray(permutation) && permutation.length===cartas.length){
     const reordered = permutation.map(i=>cartas[i]);
     cartas = reordered;
@@ -1133,11 +1143,23 @@ function renderCartas(color){
     const div=document.createElement('div');
     div.className='card'; div.dataset.idx=idx;
     div.style.setProperty('--card-accent',color+'66');
+    let frontContent = '';
     if(carta.isImage){
-      div.innerHTML=`<div class="card-inner"><div class="card-face card-back-face"></div><div class="card-face card-front-face"><div class="card-emoji">${carta.emoji}</div><div class="card-type">Imagen</div></div></div>`;
+      if(carta.imageSrc){
+        frontContent = `<img src="${carta.imageSrc}" alt="${carta.label}" loading="lazy">`;
+      } else {
+        frontContent = `<div class="card-emoji">${carta.emoji}</div>`;
+      }
     } else {
-      div.innerHTML=`<div class="card-inner"><div class="card-face card-back-face"></div><div class="card-face card-front-face" style="--card-bg:linear-gradient(135deg,#1a0d33,#130a26)"><div class="card-label">${carta.label}</div><div class="card-type">${carta.tipo}</div></div></div>`;
+      frontContent = `<div class="card-label">${carta.label}</div><div class="card-type">${carta.tipo}</div>`;
     }
+    div.innerHTML = `
+      <div class="card-inner">
+        <div class="card-face card-back-face"></div>
+        <div class="card-face card-front-face">
+          ${frontContent}
+        </div>
+      </div>`;
     div.addEventListener('click',()=>voltearCarta(idx));
     grid.appendChild(div);
   });
