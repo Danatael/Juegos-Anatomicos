@@ -6,7 +6,6 @@
 <title>Memorama Anatómico Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
-/* ========== ESTILOS (completos, igual que antes) ========== */
 :root {
   --bg:#0a1628; --bg2:#0e1f3d; --card-back:#112244;
   --accent:#00d4ff; --accent2:#00ff9d; --accent3:#ff6b6b;
@@ -309,6 +308,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 <div id="particles"></div>
 <div id="toast" class="toast"></div>
 
+<!-- SCREEN 1: INICIO -->
 <div id="screen-inicio" class="screen active">
   <div class="inicio-content">
     <span class="logo-icon">🫀</span>
@@ -333,6 +333,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
+<!-- SCREEN 2: REGISTRO -->
 <div id="screen-registro" class="screen">
   <div class="registro-wrap">
     <button class="btn-back" onclick="irInicio()">← Inicio</button>
@@ -350,8 +351,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
       <div class="registro-card">
         <div class="registro-card-title"><span class="rct-icon">🔗</span>Entrar con código</div>
         <div class="registro-card-body">
-          <input id="input-sala" class="input-nombre" type="text" placeholder="Código de sala" style="max-width:none;min-width:0">
-          <input id="input-nombre-sala" class="input-nombre" type="text" placeholder="Tu nombre" maxlength="20" style="max-width:none;min-width:0">
+          <input id="input-sala" class="input-nombre" type="text" placeholder="Código de sala">
+          <input id="input-nombre-sala" class="input-nombre" type="text" placeholder="Tu nombre" maxlength="20">
           <div class="registro-card-actions">
             <button class="btn-primary" onclick="unirseSala()">Unirse a Sala</button>
           </div>
@@ -371,7 +372,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     </div>
     <div class="modal-body">
       <p class="modal-help">Escribe el nombre del jugador para continuar a la vista de niveles.</p>
-      <input class="input-nombre" id="input-nombre-modal" type="text" maxlength="20" placeholder="Nombre del jugador..." autocomplete="off">
+      <input class="input-nombre" id="input-nombre-modal" type="text" maxlength="20" placeholder="Nombre del jugador...">
       <div class="modal-footer">
         <button class="btn-secondary" onclick="cerrarModalJugador()">Cancelar</button>
         <button class="btn-primary" onclick="confirmarModalJugador()">Comenzar</button>
@@ -380,6 +381,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
+<!-- SCREEN 3: TURNO -->
 <div id="screen-turno" class="screen">
   <div class="turno-wrap">
     <span class="turno-icono" id="turno-icono">🎮</span>
@@ -391,6 +393,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
+<!-- SCREEN 4: NIVELES -->
 <div id="screen-niveles" class="screen">
   <button class="btn-back" onclick="volverTurno()">← Turno</button>
   <div class="niveles-header">
@@ -398,7 +401,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     <div style="display:flex;gap:.6rem;justify-content:center;margin-bottom:.6rem;flex-wrap:wrap;">
       <button class="btn-secondary" id="sem1-btn" onclick="selectSemester(1)">Primer Semestre</button>
       <button class="btn-secondary" id="sem2-btn" onclick="selectSemester(2)">Segundo Semestre</button>
-      <button class="btn-secondary" id="sem3-btn" onclick="selectSemester(3)">Casos clínicos (Trivia)</button>
+      <button class="btn-secondary" id="sem3-btn" onclick="selectSemester(3)">Casos Clínicos</button>
     </div>
     <h2 id="niveles-titulo">Elige un Nivel</h2>
     <p id="niveles-sub">Selecciona el tema o dificultad que deseas practicar</p>
@@ -406,6 +409,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="niveles-grid" id="niveles-grid"></div>
 </div>
 
+<!-- SCREEN 5: LOBBY -->
 <div id="screen-lobby" class="screen">
   <button class="btn-back" onclick="volverNiveles()">← Niveles</button>
   <div class="lobby-wrap">
@@ -432,6 +436,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
+<!-- SCREEN 6: JUEGO (MEMORAMA) -->
 <div id="screen-juego" class="screen">
   <div class="screen-header-nav">
     <button class="btn-back" onclick="volverNiveles()" style="margin-bottom:0">← Niveles</button>
@@ -450,6 +455,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="cards-grid" id="cards-grid"></div>
 </div>
 
+<!-- SCREEN 7: TRIVIA -->
 <div id="screen-trivia" class="screen">
   <div class="trivia-container">
     <div class="trivia-header"><span>📚 Trivia Anatómica</span><span class="trivia-score">Puntos: 0</span></div>
@@ -461,6 +467,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
+<!-- SCREEN 8: RESULTADO -->
 <div id="screen-resultado" class="screen">
   <div class="resultado-content">
     <span class="resultado-emoji" id="res-emoji">🏆</span>
@@ -477,6 +484,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
+<!-- SCREEN 9: RANKING FINAL -->
 <div id="screen-ranking" class="screen">
   <div class="ranking-wrap">
     <h2 class="ranking-titulo">🏆 Tabla de Puntajes</h2>
@@ -489,7 +497,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 
 <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
 <script>
-// ========== SOCKET.IO CLIENTE (sin cambios, igual que antes) ==========
+// ========== SOCKET.IO CLIENTE ==========
 const SOCKET_URL = (window.location.protocol === 'file:' ? 'http://localhost:3000' : window.location.origin);
 let socket = null;
 let socketConnected = false;
@@ -536,7 +544,7 @@ function abrirLobbyNivel(idx) { nivelPendiente = idx; const name = nombreJugador
 const AVATARES = ["🧑","👩","🧒","👦","👧","🧔","👨‍🦰","👩‍🦱","🧑‍🦲","👩‍🦳","🧑‍🎓","👩‍🔬"];
 const COLORES_AVATAR = ["#00d4ff","#00ff9d","#ff9f43","#ff6b6b","#c678dd","#ffd700","#2ec4b6","#e94560"];
 
-// ========== NUEVO ARRAY CON LAS 15 IMÁGENES ANATÓMICAS ==========
+// 15 imágenes para el memorama
 const imagenesMemorama = [
   { kind:'image', id:'medial', imageSrc:'img/1.jpeg', nombre:'Medial', tipo:'Orientación' },
   { kind:'image', id:'transversal', imageSrc:'img/2.jpeg', nombre:'Transversal (axial)', tipo:'Plano anatómico' },
@@ -555,56 +563,53 @@ const imagenesMemorama = [
   { kind:'image', id:'conducto_toracico', imageSrc:'img/15.jpeg', nombre:'Conducto torácico', tipo:'Sistema linfático' }
 ];
 
-// Trivia (para segundo y tercer semestre) - igual que antes
-function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
-function generateOptions(correct, allAnswers, currentIdx) {
-  let incorrect = allAnswers.filter((a, i) => i !== currentIdx && a !== correct);
-  incorrect = [...new Set(incorrect)];
-  while(incorrect.length < 3) incorrect.push("Respuesta no especificada");
-  let opts = [correct, ...incorrect.slice(0,3)];
-  return shuffleArray(opts);
-}
-const triviaBase = {
-  basico: [
-    { text: "¿Qué arteria irriga la mayor parte del encéfalo?", answer: "Arteria cerebral media" },
-    { text: "¿Cuál es la función del cuerpo calloso?", answer: "Conectar los hemisferios cerebrales" },
-    { text: "¿Qué nervio craneal es motor para los músculos de la masticación?", answer: "Nervio trigémino (V)" },
-    { text: "¿Dónde se produce el líquido cefalorraquídeo?", answer: "Plexos coroideos" }
-  ],
-  intermedio: [
-    { text: "¿Cuál es el principal neurotransmisor inhibitorio del SNC?", answer: "GABA" },
-    { text: "¿Qué estructura regula la temperatura corporal?", answer: "Hipotálamo" },
-    { text: "¿Cómo se llaman los vasos que llevan sangre desde el corazón a los pulmones?", answer: "Arterias pulmonares" },
-    { text: "¿Qué hueso de la mano se articula con el radio?", answer: "Escafoides" }
-  ],
-  avanzado: [
-    { text: "¿Cuál es la vía final común del sistema motor?", answer: "Neurona motora inferior" },
-    { text: "¿Qué parte del cerebelo se encarga del equilibrio?", answer: "Arquicerebelo (lóbulo floculonodular)" },
-    { text: "¿Qué hormona produce la glándula pineal?", answer: "Melatonina" },
-    { text: "¿Qué ligamento de la rodilla evita la traslación anterior de la tibia?", answer: "Ligamento cruzado anterior" }
-  ]
-};
-const allTriviaAnswers = [...triviaBase.basico.map(b=>b.answer), ...triviaBase.intermedio.map(i=>i.answer), ...triviaBase.avanzado.map(a=>a.answer)];
-function buildTriviaQuestions(level) {
-  const base = triviaBase[level];
-  return base.map((q, idx) => ({ text: q.text, correct: q.answer, options: generateOptions(q.answer, allTriviaAnswers, allTriviaAnswers.indexOf(q.answer)) }));
-}
-const triviaBasico = buildTriviaQuestions('basico');
-const triviaIntermedio = buildTriviaQuestions('intermedio');
-const triviaAvanzado = buildTriviaQuestions('avanzado');
+// ========== CASOS CLÍNICOS BÁSICOS (segundo semestre) ==========
+const casosClinicosBasicos = [
+  { text: "Hernia inguinal: ¿Qué estructura anatómica está afectada?", correct: "Conducto inguinal", options: ["Ligamento inguinal", "Conducto femoral", "Conducto inguinal", "Canal obturador"] },
+  { text: "Apendicitis aguda: ¿En qué punto anatómico suele presentarse el máximo dolor?", correct: "Punto de McBurney", options: ["Punto cístico", "Punto ureteral medio", "Punto de Lanz", "Punto de McBurney"] },
+  { text: "Infarto agudo de miocardio: ¿Qué arteria se obstruye con mayor frecuencia?", correct: "Arteria descendente anterior izquierda", options: ["Arteria coronaria derecha", "Arteria circunfleja izquierda", "Arteria descendente anterior izquierda", "Arteria marginal izquierda"] },
+  { text: "Embolia pulmonar: ¿Qué vaso sanguíneo se encuentra obstruido?", correct: "Arteria pulmonar o alguna de sus ramas", options: ["Vena pulmonar superior", "Aorta torácica", "Tronco braquiocefálico", "Arteria pulmonar o alguna de sus ramas"] },
+  { text: "Colecistolitiasis: ¿Qué órgano contiene los cálculos?", correct: "Vesícula biliar", options: ["Conducto colédoco", "Hígado", "Conducto cístico", "Vesícula biliar"] },
+  { text: "Pancreatitis aguda: ¿Qué órgano está inflamado?", correct: "Páncreas", options: ["Duodeno", "Hígado", "Bazo", "Páncreas"] },
+  { text: "Cálculos renales: ¿Qué estructura está siendo obstruida por el cálculo?", correct: "Uréter", options: ["Pelvis renal", "Uretra", "Vejiga urinaria", "Uréter"] },
+  { text: "Infección urinaria: ¿Qué órgano almacena la orina antes de ser expulsada?", correct: "Vejiga urinaria", options: ["Uréter", "Uretra", "Pelvis renal", "Vejiga urinaria"] },
+  { text: "Cáncer de próstata: ¿Qué glándula está afectada?", correct: "Próstata", options: ["Glándula bulbouretral", "Vesícula seminal", "Glándula suprarrenal", "Próstata"] },
+  { text: "Fractura costal: ¿Qué membrana puede lesionarse si el fragmento óseo perfora el pulmón?", correct: "Pleura", options: ["Pericardio fibroso", "Peritoneo parietal", "Fascia endotorácica", "Pleura"] }
+];
 
+// ========== CASOS CLÍNICOS AVANZADOS (tercer semestre, 20 preguntas nivel médico especializado) ==========
+const casosClinicosAvanzados = [
+  { text: "Paciente con síndrome de Horner (ptosis, miosis, anhidrosis) ipsilateral tras un traumatismo cervical. ¿Qué estructura del sistema nervioso autónomo está afectada?", correct: "Cadena simpática cervical (ganglio cervical superior)", options: ["Ganglio ciliar", "Nervio vago", "Cadena simpática cervical", "Núcleo de Edinger-Westphal"] },
+  { text: "Durante una colecistectomía laparoscópica, se lesiona un conducto que drena el segmento VI del hígado. ¿Cuál es la variante anatómica más común que predispone a esta lesión?", correct: "Conducto hepático derecho accesorio", options: ["Conducto hepático izquierdo de bajo trayecto", "Conducto cístico largo", "Conducto hepático derecho accesorio", "Conducto de Luschka"] },
+  { text: "Paciente con trombosis de la vena mesentérica superior. ¿Qué órgano es el más afectado por la falta de drenaje venoso?", correct: "Yeyuno e íleon", options: ["Colon derecho", "Estómago", "Yeyuno e íleon", "Duodeno"] },
+  { text: "En una histerectomía radical, se diseca el ligamento que contiene la arteria uterina y el uréter. ¿Cómo se denomina?", correct: "Ligamento cardinal (de Mackenrodt)", options: ["Ligamento ancho", "Ligamento uterosacro", "Ligamento redondo", "Ligamento cardinal"] },
+  { text: "Un paciente con un tumor de la cola del páncreas requiere una esplenectomía. ¿Qué vaso debe ligarse con especial cuidado para evitar una hemorragia masiva?", correct: "Arteria esplénica", options: ["Arteria gástrica izquierda", "Arteria mesentérica superior", "Arteria esplénica", "Vena esplénica"] },
+  { text: "Fractura del anillo pélvico con lesión de la raíz S2. ¿Qué déficit motor esperaría?", correct: "Pérdida de la flexión plantar (pérdida de la función del músculo sóleo y gastrocnemio)", options: ["Parálisis de los glúteos", "Pérdida de la flexión de cadera", "Pérdida de la flexión plantar", "Pérdida de la extensión de rodilla"] },
+  { text: "En una tiroidectomía, se identifica una arteria tiroidea ima. ¿Cuál es su origen más frecuente?", correct: "Tronco braquiocefálico", options: ["Arteria carótida común izquierda", "Arco aórtico", "Tronco braquiocefálico", "Arteria subclavia derecha"] },
+  { text: "Paciente con síndrome del desfiladero torácico por compresión del tronco inferior del plexo braquial. ¿Qué nervio se afecta predominantemente?", correct: "Nervio ulnar", options: ["Nervio mediano", "Nervio radial", "Nervio ulnar", "Nervio musculocutáneo"] },
+  { text: "Durante una nefrectomía radical, se debe ligar la arteria renal. ¿Cuál es el nivel vertebral más frecuente de origen de las arterias renales?", correct: "L1-L2", options: ["T12-L1", "L1-L2", "L2-L3", "L3-L4"] },
+  { text: "Un paciente con un aneurisma de la arteria comunicante posterior presenta una parálisis del III par craneal. ¿Dónde ocurre la compresión?", correct: "Entre la arteria cerebelosa superior y la comunicante posterior", options: ["Senos cavernosos", "Cisterna interpeduncular", "Entre la arteria cerebelosa superior y la comunicante posterior", "A nivel del tentorio"] },
+  { text: "En una apendicectomía, se identifica que el apéndice se localiza en posición retrocecal. ¿Cuál es el riesgo quirúrgico más relevante?", correct: "Lesión del uréter derecho", options: ["Lesión del ciego", "Lesión del íleon", "Lesión del uréter derecho", "Lesión de la arteria ilíaca"] },
+  { text: "Paciente con fractura del cuello del húmero que presenta una lesión del nervio axilar. ¿Qué músculo se paraliza?", correct: "Deltoides", options: ["Supraespinoso", "Infraespinoso", "Deltoides", "Redondo mayor"] },
+  { text: "En una duodenopancreatectomía cefálica (Whipple), se debe identificar la arteria que discurre por detrás del páncreas. ¿Cuál es?", correct: "Arteria mesentérica superior", options: ["Arteria hepática común", "Arteria esplénica", "Arteria mesentérica superior", "Arteria gastroduodenal"] },
+  { text: "Un paciente con trombosis de la vena porta presenta circulación colateral. ¿Qué estructura anatómica se forma por la dilatación de las venas paraumbilicales?", correct: "Caput medusae", options: ["Várices esofágicas", "Hemorroides", "Caput medusae", "Circulación de Cruveilhier-Baumgarten"] },
+  { text: "En una cirugía de tórax, se lesiona el nervio frénico derecho. ¿Qué consecuencia inmediata se espera?", correct: "Parálisis hemidiafragmática derecha", options: ["Parálisis del diafragma bilateral", "Parálisis hemidiafragmática derecha", "Parálisis de los músculos intercostales", "Hernia diafragmática"] },
+  { text: "Un paciente con un tumor de la glándula parótida requiere una parotidectomía superficial. ¿Qué estructura se debe preservar para evitar la parálisis facial?", correct: "Rama temporofacial del nervio facial", options: ["Nervio auricular mayor", "Rama temporofacial del nervio facial", "Nervio auriculotemporal", "Arteria carótida externa"] },
+  { text: "En una fractura de la base del cráneo, se produce una otolicuorrea. ¿Qué estructura anatómica está lesionada?", correct: "Dura madre (techo del tímpano - tegmen tympani)", options: ["Membrana timpánica", "Ventana oval", "Tegmen tympani", "Células mastoideas"] },
+  { text: "Paciente con síndrome de Pancoast por un tumor en el vértice pulmonar. ¿Qué estructuras del plexo braquial se afectan primero?", correct: "Raíces C8-T1 (tronco inferior)", options: ["Raíces C5-C6", "Raíz C7", "Raíces C8-T1", "División posterior"] },
+  { text: "Durante una plastia de ligamento cruzado anterior, se toman los tendones de la pata de ganso. ¿Cuál de los siguientes músculos NO forma parte de ella?", correct: "Sartorio", options: ["Sartorio", "Gracilis", "Semitendinoso", "Recto femoral"] },
+  { text: "En un paciente con hidrocefalia, se realiza una derivación ventriculoperitoneal. ¿A través de qué estructura se accede al ventrículo lateral?", correct: "Foramen de Monro", options: ["Acueducto de Silvio", "Foramen de Luschka", "Foramen de Monro", "Agujero de Magendie"] }
+];
+
+// Estructura de semestres
 const SEMESTER_DATA = {
-  1: { name: 'Primer Semestre (Memorama)', levels: [
-    { nombre: 'Memorama Anatómico', color:'#00d4ff', icono:'🖼️', stars:'★☆☆☆☆', dif:'Básico', pares: imagenesMemorama, type: 'memorama' }
-  ] },
-  2: { name: 'Segundo Semestre (Memorama + Trivia)', levels: [
+  1: { name: 'Primer Semestre (Memorama)', levels: [ { nombre: 'Memorama Anatómico', color:'#00d4ff', icono:'🖼️', stars:'★☆☆☆☆', dif:'Básico', pares: imagenesMemorama, type: 'memorama' } ] },
+  2: { name: 'Segundo Semestre (Memorama + Casos Clínicos Básicos)', levels: [
     { nombre: 'Memorama Anatómico', color:'#00d4ff', icono:'🖼️', stars:'★☆☆☆☆', dif:'Básico', pares: imagenesMemorama, type: 'memorama' },
-    { nombre: 'Trivia Anatómica', color:'#00ff9d', icono:'📖', stars:'★★★☆☆', dif:'Intermedio', questions: triviaBasico, type: 'trivia' }
+    { nombre: 'Casos Clínicos Básicos', color:'#00ff9d', icono:'🏥', stars:'★★★☆☆', dif:'Intermedio', questions: casosClinicosBasicos, type: 'trivia' }
   ] },
-  3: { name: 'Casos clínicos (Trivia Avanzada)', levels: [
-    { nombre: 'Básico', color:'#00d4ff', icono:'📖', stars:'★☆☆☆☆', dif:'Básico', questions: triviaBasico, type: 'trivia' },
-    { nombre: 'Intermedio', color:'#00ff9d', icono:'📘', stars:'★★★☆☆', dif:'Intermedio', questions: triviaIntermedio, type: 'trivia' },
-    { nombre: 'Avanzado', color:'#c678dd', icono:'🏆', stars:'★★★★★', dif:'Avanzado', questions: triviaAvanzado, type: 'trivia' }
+  3: { name: 'Tercer Semestre (Casos Clínicos Avanzados)', levels: [
+    { nombre: 'Casos Clínicos Avanzados', color:'#c678dd', icono:'🏆', stars:'★★★★★', dif:'Avanzado', questions: casosClinicosAvanzados, type: 'trivia' }
   ] }
 };
 
@@ -625,7 +630,6 @@ let turnoActual = 0;
 let nivelActual = 0;
 let modoSoloRanking = false;
 // Memorama por rondas
-let cartasGlobal = [];
 let cartasRonda = [];
 let voltadas = [];
 let aciertos = 0, intentos = 0, errores = 0;
@@ -633,17 +637,14 @@ let bloqueado = false;
 let timerInterval = null;
 let segundos = 0;
 let totalPares = 0;
-let currentRoundIndex = 0;
-let totalRounds = 0;
 let remainingPairs = [];
-let currentRoundPairs = [];
 let isMemoramaComplete = false;
 // Trivia
 let currentTriviaQuestions = [];
 let currentTriviaIndex = 0;
 let triviaScore = 0;
 let triviaAnswered = false;
-// Ranking
+// Ranking de nivel
 let rankingNivel = [];
 
 // Funciones base
@@ -677,30 +678,19 @@ function volverNiveles(){ renderNiveles(); mostrarScreen('screen-niveles'); }
 function renderNiveles(){ const j = jugadores[turnoActual] || { nombre: '-', avatarIdx: 0, colorIdx: 0, nivelesJugados: [] }; document.getElementById('banner-nombre').textContent = `${AVATARES[j.avatarIdx] || AVATARES[0]} ${j.nombre}`; const grid=document.getElementById('niveles-grid'); grid.innerHTML=''; const niveles = SEMESTER_DATA[selectedSemester].levels; niveles.forEach((n,i)=>{ const yaJugado = (j.nivelesJugados || []).some(nl=>nl.nivelIdx===i && nl.semester===selectedSemester); const card=document.createElement('div'); card.className='nivel-card'+(yaJugado?' ya-jugado':''); card.style.cssText=`--nivel-color:${n.color};--nivel-glow:${n.color}44;animation-delay:${i*0.08}s`; let desc = ''; if(n.type === 'trivia') desc = n.questions.map(q=>q.text).slice(0,4).join(', '); else desc = n.pares.slice(0,4).map(p=>p.nombre).join(', '); card.innerHTML=`${yaJugado?`<div class="nivel-jugado-tag">✓ Jugado</div>`:''}<div class="nivel-num">Nivel ${i+1}</div><div class="nivel-stars">${n.stars}</div><div class="nivel-titulo">${n.nombre}</div><div class="nivel-desc">${desc}${desc.length>50?'...':''}</div><div class="nivel-badge">${n.type === 'trivia' ? n.questions.length+' preguntas' : n.pares.length+' parejas'} · ${n.dif}</div><span class="nivel-icon">${n.icono}</span>`; if(!yaJugado) card.onclick=()=>abrirLobbyNivel(i); grid.appendChild(card); }); }
 function comenzarPartidaConCuentaRegresiva(){ const code = currentRoomCode || document.getElementById('input-sala').value.trim().toUpperCase(); if(!code){ showToast('Primero crea o entra a una sala'); return; } if(mySocketId && currentRoomHostId && mySocketId !== currentRoomHostId){ showToast('Solo el creador puede comenzar'); return; } if(countdownActive){ return; } const nivel = SEMESTER_DATA[selectedSemester].levels[nivelPendiente] || SEMESTER_DATA[selectedSemester].levels[0]; const pairsCount = nivel.type === 'trivia' ? (nivel.questions ? nivel.questions.length : 0) : (nivel.pares ? nivel.pares.length : 0); if(!socket){ connectSocket(); } socket.emit('startRoomCountdown',{code,semester:selectedSemester,levelIdx:nivelPendiente,pairsCount}); }
 
-// ========== FUNCIONES DE MEMORAMA POR RONDAS (3x3) ==========
-function iniciarNivelMultiplayer(idx, permutation) {
-  iniciarNivel(idx);
-}
-
+// ========== FUNCIONES DEL MEMORAMA POR RONDAS (3x3) ==========
+function iniciarNivelMultiplayer(idx, permutation) { iniciarNivel(idx); }
 function iniciarNivel(idx) {
   const nivel = SEMESTER_DATA[selectedSemester].levels[idx];
   if (nivel.type === 'trivia') {
     iniciarTrivia(nivel.questions);
     return;
   }
-  // --- Inicializar memorama por rondas ---
   nivelActual = idx;
   const jugador = jugadores[turnoActual];
-  aciertos = 0;
-  intentos = 0;
-  errores = 0;
-  voltadas = [];
-  bloqueado = false;
-  segundos = 0;
+  aciertos = 0; intentos = 0; errores = 0;
+  voltadas = []; bloqueado = false; segundos = 0;
   totalPares = nivel.pares.length;
-  isMemoramaComplete = false;
-
-  // Preparar todas las cartas (pares)
   const allPairs = [];
   nivel.pares.forEach(par => {
     allPairs.push([
@@ -710,63 +700,40 @@ function iniciarNivel(idx) {
   });
   shuffle(allPairs);
   remainingPairs = [...allPairs];
-  currentRoundIndex = 0;
-  totalRounds = Math.ceil(remainingPairs.length / 4); // 4 pares por ronda (8 cartas)
   cargarSiguienteRonda(nivel.color);
-
-  // Actualizar UI
   document.getElementById('game-level-title').textContent = `Nivel ${idx+1} · ${nivel.nombre}`;
   document.getElementById('nivel-nombre-top').textContent = `Nivel ${idx+1}`;
   document.getElementById('game-jugador-badge').textContent = `${AVATARES[jugador.avatarIdx]} ${jugador.nombre}`;
   document.querySelector('.nivel-dot').style.background = nivel.color;
   document.querySelector('.nivel-dot').style.boxShadow = `0 0 8px ${nivel.color}`;
   document.querySelector('.timer-ring .fg').style.stroke = nivel.color;
-  updateStats();
-  document.getElementById('progress-bar').style.width = '0%';
-  mostrarScreen('screen-juego');
-  iniciarTimer();
+  updateStats(); document.getElementById('progress-bar').style.width = '0%';
+  mostrarScreen('screen-juego'); iniciarTimer();
 }
-
 function cargarSiguienteRonda(color) {
   if (remainingPairs.length === 0) {
-    // Fin del memorama
-    isMemoramaComplete = true;
     if (selectedSemester === 2 && nivelActual === 0) {
-      // Segundo semestre: pasar a trivia
-      const nivelTrivia = SEMESTER_DATA[2].levels[1];
-      iniciarTrivia(nivelTrivia.questions);
-    } else {
-      mostrarResultadoJugador();
-    }
+      iniciarTrivia(SEMESTER_DATA[2].levels[1].questions);
+    } else { mostrarResultadoJugador(); }
     return;
   }
   const paresTomados = remainingPairs.splice(0, 4);
-  currentRoundPairs = paresTomados;
   cartasRonda = [];
-  for (const [cartaA, cartaB] of paresTomados) {
-    cartasRonda.push(cartaA, cartaB);
-  }
+  for (const [cartaA, cartaB] of paresTomados) cartasRonda.push(cartaA, cartaB);
   shuffle(cartasRonda);
   renderCartas(cartasRonda, color);
-  currentRoundIndex++;
   document.getElementById('progress-bar').style.width = `${(aciertos / totalPares) * 100}%`;
 }
-
 function renderCartas(cartasArray, color) {
   const grid = document.getElementById('cards-grid');
   grid.innerHTML = '';
   cartasArray.forEach((carta, idx) => {
     const div = document.createElement('div');
-    div.className = 'card';
-    div.dataset.idx = idx;
+    div.className = 'card'; div.dataset.idx = idx;
     div.style.setProperty('--card-accent', color + '66');
     let frontContent = '';
     if (carta.isImage) {
-      if (carta.imageSrc) {
-        frontContent = `<img src="${carta.imageSrc}" alt="${carta.label}" loading="lazy">`;
-      } else {
-        frontContent = `<div class="card-emoji">${carta.emoji}</div><div class="card-type">Imagen</div>`;
-      }
+      frontContent = carta.imageSrc ? `<img src="${carta.imageSrc}" alt="${carta.label}" loading="lazy">` : `<div class="card-emoji">${carta.emoji}</div><div class="card-type">Imagen</div>`;
     } else {
       frontContent = `<div class="card-label">${carta.label}</div><div class="card-type">${carta.tipo}</div>`;
     }
@@ -775,7 +742,6 @@ function renderCartas(cartasArray, color) {
     grid.appendChild(div);
   });
 }
-
 function voltearCarta(idx) {
   if (bloqueado) return;
   const carta = cartasRonda[idx];
@@ -784,45 +750,26 @@ function voltearCarta(idx) {
   if (el.classList.contains('flipped')) return;
   el.classList.add('flipped');
   voltadas.push(idx);
-  if (voltadas.length === 2) {
-    intentos++;
-    bloqueado = true;
-    setTimeout(() => verificarPar(), 700);
-  }
+  if (voltadas.length === 2) { intentos++; bloqueado = true; setTimeout(() => verificarPar(), 700); }
 }
-
 function verificarPar() {
-  const [a, b] = voltadas;
-  const ca = cartasRonda[a];
-  const cb = cartasRonda[b];
+  const [a,b] = voltadas;
+  const ca = cartasRonda[a], cb = cartasRonda[b];
   const elA = document.querySelector(`.card[data-idx="${a}"]`);
   const elB = document.querySelector(`.card[data-idx="${b}"]`);
   if (ca.pairId === cb.pairId && ca.isImage !== cb.isImage) {
-    ca.matched = true;
-    cb.matched = true;
-    elA.classList.add('matched');
-    elB.classList.add('matched');
+    ca.matched = true; cb.matched = true;
+    elA.classList.add('matched'); elB.classList.add('matched');
     aciertos++;
     document.getElementById('progress-bar').style.width = `${(aciertos / totalPares) * 100}%`;
-    // Comprobar si la ronda actual está completa
-    const allMatched = cartasRonda.every(c => c.matched);
-    if (allMatched) {
-      cargarSiguienteRonda(document.querySelector('.nivel-dot').style.background);
-    }
+    if (cartasRonda.every(c => c.matched)) cargarSiguienteRonda(document.querySelector('.nivel-dot').style.background);
   } else {
     errores++;
-    elA.classList.add('wrong');
-    elB.classList.add('wrong');
-    setTimeout(() => {
-      elA.classList.remove('flipped', 'wrong');
-      elB.classList.remove('flipped', 'wrong');
-    }, 800);
+    elA.classList.add('wrong'); elB.classList.add('wrong');
+    setTimeout(() => { elA.classList.remove('flipped','wrong'); elB.classList.remove('flipped','wrong'); }, 800);
   }
-  voltadas = [];
-  bloqueado = false;
-  updateStats();
+  voltadas = []; bloqueado = false; updateStats();
 }
-
 function mostrarResultadoJugador() {
   limpiarTimer();
   const cal = calcCalificacion(aciertos, intentos);
@@ -831,13 +778,9 @@ function mostrarResultadoJugador() {
   j.nivelesJugados.push({ semester: selectedSemester, nivelIdx: nivelActual, cal, pts, tiempo: segundos, aciertos, intentos });
   j.puntosTotal += pts;
   if (j.nivelesJugados.length >= SEMESTER_DATA[selectedSemester].levels.length) j.terminado = true;
-
   if (selectedSemester === 1 || (selectedSemester === 2 && nivelActual === 0)) {
     rankingNivel.push({ nombre: j.nombre, errores: errores, tiempo: segundos });
-    rankingNivel.sort((a,b) => {
-      if (a.errores !== b.errores) return a.errores - b.errores;
-      return a.tiempo - b.tiempo;
-    });
+    rankingNivel.sort((a,b) => { if (a.errores !== b.errores) return a.errores - b.errores; return a.tiempo - b.tiempo; });
   }
   mostrarResultadoUI(cal, pts, aciertos, intentos, j, false);
 }
@@ -862,7 +805,7 @@ function actualizarInterfazTrivia() {
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.className = 'trivia-option';
-    btn.textContent = opt;
+    btn.textContent = `${String.fromCharCode(65+idx)}. ${opt}`;
     btn.onclick = () => responderTrivia(opt);
     optionsDiv.appendChild(btn);
   });
@@ -880,12 +823,11 @@ function responderTrivia(selected) {
     triviaScore += 100;
     feedbackDiv.className = 'trivia-feedback correct';
     feedbackDiv.innerHTML = '✅ ¡Correcto! +100 puntos';
-    feedbackDiv.style.display = 'block';
   } else {
     feedbackDiv.className = 'trivia-feedback incorrect';
     feedbackDiv.innerHTML = `❌ Incorrecto. La respuesta correcta era: ${q.correct}.`;
-    feedbackDiv.style.display = 'block';
   }
+  feedbackDiv.style.display = 'block';
   document.querySelector('.trivia-score').textContent = `Puntos: ${triviaScore}`;
   document.querySelectorAll('.trivia-option').forEach(btn => btn.classList.add('disabled'));
   document.getElementById('trivia-next-btn').disabled = false;
@@ -901,20 +843,20 @@ function siguientePregunta() {
 function finalizarTrivia() {
   const total = currentTriviaQuestions.length;
   const aciertos = triviaScore / 100;
-  const cal = calcTriviaPuntos(aciertos, total);
+  const cal = (aciertos / total) * 10;
   const pts = triviaScore;
   const j = jugadores[turnoActual];
-  j.nivelesJugados.push({ semester: selectedSemester, nivelIdx: nivelActual, cal, pts, aciertos: aciertos, total: total, type: 'trivia' });
+  j.nivelesJugados.push({ semester: selectedSemester, nivelIdx: nivelActual, cal, pts, aciertos, total, type: 'trivia' });
   j.puntosTotal += pts;
   if (j.nivelesJugados.length >= SEMESTER_DATA[selectedSemester].levels.length) j.terminado = true;
   mostrarResultadoUI(cal, pts, aciertos, total, j, true);
 }
 function mostrarResultadoUI(cal, pts, aciertos, total, j, isTrivia) {
   let emoji, titulo, subtitulo, stars;
-  if(cal===10){emoji="🏆";titulo="¡Perfecto!";subtitulo="¡Conoces muy bien la anatomía!";stars="⭐⭐⭐⭐⭐";}
-  else if(cal>=9){emoji="🥇";titulo="¡Excelente!";subtitulo="Muy buen desempeño.";stars="⭐⭐⭐⭐½";}
-  else if(cal>=8){emoji="🥈";titulo="¡Muy Bien!";subtitulo="Sigue así.";stars="⭐⭐⭐⭐";}
-  else if(cal>=7){emoji="🥉";titulo="¡Bien!";subtitulo="Puedes mejorar.";stars="⭐⭐⭐";}
+  if(cal>=9.5){emoji="🏆";titulo="¡Perfecto!";subtitulo="¡Conoces muy bien la anatomía!";stars="⭐⭐⭐⭐⭐";}
+  else if(cal>=8.5){emoji="🥇";titulo="¡Excelente!";subtitulo="Muy buen desempeño.";stars="⭐⭐⭐⭐½";}
+  else if(cal>=7){emoji="🥈";titulo="¡Muy Bien!";subtitulo="Sigue así.";stars="⭐⭐⭐⭐";}
+  else if(cal>=6){emoji="🥉";titulo="¡Bien!";subtitulo="Puedes mejorar.";stars="⭐⭐⭐";}
   else{emoji="📚";titulo="Sigue Practicando";subtitulo="Repasa los conceptos.";stars="⭐⭐";}
   document.getElementById('res-emoji').textContent=emoji;
   document.getElementById('res-titulo').textContent=titulo;
@@ -922,23 +864,17 @@ function mostrarResultadoUI(cal, pts, aciertos, total, j, isTrivia) {
   document.getElementById('res-aciertos').textContent=aciertos;
   document.getElementById('res-intentos').textContent=total;
   document.getElementById('res-tiempo').textContent=isTrivia ? 'Trivia' : formatTiempo(segundos);
-  document.getElementById('res-calificacion').textContent=cal;
+  document.getElementById('res-calificacion').textContent=cal.toFixed(1);
   document.getElementById('res-stars').textContent=stars;
   document.getElementById('res-puntos').textContent=`+${pts} puntos · Total: ${j.puntosTotal}`;
-
   const rankingDiv = document.getElementById('ranking-nivel-container');
   if((selectedSemester === 1) || (selectedSemester === 2 && nivelActual === 0)) {
     rankingDiv.style.display = 'block';
     const top5 = rankingNivel.slice(0,5);
     let html = '<h4>🏆 Ranking del nivel (menos errores y tiempo)</h4>';
-    top5.forEach((item, idx) => {
-      html += `<div class="ranking-nivel-item"><span class="pos">${idx+1}º</span><span class="name">${item.nombre}</span><span class="metric">${item.errores} err · ${formatTiempo(item.tiempo)}</span></div>`;
-    });
+    top5.forEach((item, idx) => { html += `<div class="ranking-nivel-item"><span class="pos">${idx+1}º</span><span class="name">${item.nombre}</span><span class="metric">${item.errores} err · ${formatTiempo(item.tiempo)}</span></div>`; });
     rankingDiv.innerHTML = html;
-  } else {
-    rankingDiv.style.display = 'none';
-  }
-
+  } else { rankingDiv.style.display = 'none'; }
   const btnSig = document.getElementById('btn-siguiente-turno');
   const todosTerminaron = jugadores.every(jj => jj.terminado);
   if(todosTerminaron){ btnSig.textContent='🏆 Ver Ranking Final'; }
@@ -950,9 +886,7 @@ function mostrarResultadoUI(cal, pts, aciertos, total, j, isTrivia) {
   }
   mostrarScreen('screen-resultado');
   if(cal>=8) lanzarConfetti();
-  if(socket && currentRoomCode){
-    socket.emit('playerResult',{ code: currentRoomCode, playerId: mySocketId, result: { semester:selectedSemester, nivelIdx:nivelActual, cal, pts, aciertos, total, type: isTrivia ? 'trivia' : 'memorama' } });
-  }
+  if(socket && currentRoomCode){ socket.emit('playerResult',{ code: currentRoomCode, playerId: mySocketId, result: { semester:selectedSemester, nivelIdx:nivelActual, cal, pts, aciertos, total, type: isTrivia ? 'trivia' : 'memorama' } }); }
 }
 function siguienteTurno(){
   turnoActual = (turnoActual+1) % jugadores.length;
